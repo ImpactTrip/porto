@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ImpactTrip – Porto Pilot</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.5}
+    header{padding:16px 20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+    .brand{font-weight:700}
+    .hero{padding:40px 20px;max-width:960px;margin:0 auto}
+    .hero h1{margin:0 0 8px}
+    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));max-width:960px;margin:24px auto;padding:0 20px}
+    .card{border:1px solid #eee;border-radius:12px;padding:16px}
+    footer{border-top:1px solid #eee;padding:16px 20px;margin-top:24px;font-size:14px;color:#666}
+    .btn{display:inline-block;padding:10px 14px;border:1px solid #222;border-radius:8px;text-decoration:none}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">ImpactTrip</div>
+    <nav><a class="btn" href="#for-ngos">For NGOs</a> <a class="btn" href="#for-hotels">For Hotels</a></nav>
+  </header>
+
+  <section class="hero">
+    <h1>Make your trip matter.</h1>
+    <p>ImpactTrip liga visitantes do Porto a projetos de voluntariado locais — ambiente, educação, cultura e apoio social.</p>
+    <p><a class="btn" href="#opportunities">Browse Volunteer Opportunities</a></p>
+    <p style="font-size:14px;color:#666">Pilot: Porto, Portugal</p>
+  </section>
+
+  <section id="opportunities" class="grid">
+    <!-- Render dinâmico de oportunidades (app.js) -->
+  </section>
+
+  <section id="for-ngos" class="grid">
+    <div class="card">
+      <h3>For NGOs</h3>
+      <p>Receba voluntários verificados. Partilhe necessidades, horários e atividades.</p>
+      <p><a class="btn" href="#" title="Temporary: send us an email">Submit your project</a></p>
+    </div>
+    <div class="card" id="for-hotels">
+      <h3>For Hotels & Agencies</h3>
+      <p>Integre opções de voluntariado em pacotes e estadias. Melhore a experiência e o impacto.</p>
+      <p><a class="btn" href="#" title="Temporary: send us an email">Partner with us</a></p>
+    </div>
+  </section>
+
+  <footer>
+    © ImpactTrip · Funding via ads, small participation fee, municipal partners, merchandising & crowdfunding.
+  </footer>
+
+  <script>
+  // Demo: carrega oportunidades se existir data/opportunities.json
+  fetch('data/opportunities.json').then(r=>r.json()).then(list=>{
+    const wrap=document.querySelector('#opportunities');
+    if(!wrap) return;
+    for(const o of list){
+      const el=document.createElement('article');
+      el.className='card';
+      el.innerHTML = `
+        <h3>${o.title}</h3>
+        <p>${o.summary}</p>
+        <p><strong>Category:</strong> ${o.category} · <strong>When:</strong> ${o.when} · <strong>Time:</strong> ${o.duration}</p>
+        <p><a class="btn" href="#">I want to help</a></p>
+      `;
+      wrap.appendChild(el);
+    }
+  }).catch(()=>{/* silencioso se não houver ficheiro */});
+  </script>
+</body>
+</html>
