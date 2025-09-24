@@ -33,45 +33,40 @@
 
   <!-- Center: Pilot filters -->
   <form class="search-pill" id="pilot-form" autocomplete="off">
-  <!-- Location -->
-  <label class="pill-item" for="location">
-    <span class="lbl">Location</span>
-  </label>
-  <select id="location" name="location" aria-label="Location">
-    <option value="Porto, Portugal">Porto, Portugal</option>
-  </select>
+  <div class="field">
+    <label for="location"><span class="lbl">Location</span></label>
+    <select id="location" name="location" aria-label="Location">
+      <option value="Porto, Portugal">Porto, Portugal</option>
+    </select>
+  </div>
 
   <span class="pill-dot">•</span>
 
-  <!-- Date From -->
-  <label class="pill-item" for="date-start">
-    <span class="lbl">Date — From</span>
-  </label>
-  <input type="date" id="date-start" name="date-start" required>
+  <div class="field">
+    <label for="date-start"><span class="lbl">Date — From</span></label>
+    <input type="date" id="date-start" name="date-start" required autocomplete="off">
+  </div>
 
   <span class="date-sep">–</span>
 
-  <!-- Date To -->
-  <label class="pill-item" for="date-end">
-    <span class="lbl">To</span>
-  </label>
-  <input type="date" id="date-end" name="date-end" required>
+  <div class="field">
+    <label for="date-end"><span class="lbl">To</span></label>
+    <input type="date" id="date-end" name="date-end" required autocomplete="off">
+  </div>
 
   <span class="pill-dot">•</span>
 
-  <!-- Adults -->
-  <label class="pill-item pill-num" for="adults">
-    <span class="lbl">Adults</span>
-  </label>
-  <input type="number" id="adults" name="adults" min="1" step="1" value="1" inputmode="numeric">
+  <div class="field field-narrow">
+    <label for="adults"><span class="lbl">Adults</span></label>
+    <input type="number" id="adults" name="adults" min="1" step="1" value="1" inputmode="numeric" autocomplete="off">
+  </div>
 
-  <!-- Children -->
-  <label class="pill-item pill-num" for="children">
-    <span class="lbl">Children</span>
-  </label>
-  <input type="number" id="children" name="children" min="0" max="10" step="1" value="0" inputmode="numeric">
+  <div class="field field-narrow">
+    <label for="children"><span class="lbl">Children</span></label>
+    <input type="number" id="children" name="children" min="0" max="10" step="1" value="0" inputmode="numeric" autocomplete="off">
+  </div>
 
-  <!-- Ages render here -->
+  <!-- Children ages occupy a new row under the fields -->
   <div class="child-ages" id="children-ages" aria-live="polite"></div>
 
   <button class="pill-action" type="submit" id="btn-search" aria-label="Apply filters">
@@ -80,6 +75,7 @@
     </svg>
   </button>
 </form>
+
 
 
   <!-- Right: Actions -->
