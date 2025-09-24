@@ -344,3 +344,30 @@ footer {
 .mb-sm { margin-bottom: var(--space-sm) !important; }
 .mb-md { margin-bottom: var(--space-md) !important; }
 .mb-lg { margin-bottom: var(--space-lg) !important; }
+
+
+/* ——— Tweaks: date width, button alignment, centered ages ——— */
+
+/* Slightly shorter date inputs */
+#date-start,
+#date-end { width: 16ch; }
+
+@media (max-width: 640px){
+  #date-start,
+  #date-end { width: 13ch; }
+}
+
+/* Keep the search button in the first row, centered on the cross-axis */
+.pill-action{
+  order: 10;            /* before the ages block */
+  align-self: center;   /* vertically center relative to top row */
+  flex: 0 0 auto;       /* don't let it shrink or wrap */
+}
+
+/* Ages always on the second row and centered */
+.child-ages{
+  order: 20;                  /* always after the button */
+  flex-basis: 100%;           /* force new line */
+  justify-content: center;    /* center the age fields horizontally */
+}
+.child-ages .age-field input{ width: 7ch; }  /* keep compact */
