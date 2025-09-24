@@ -32,5 +32,35 @@ header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;alig
 .tag--env{border-color:var(--brand-green);color:var(--brand-green)}
 .tag--social{border-color:var(--brand-blue);color:var(--brand-blue)}
 
+
+/* --- Brand logo (horizontal version) --- */
+.brand img {
+  height: 40px;         /* good default for desktop */
+  width: auto;          /* keep proportions */
+  display: block;
+}
+
+/* Align brand and nav nicely */
+header {
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+}
+
+/* Responsive: smaller logo on mobile */
+@media (max-width: 600px) {
+  .brand img {
+    height: 32px;
+  }
+  nav .btn {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+
 /* Footer */
 footer{border-top:1px solid var(--border);padding:16px 20px;margin-top:24px;font-size:14px;color:var(--muted)}
