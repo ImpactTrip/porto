@@ -25,6 +25,9 @@
   --space-md: 16px;
   --space-lg: 24px;
   --space-xl: 40px;
+
+  /* Header */
+  --pill-h: 64px; /* logo height = pill height on desktop */
 }
 
 /* --- Base Reset --- */
@@ -60,7 +63,7 @@ a { color: inherit; }
 /* Brand (horizontal logo, not a link) */
 .brand { display: inline-flex; align-items: center; }
 .brand img{
-  height: 64px;          /* larger, per your feedback */
+  height: var(--pill-h);
   width: auto;
   display: block;
 }
@@ -71,41 +74,43 @@ a { color: inherit; }
    Search / Pilot Filters
    =========================== */
 .search-pill{
+  min-height: var(--pill-h);
   flex: 1 1 auto;
-  max-width: 860px;                 /* room so fields don’t wrap too soon */
+  max-width: 920px;
   margin: 0 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px 16px;                   /* row gap, column gap */
-  flex-wrap: wrap;                  /* allow a second row if needed */
-  padding: 10px 12px 10px 16px;
-  border: 1px solid var(--border);
+  gap: 12px 18px;                 /* row gap, column gap */
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  border: 2px solid var(--brand-blue);  /* thicker brand blue outline */
   border-radius: 999px;
   background: #fff;
   box-shadow: var(--shadow-sm);
 }
 
 .pill-item{ font-size:.95rem; color:#111; }
-.pill-fixed{ color: var(--brand-blue); font-weight:700; }
 .pill-dot{ color:#a3a3a3; user-select:none; }
 
-/* Labels on top, inputs below for consistent rhythm */
+/* Centered labels above inputs for symmetry */
 .search-pill label{
   display:flex;
   flex-direction:column;
-  align-items:flex-start;
-  gap:4px;
+  align-items:center;   /* centered */
+  gap:6px;
 }
 .search-pill .lbl{
   font-size:.78rem;
   color: var(--muted);
   line-height:1;
+  text-align:center;
 }
 
-/* Inputs */
+/* Inputs / selects unified */
 .search-pill input[type="date"],
-.search-pill input[type="number"]{
+.search-pill input[type="number"],
+.search-pill select{
   border:1px solid var(--border);
   border-radius:10px;
   padding:8px 10px;
@@ -113,33 +118,25 @@ a { color: inherit; }
   background:#fff;
   outline:none;
 }
+.search-pill select{ width: 18ch; }
 #date-start, #date-end { width: 14ch; }
 #adults, #children   { width: 8ch; }
 
-/* Range separator stays aligned even when labels present */
+/* Date range separator aligned with inputs */
 .date-sep{
   color:#a3a3a3;
   user-select:none;
-  align-self:end;
-  transform: translateY(-2px);
+  transform: translateY(10px);  /* lines up with input row */
 }
-
-/* One-day toggle */
-.pill-check{ display:inline-flex; align-items:center; gap:6px; }
-.search-pill input[type="checkbox"]{ accent-color: var(--brand-green); }
 
 /* Action button */
 .pill-action{
-  align-self:center;
-  margin-left:6px;
   border:0;
   border-radius:999px;
   background: var(--brand-green);
   color:#fff;
   padding:10px 11px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex; align-items:center; justify-content:center;
 }
 .pill-action:hover{ filter: brightness(0.95); }
 
@@ -155,7 +152,7 @@ a { color: inherit; }
 @media (max-width: 640px){
   .search-pill{ padding: 8px 10px; gap: 10px 12px; }
   #date-start, #date-end { width: 12ch; }
-  .date-sep{ transform: translateY(-1px); }
+  .date-sep{ transform: translateY(8px); }
 }
 
 /* ===========================
