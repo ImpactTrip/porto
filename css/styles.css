@@ -1,142 +1,145 @@
 /* ===========================
-ImpactTrip – Global Styles
-=========================== */
+   ImpactTrip – Global Styles
+   =========================== */
 
-/* --- Theme Variables --- */
+/* ─────────────────────────────
+   Theme Variables
+   ───────────────────────────── */
 :root {
-  /* Brand */
+  /* Brand Colors */
   --brand-blue: #24466F;
   --brand-green: #83B341;
   --brand-orange: #EF8725;
 
-  /* Base */
+  /* Base Colors */
   --text: #1b1b1b;
   --bg: #ffffff;
   --muted: #6b7280;
   --border: #e5e7eb;
 
-  /* Layout */
+  /* Layout Variables */
   --container: 960px;
   --radius: 12px;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.08);
-  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  
+  /* Spacing Scale */
   --space-xs: 6px;
-  --space-sm: 12px;
-  --space-md: 20px;
-  --space-lg: 32px;
-  --space-xl: 48px;
+  --space-sm: 10px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
 
-  /* Typography */
-  --font-sm: 0.875rem;
-  --font-md: 1rem;
-  --font-lg: 1.25rem;
+  /* Component Specific */
+  --pill-h: 64px; /* logo height = pill height on desktop */
 }
 
-/* --- Base Reset --- */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-html, body {
+/* ─────────────────────────────
+   Base Reset & Typography
+   ───────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  line-height: 1.6;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  line-height: 1.5;
 }
 
-img { 
-  max-width: 100%; 
+img {
+  max-width: 100%;
   display: block;
-  height: auto;
 }
 
-a { 
+a {
   color: inherit;
-  text-decoration: none;
 }
 
-/* --- Utilities --- */
-.container { 
-  max-width: var(--container); 
-  margin: 0 auto; 
-  padding: 0 var(--space-md);
+/* ─────────────────────────────
+   Utility Classes
+   ───────────────────────────── */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.muted { 
-  font-size: var(--font-sm); 
+.muted {
+  font-size: 14px;
   color: var(--muted);
 }
 
-.hidden { 
-  display: none !important; 
+.hidden {
+  display: none !important;
 }
 
 /* ===========================
-Header (Airbnb-style)
-=========================== */
+   Header 
+   =========================== */
 .site-header {
-  position: sticky; 
-  top: 0; 
+  position: sticky;
+  top: 0;
   z-index: 50;
-  display: flex; 
-  align-items: center; 
-  justify-content: space-between; 
-  gap: var(--space-md);
-  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 20px;
   background: #fff;
   border-bottom: 1px solid var(--border);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition: box-shadow 0.2s ease;
 }
 
 .site-header.is-scrolled {
   box-shadow: var(--shadow-md);
-  backdrop-filter: blur(8px);
 }
 
-/* Brand */
-.brand { 
-  display: inline-flex; 
+/* ─────────────────────────────
+   Brand Logo
+   ───────────────────────────── */
+.brand {
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
 }
 
 .brand img {
   height: var(--pill-h);
   width: auto;
   display: block;
-  transition: opacity 0.2s ease;
 }
 
-.brand img:hover {
-  opacity: 0.9;
+@media (max-width: 900px) {
+  .brand img {
+    height: 52px;
+  }
 }
 
-@media (max-width: 900px) { 
-  .brand img { 
-    height: 52px; 
-  } 
-}
-
-@media (max-width: 640px) { 
-  .brand img { 
-    height: 40px; 
-  } 
+@media (max-width: 640px) {
+  .brand img {
+    height: 40px;
+  }
 }
 
 /* ===========================
-Search Pill
-=========================== */
+   Search Pill & Filters
+   =========================== */
 .search-pill {
   min-height: var(--pill-h);
   flex: 1 1 auto;
   max-width: 920px;
-  margin: 0 var(--space-sm);
+  margin: 0 12px;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-start; /* top-align fields */
   justify-content: center;
-  gap: var(--space-sm) var(--space-md);
+  gap: 12px 18px; /* row gap, column gap */
   flex-wrap: wrap;
-  padding: var(--space-sm) var(--space-md);
+  padding: 10px 14px;
   border: 2px solid var(--brand-blue);
   border-radius: 999px;
   background: #fff;
@@ -145,122 +148,145 @@ Search Pill
 }
 
 .search-pill:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
 }
 
+/* ─────────────────────────────
+   Search Field Labels
+   ───────────────────────────── */
 .search-pill label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
-  width: fit-content;
+  gap: 6px;
 }
 
 .search-pill .lbl {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: var(--muted);
   line-height: 1;
   text-align: center;
-  font-weight: 500;
 }
 
-/* Inputs/Selects */
-.search-pill input[type="date"],
-.search-pill input[type="number"],
-.search-pill select {
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 10px 12px;
-  font: inherit;
-  background: #fff;
-  outline: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-  width: 100%;
-  max-width: 150px;
-}
-
-.search-pill input:focus,
-.search-pill select:focus {
-  border-color: var(--brand-blue);
-  box-shadow: 0 0 0 3px rgba(36, 70, 111, 0.1);
-}
-
-/* Date Separator */
+/* ─────────────────────────────
+   Field Separators
+   ───────────────────────────── */
+.pill-dot,
 .date-sep {
   color: #a3a3a3;
   user-select: none;
   align-self: center;
-  font-size: var(--font-md);
-  padding: var(--space-sm) 0;
 }
 
-/* Child Ages Container */
+/* ─────────────────────────────
+   Form Inputs & Selects
+   ───────────────────────────── */
+.search-pill input[type="date"],
+.search-pill input[type="number"],
+.search-pill select {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 10px;
+  font: inherit;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.search-pill select {
+  width: 18ch;
+}
+
+#date-start,
+#date-end {
+  width: 14ch;
+}
+
+#adults,
+#children {
+  width: 8ch;
+}
+
+/* ─────────────────────────────
+   Children Ages Section
+   ───────────────────────────── */
 .child-ages {
   flex-basis: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm) var(--space-md);
+  gap: 8px 10px;
   align-items: flex-end;
-  margin-top: var(--space-sm);
-  padding-top: var(--space-sm);
-  border-top: 1px solid var(--border);
+  margin-top: 6px;
 }
 
 .child-ages .age-field {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-xs);
-  flex: 1;
-  min-width: 80px;
+  gap: 4px;
 }
 
 .child-ages .age-field input {
-  width: 100%;
-  padding: 8px 10px;
+  width: 7ch;
 }
 
-/* Action Button */
+/* ─────────────────────────────
+   Search Action Button
+   ───────────────────────────── */
 .pill-action {
   border: 0;
   border-radius: 999px;
   background: var(--brand-green);
   color: #fff;
-  padding: 12px 20px;
+  padding: 10px 11px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
-  transition: transform 0.2s ease, filter 0.2s ease;
   cursor: pointer;
+  transition: filter 0.15s ease;
 }
 
 .pill-action:hover {
   filter: brightness(0.95);
-  transform: translateY(-1px);
 }
 
-.pill-action:active {
-  transform: translateY(1px);
+/* ─────────────────────────────
+   Responsive Search Adjustments
+   ───────────────────────────── */
+@media (max-width: 900px) {
+  .search-pill {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .search-pill {
+    padding: 8px 10px;
+    gap: 10px 12px;
+  }
+
+  #date-start,
+  #date-end {
+    width: 12ch;
+  }
 }
 
 /* ===========================
-Buttons & Links
-=========================== */
+   Buttons & Interactive Elements
+   =========================== */
 .btn {
   display: inline-block;
-  padding: 12px 20px;
+  padding: 10px 14px;
   border: 1px solid var(--text);
-  border-radius: var(--radius);
+  border-radius: 10px;
   text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .btn:hover {
   background: #111;
   color: #fff;
-  border-color: #111;
 }
 
 .btn-primary {
@@ -275,73 +301,55 @@ Buttons & Links
 }
 
 /* ===========================
-Sections
-=========================== */
+   Layout Sections
+   =========================== */
 .hero {
-  padding: var(--space-xl) var(--space-md) var(--space-lg);
-  text-align: center;
+  padding: var(--space-xl) 20px var(--space-lg);
 }
 
 .hero h1 {
-  margin: 0 0 var(--space-md);
-  font-size: 2.5rem;
-  font-weight: 700;
-  line-height: 1.2;
+  margin: 0 0 8px;
 }
 
 .hero p {
-  margin: 0;
-  font-size: var(--font-lg);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 6px 0;
 }
 
-/* Grid & Cards */
+/* ─────────────────────────────
+   Grid & Card Components
+   ───────────────────────────── */
 .grid {
   display: grid;
-  gap: var(--space-md);
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   max-width: var(--container);
-  margin: var(--space-lg) auto;
-  padding: 0 var(--space-md);
+  margin: 24px auto;
+  padding: 0 20px;
 }
 
 .card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: var(--space-md);
+  padding: 16px;
   background: #fff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  transition: box-shadow 0.2s ease;
 }
 
 .card h3 {
   margin-top: 0;
-  margin-bottom: var(--space-sm);
   color: var(--brand-blue);
-  font-size: var(--font-lg);
-  font-weight: 600;
 }
 
-/* Badges */
+/* ─────────────────────────────
+   Badge Components
+   ───────────────────────────── */
 .tag {
   display: inline-block;
   font-size: 0.75rem;
-  padding: 4px 12px;
+  padding: 2px 8px;
   border-radius: 999px;
   border: 1px solid var(--border);
   color: var(--muted);
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.tag:hover {
-  transform: translateY(-1px);
 }
 
 .tag--env {
@@ -355,24 +363,27 @@ Sections
 }
 
 /* ===========================
-Footer
-=========================== */
+   Footer
+   =========================== */
 footer {
   border-top: 1px solid var(--border);
-  padding: var(--space-lg) var(--space-md);
-  margin-top: var(--space-xl);
-  font-size: var(--font-sm);
+  padding: 16px 20px;
+  margin-top: 24px;
+  font-size: 14px;
   color: var(--muted);
 }
 
 /* ===========================
-Spacing Helpers
-=========================== */
+   Spacing Utility Classes
+   =========================== */
+
+/* Margin Top */
 .mt-0 { margin-top: 0 !important; }
 .mt-sm { margin-top: var(--space-sm) !important; }
 .mt-md { margin-top: var(--space-md) !important; }
 .mt-lg { margin-top: var(--space-lg) !important; }
 
+/* Margin Bottom */
 .mb-0 { margin-bottom: 0 !important; }
 .mb-sm { margin-bottom: var(--space-sm) !important; }
 .mb-md { margin-bottom: var(--space-md) !important; }
