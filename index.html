@@ -30,26 +30,29 @@
     <img class="brand-logo" src="assets/logoh.png" alt="ImpactTrip" />
   </div>
 
-  <!-- Center: Search / Filters (pilot mode, stored in localStorage) -->
+  <!-- Center: Pilot filters -->
   <form class="search-pill" id="pilot-form" autocomplete="off">
-    <span class="pill-item pill-fixed" title="Pilot location is fixed">Porto, Portugal</span>
+    <label class="pill-item">
+      <span class="lbl">Location</span>
+      <select id="location" aria-label="Location">
+        <option value="Porto, Portugal">Porto, Portugal</option>
+      </select>
+    </label>
 
     <span class="pill-dot">•</span>
+
     <label class="pill-item">
-      <span class="lbl">Date</span>
+      <span class="lbl">Date — From</span>
       <input type="date" id="date-start" required>
     </label>
     <span class="date-sep">–</span>
-    <label class="pill-item" id="date-end-wrap">
-      <span class="lbl sr-only">End</span>
-      <input type="date" id="date-end">
-    </label>
-    <label class="pill-item pill-check">
-      <input type="checkbox" id="single-day" checked>
-      <span>One day</span>
+    <label class="pill-item">
+      <span class="lbl">To</span>
+      <input type="date" id="date-end" required>
     </label>
 
     <span class="pill-dot">•</span>
+
     <label class="pill-item pill-num">
       <span class="lbl">Adults</span>
       <input type="number" id="adults" min="1" value="1" inputmode="numeric">
@@ -69,7 +72,7 @@
     </button>
   </form>
 
-  <!-- Right: Actions (unchanged) -->
+  <!-- Right: Actions -->
   <nav class="header-actions" aria-label="Header actions">
     <a class="link-muted" href="#for-hotels">Partner with us</a>
     <button class="icon-btn" type="button" aria-label="Language & currency">
