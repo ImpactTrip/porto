@@ -372,6 +372,10 @@ footer {
 }
 .child-ages .age-field input{ width: 7ch; }  /* keep compact */
 
+/* label → input spacing a touch larger + crisper label text */
+.search-pill label{ gap: 8px; }        /* was 6px */
+.search-pill .lbl{ letter-spacing: .2px; }
+
 @media (max-width: 900px){
   .search-pill{ gap: 10px 14px; }
 }
