@@ -129,146 +129,105 @@ a {
 /* ===========================
    Search Pill & Filters
    =========================== */
-.search-pill {
+.search-pill{
   min-height: var(--pill-h);
   flex: 1 1 auto;
   max-width: 920px;
   margin: 0 12px;
   display: flex;
-  align-items: flex-start; /* top-align fields */
+  align-items: flex-start;         /* top-align fields */
   justify-content: center;
-  gap: 12px 18px; /* row gap, column gap */
+  gap: 12px 18px;
   flex-wrap: wrap;
   padding: 10px 14px;
   border: 2px solid var(--brand-blue);
   border-radius: 999px;
   background: #fff;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.2s ease;
+  transition: box-shadow .2s ease;
+}
+.search-pill:hover { box-shadow: 0 6px 18px rgba(0,0,0,.07); }
+
+.search-pill label{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+}
+.search-pill .lbl{
+  font-size:.78rem;
+  color:var(--muted);
+  line-height:1;
+  text-align:center;
 }
 
-.search-pill:hover {
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+.pill-dot, .date-sep{
+  color:#a3a3a3;
+  user-select:none;
+  align-self:center;
 }
 
-/* ─────────────────────────────
-   Search Field Labels
-   ───────────────────────────── */
-.search-pill label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
-}
-
-.search-pill .lbl {
-  font-size: 0.78rem;
-  color: var(--muted);
-  line-height: 1;
-  text-align: center;
-}
-
-/* ─────────────────────────────
-   Field Separators
-   ───────────────────────────── */
-.pill-dot,
-.date-sep {
-  color: #a3a3a3;
-  user-select: none;
-  align-self: center;
-}
-
-/* ─────────────────────────────
-   Form Inputs & Selects
-   ───────────────────────────── */
+/* Inputs / selects */
 .search-pill input[type="date"],
 .search-pill input[type="number"],
-.search-pill select {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 8px 10px;
-  font: inherit;
-  background: #fff;
-  outline: none;
-  transition: border-color 0.15s ease;
+.search-pill select{
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:8px 10px;
+  font:inherit;
+  background:#fff;
+  outline:none;
+  transition:border-color .15s ease;
 }
 
-.search-pill select {
-  width: 18ch;
+.search-pill select{ width:18ch; }
+
+/* wider date fields so year fully visible */
+#date-start, #date-end{ width:18ch; }
+
+#adults, #children{ width:8ch; }
+
+/* Children ages always below, children box stays inline */
+.child-ages{
+  flex-basis:100%;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 10px;
+  align-items:flex-end;
+  margin-top:6px;
 }
-
-#date-start,
-#date-end {
-  width: 14ch;
+.child-ages .age-field{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
 }
+.child-ages .age-field input{ width:7ch; }
 
-#adults,
-#children {
-  width: 8ch;
+/* Search button always inline with fields */
+.pill-action{
+  border:0;
+  border-radius:999px;
+  background:var(--brand-green);
+  color:#fff;
+  padding:10px 11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:filter .15s ease;
+  align-self:center;
+  flex:0 0 auto;
 }
+.pill-action:hover{ filter:brightness(.95); }
 
-/* ─────────────────────────────
-   Children Ages Section
-   ───────────────────────────── */
-.child-ages {
-  flex-basis: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 10px;
-  align-items: flex-end;
-  margin-top: 6px;
+/* Responsive */
+@media (max-width: 900px){
+  .search-pill{ max-width:none; }
 }
-
-.child-ages .age-field {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.child-ages .age-field input {
-  width: 7ch;
-}
-
-/* ─────────────────────────────
-   Search Action Button
-   ───────────────────────────── */
-.pill-action {
-  border: 0;
-  border-radius: 999px;
-  background: var(--brand-green);
-  color: #fff;
-  padding: 10px 11px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: filter 0.15s ease;
-}
-
-.pill-action:hover {
-  filter: brightness(0.95);
-}
-
-/* ─────────────────────────────
-   Responsive Search Adjustments
-   ───────────────────────────── */
-@media (max-width: 900px) {
-  .search-pill {
-    max-width: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .search-pill {
-    padding: 8px 10px;
-    gap: 10px 12px;
-  }
-
-  #date-start,
-  #date-end {
-    width: 12ch;
-  }
+@media (max-width: 640px){
+  .search-pill{ padding:8px 10px; gap:10px 12px; }
+  #date-start, #date-end{ width:14ch; }
 }
 
 /* ===========================
@@ -376,14 +335,11 @@ footer {
 /* ===========================
    Spacing Utility Classes
    =========================== */
-
-/* Margin Top */
 .mt-0 { margin-top: 0 !important; }
 .mt-sm { margin-top: var(--space-sm) !important; }
 .mt-md { margin-top: var(--space-md) !important; }
 .mt-lg { margin-top: var(--space-lg) !important; }
 
-/* Margin Bottom */
 .mb-0 { margin-bottom: 0 !important; }
 .mb-sm { margin-bottom: var(--space-sm) !important; }
 .mb-md { margin-bottom: var(--space-md) !important; }
