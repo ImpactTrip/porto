@@ -62,5 +62,91 @@ header {
 }
 
 
+/* --- Layout & sticky --- */
+.site-header{
+  position: sticky; top: 0; z-index: 50;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:10px 20px; background:#fff;
+  border-bottom:1px solid var(--border);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+}
+.site-header.is-scrolled{ box-shadow: 0 4px 12px rgba(0,0,0,.06); }
+
+/* Brand */
+.brand img{ height:40px; width:auto; display:block; }
+
+/* --- Search pill (center) --- */
+.search-pill{
+  flex: 1 1 auto; max-width:640px; margin:0 12px;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  border:1px solid var(--border); border-radius:999px; background:#fff;
+  padding:8px 8px 8px 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  cursor:pointer;
+}
+.pill-item{ font-size:.95rem; color:#111; }
+.pill-where{ color: var(--brand-blue); font-weight:600; }
+.pill-dot{ color:#a3a3a3; }
+.pill-action{
+  margin-left:6px; border:0; border-radius:999px;
+  background: var(--brand-green); color:#fff; padding:9px 10px; display:flex; align-items:center; justify-content:center;
+}
+.pill-action:hover{ filter: brightness(0.95); }
+
+/* --- Right actions --- */
+.header-actions{ display:flex; align-items:center; gap:10px; }
+.link-muted{ color:#4b5563; text-decoration:none; padding:8px 10px; border-radius:10px; }
+.link-muted:hover{ background:#f6f7f8; color:#111; }
+
+.icon-btn{
+  border:1px solid var(--border); background:#fff; padding:8px; border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer;
+}
+.icon-btn:hover{ background:#f6f7f8; }
+
+.menu-btn{
+  display:flex; align-items:center; gap:8px; padding:6px 8px; cursor:pointer;
+  border:1px solid var(--border); border-radius:999px; background:#fff;
+}
+.menu-btn:hover{ background:#f6f7f8; }
+.menu-icon{ font-size:14px; color:#374151; }
+.avatar-circle{
+  width:28px; height:28px; border-radius:50%; background:#e5e7eb; display:inline-block;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px){
+  .link-muted{ display:none; } /* hide “Partner with us” */
+  .search-pill{ max-width:none; }
+}
+@media (max-width: 640px){
+  .brand img{ height:32px; }
+  .pill-item:nth-of-type(3), .pill-dot:nth-of-type(2){ display:none; } /* hide "Add guests" on very small screens */
+  .search-pill{ padding:6px 6px 6px 12px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* Footer */
 footer{border-top:1px solid var(--border);padding:16px 20px;margin-top:24px;font-size:14px;color:var(--muted)}
