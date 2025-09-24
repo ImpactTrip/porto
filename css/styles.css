@@ -40,13 +40,13 @@ html, body {
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
-/* --- Layout Utilities --- */
+/* --- Utilities --- */
 .container { max-width: var(--container); margin: 0 auto; padding: 0 20px; }
 .muted { font-size: 14px; color: var(--muted); }
 .hidden { display: none !important; }
 
 /* ===========================
-   Header
+   Header (Airbnb-style)
    =========================== */
 .site-header{
   position: sticky; top: 0; z-index: 50;
@@ -57,58 +57,105 @@ a { color: inherit; }
 }
 .site-header.is-scrolled{ box-shadow: var(--shadow-md); }
 
-/* Brand (horizontal logo) */
-.brand { display: inline-flex; align-items: center; text-decoration: none; }
-.brand img{ height: 40px; width:auto; display:block; }
-
-/* Center: Search pill */
-.search-pill{
-  flex: 1 1 auto; max-width: 640px; margin: 0 12px;
-  display:flex; align-items:center; justify-content:center; gap:10px;
-  border:1px solid var(--border); border-radius: 999px; background:#fff;
-  padding: 8px 8px 8px 14px;
-  box-shadow: var(--shadow-sm);
-  cursor: pointer;
+/* Brand (horizontal logo, not a link) */
+.brand { display: inline-flex; align-items: center; }
+.brand img{
+  height: 64px;          /* larger, per your feedback */
+  width: auto;
+  display: block;
 }
+@media (max-width: 900px){ .brand img{ height: 52px; } }
+@media (max-width: 640px){ .brand img{ height: 40px; } }
+
+/* ===========================
+   Search / Pilot Filters
+   =========================== */
+.search-pill{
+  flex: 1 1 auto;
+  max-width: 860px;                 /* room so fields don’t wrap too soon */
+  margin: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 16px;                   /* row gap, column gap */
+  flex-wrap: wrap;                  /* allow a second row if needed */
+  padding: 10px 12px 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
 .pill-item{ font-size:.95rem; color:#111; }
-.pill-where{ color: var(--brand-blue); font-weight: 600; }
-.pill-dot{ color:#a3a3a3; user-select: none; }
+.pill-fixed{ color: var(--brand-blue); font-weight:700; }
+.pill-dot{ color:#a3a3a3; user-select:none; }
+
+/* Labels on top, inputs below for consistent rhythm */
+.search-pill label{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:4px;
+}
+.search-pill .lbl{
+  font-size:.78rem;
+  color: var(--muted);
+  line-height:1;
+}
+
+/* Inputs */
+.search-pill input[type="date"],
+.search-pill input[type="number"]{
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:8px 10px;
+  font:inherit;
+  background:#fff;
+  outline:none;
+}
+#date-start, #date-end { width: 14ch; }
+#adults, #children   { width: 8ch; }
+
+/* Range separator stays aligned even when labels present */
+.date-sep{
+  color:#a3a3a3;
+  user-select:none;
+  align-self:end;
+  transform: translateY(-2px);
+}
+
+/* One-day toggle */
+.pill-check{ display:inline-flex; align-items:center; gap:6px; }
+.search-pill input[type="checkbox"]{ accent-color: var(--brand-green); }
+
+/* Action button */
 .pill-action{
-  margin-left:6px; border:0; border-radius:999px;
-  background: var(--brand-green); color:#fff;
-  padding: 9px 10px; display:flex; align-items:center; justify-content:center;
+  align-self:center;
+  margin-left:6px;
+  border:0;
+  border-radius:999px;
+  background: var(--brand-green);
+  color:#fff;
+  padding:10px 11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .pill-action:hover{ filter: brightness(0.95); }
 
-/* Right: Actions */
-.header-actions{ display:flex; align-items:center; gap:10px; }
-.link-muted{
-  color:#4b5563; text-decoration:none;
-  padding:8px 10px; border-radius:10px;
-}
-.link-muted:hover{ background:#f6f7f8; color:#111; }
-.icon-btn{
-  border:1px solid var(--border); background:#fff; padding:8px;
-  border-radius:999px; display:flex; align-items:center; justify-content:center; cursor:pointer;
-}
-.icon-btn:hover{ background:#f6f7f8; }
-.menu-btn{
-  display:flex; align-items:center; gap:8px; padding:6px 8px; cursor:pointer;
-  border:1px solid var(--border); border-radius:999px; background:#fff;
-}
-.menu-btn:hover{ background:#f6f7f8; }
-.menu-icon{ font-size:14px; color:#374151; }
-.avatar-circle{ width:28px; height:28px; border-radius:50%; background:#e5e7eb; display:inline-block; }
+/* Children ages */
+.child-ages{ display:flex; flex-wrap:wrap; gap:8px 10px; align-items:end; }
+.child-ages .age-field{ display:flex; flex-direction:column; gap:4px; }
+.child-ages .age-field input{ width:7ch; }
 
-/* Responsive header tweaks */
+/* Responsive tweaks */
 @media (max-width: 900px){
-  .link-muted{ display:none; } /* hide “Partner with us” */
   .search-pill{ max-width: none; }
 }
 @media (max-width: 640px){
-  .brand img{ height: 32px; }
-  .pill-item:nth-of-type(3), .pill-dot:nth-of-type(2){ display:none; } /* hide "Add guests" */
-  .search-pill{ padding: 6px 6px 6px 12px; }
+  .search-pill{ padding: 8px 10px; gap: 10px 12px; }
+  #date-start, #date-end { width: 12ch; }
+  .date-sep{ transform: translateY(-1px); }
 }
 
 /* ===========================
@@ -120,23 +167,17 @@ a { color: inherit; }
   transition: background .15s ease, color .15s ease, border-color .15s ease;
 }
 .btn:hover{ background:#111; color:#fff; }
-
 .btn-primary{
   border-color: var(--brand-green);
   background: var(--brand-green);
-  color: #fff;
+  color:#fff;
 }
-.btn-primary:hover{
-  filter: brightness(0.95);
-  border-color: var(--brand-green);
-}
+.btn-primary:hover{ filter: brightness(0.95); border-color: var(--brand-green); }
 
 /* ===========================
    Sections
    =========================== */
-.hero{
-  padding: var(--space-xl) 20px var(--space-lg);
-}
+.hero{ padding: var(--space-xl) 20px var(--space-lg); }
 .hero h1{ margin: 0 0 8px; }
 .hero p{ margin: 6px 0; }
 
@@ -149,14 +190,14 @@ a { color: inherit; }
 .card{
   border:1px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px; background:#fff;
+  padding:16px; background:#fff;
 }
 .card h3{ margin-top:0; color: var(--brand-blue); }
 
 /* Badges */
 .tag{
   display:inline-block; font-size:.75rem; padding:2px 8px;
-  border-radius: 999px; border:1px solid var(--border); color: var(--muted);
+  border-radius:999px; border:1px solid var(--border); color: var(--muted);
 }
 .tag--env{ border-color: var(--brand-green); color: var(--brand-green); }
 .tag--social{ border-color: var(--brand-blue);  color: var(--brand-blue);  }
@@ -166,52 +207,19 @@ a { color: inherit; }
    =========================== */
 footer{
   border-top:1px solid var(--border);
-  padding: 16px 20px; margin-top: 24px;
+  padding:16px 20px; margin-top:24px;
   font-size:14px; color: var(--muted);
 }
 
 /* ===========================
-   Helpers (spacing)
+   Spacing helpers
    =========================== */
-.mt-0{ margin-top: 0 !important; }
+.mt-0{  margin-top: 0 !important; }
 .mt-sm{ margin-top: var(--space-sm) !important; }
 .mt-md{ margin-top: var(--space-md) !important; }
 .mt-lg{ margin-top: var(--space-lg) !important; }
 
-.mb-0{ margin-bottom: 0 !important; }
+.mb-0{  margin-bottom: 0 !important; }
 .mb-sm{ margin-bottom: var(--space-sm) !important; }
 .mb-md{ margin-bottom: var(--space-md) !important; }
 .mb-lg{ margin-bottom: var(--space-lg) !important; }
-
-/* Bigger brand logo */
-.brand img{ height:52px; width:auto; display:block; }
-@media (max-width:640px){ .brand img{ height:40px; } }
-
-/* Search pill form tweaks */
-.search-pill { flex-wrap: wrap; gap:10px; }
-.search-pill .lbl { font-size:.8rem; color:#6b7280; display:block; }
-.search-pill input[type="date"],
-.search-pill input[type="number"]{
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:6px 8px;
-  font: inherit;
-  width: 12ch;
-}
-.search-pill input[type="number"]{ width: 8ch; }
-.search-pill .pill-check{ display:flex; align-items:center; gap:6px; }
-.search-pill .date-sep{ color:#a3a3a3; user-select:none; }
-
-.pill-fixed{ color: var(--brand-blue); font-weight:700; }
-
-/* Children ages area */
-.child-ages { display:flex; flex-wrap:wrap; gap:8px; align-items:end; }
-.child-ages .age-field{
-  display:flex; flex-direction:column; gap:4px;
-}
-.child-ages .age-field input{
-  width: 7ch;
-}
-
-/* Keep the action button visible even when wrapping */
-.pill-action{ align-self:center; }
