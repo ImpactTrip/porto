@@ -33,45 +33,54 @@
 
   <!-- Center: Pilot filters -->
   <form class="search-pill" id="pilot-form" autocomplete="off">
-    <label class="pill-item">
-      <span class="lbl">Location</span>
-      <select id="location" aria-label="Location">
-        <option value="Porto, Portugal">Porto, Portugal</option>
-      </select>
-    </label>
+  <!-- Location -->
+  <label class="pill-item" for="location">
+    <span class="lbl">Location</span>
+  </label>
+  <select id="location" name="location" aria-label="Location">
+    <option value="Porto, Portugal">Porto, Portugal</option>
+  </select>
 
-    <span class="pill-dot">•</span>
+  <span class="pill-dot">•</span>
 
-    <label class="pill-item">
-      <span class="lbl">Date — From</span>
-      <input type="date" id="date-start" required>
-    </label>
-    <span class="date-sep">–</span>
-    <label class="pill-item">
-      <span class="lbl">To</span>
-      <input type="date" id="date-end" required>
-    </label>
+  <!-- Date From -->
+  <label class="pill-item" for="date-start">
+    <span class="lbl">Date — From</span>
+  </label>
+  <input type="date" id="date-start" name="date-start" required>
 
-    <span class="pill-dot">•</span>
+  <span class="date-sep">–</span>
 
-    <label class="pill-item pill-num">
-      <span class="lbl">Adults</span>
-      <input type="number" id="adults" min="1" step="1" value="1" inputmode="numeric">
-    </label>
-    <label class="pill-item pill-num">
-      <span class="lbl">Children</span>
-      <input type="number" id="children" min="0" max="10" step="1" value="0" inputmode="numeric">
-    </label>
+  <!-- Date To -->
+  <label class="pill-item" for="date-end">
+    <span class="lbl">To</span>
+  </label>
+  <input type="date" id="date-end" name="date-end" required>
 
-    <!-- Ages render here -->
-    <div class="child-ages" id="children-ages" aria-live="polite"></div>
+  <span class="pill-dot">•</span>
 
-    <button class="pill-action" type="submit" id="btn-search" aria-label="Apply filters">
-      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-        <path d="M15.8 14.4l4.6 4.6-1.4 1.4-4.6-4.6a7 7 0 1 1 1.4-1.4zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="currentColor"/>
-      </svg>
-    </button>
-  </form>
+  <!-- Adults -->
+  <label class="pill-item pill-num" for="adults">
+    <span class="lbl">Adults</span>
+  </label>
+  <input type="number" id="adults" name="adults" min="1" step="1" value="1" inputmode="numeric">
+
+  <!-- Children -->
+  <label class="pill-item pill-num" for="children">
+    <span class="lbl">Children</span>
+  </label>
+  <input type="number" id="children" name="children" min="0" max="10" step="1" value="0" inputmode="numeric">
+
+  <!-- Ages render here -->
+  <div class="child-ages" id="children-ages" aria-live="polite"></div>
+
+  <button class="pill-action" type="submit" id="btn-search" aria-label="Apply filters">
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path d="M15.8 14.4l4.6 4.6-1.4 1.4-4.6-4.6a7 7 0 1 1 1.4-1.4zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="currentColor"/>
+    </svg>
+  </button>
+</form>
+
 
   <!-- Right: Actions -->
   <nav class="header-actions" aria-label="Header actions">

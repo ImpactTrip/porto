@@ -86,7 +86,7 @@ export class PilotFormController {
       const age = Number.isFinite(existing[i]) ? existing[i] : '';
       const field = document.createElement('div'); field.className='age-field';
       const label = document.createElement('label'); label.className='lbl'; label.textContent=`Age ${i+1}`;
-      const input = document.createElement('input'); input.type='number'; input.min=CONFIG.MIN_CHILD_AGE; input.max=CONFIG.MAX_CHILD_AGE; input.dataset.ageIndex=i; input.value=age;
+      const input = document.createElement('input'); input.type='number'; input.name = `child-age-${i+1}`; input.min=CONFIG.MIN_CHILD_AGE; input.max=CONFIG.MAX_CHILD_AGE; input.dataset.ageIndex=i; input.value=age;
       field.append(label,input); frag.append(field);
     }
     this.el.agesWrap.innerHTML=''; this.el.agesWrap.append(frag);
