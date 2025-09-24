@@ -110,6 +110,7 @@ a { color: inherit; }
 /* Inputs / selects unified */
 .search-pill input[type="date"],
 .search-pill input[type="number"],
+.search-pill:hover { box-shadow: 0 6px 18px rgba(0,0,0,.07); }
 .search-pill select{
   border:1px solid var(--border);
   border-radius:10px;
