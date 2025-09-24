@@ -22,16 +22,43 @@
   <meta property="og:type" content="website">
 </head>
 <body>
-  <header>
-  <div class="brand">
-    <img class="brand-logo" src="assets/logoh.png" alt="ImpactTrip logo horizontal" />
+  
+<header class="site-header">
+  <!-- Left: Brand -->
+  <a class="brand" href="/">
+    <img class="brand-logo" src="assets/logoh.png" alt="ImpactTrip" />
+  </a>
+
+  <!-- Center: Search pill -->
+  <div class="search-pill" role="button" tabindex="0">
+    <span class="pill-item pill-where">Where</span>
+    <span class="pill-dot">•</span>
+    <span class="pill-item">Any week</span>
+    <span class="pill-dot">•</span>
+    <span class="pill-item">Add guests</span>
+    <button class="pill-action" aria-label="Search">
+      <!-- magnifier icon -->
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+        <path d="M15.8 14.4l4.6 4.6-1.4 1.4-4.6-4.6a7 7 0 1 1 1.4-1.4zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="currentColor"/>
+      </svg>
+    </button>
   </div>
-  <nav>
-    <a class="btn" href="#for-ngos">For NGOs</a>
-    <a class="btn" href="#for-hotels">For Hotels</a>
+
+  <!-- Right: Actions -->
+  <nav class="header-actions">
+    <a class="link-muted" href="#for-hotels">Partner with us</a>
+    <button class="icon-btn" aria-label="Language & currency">
+      <!-- globe icon -->
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 2c2.1 0 3.9 1.7 3.9 3.9H8.1C8.1 5.7 9.9 4 12 4zm0 16c-2.1 0-3.9-1.7-3.9-3.9h7.8c0 2.2-1.8 3.9-3.9 3.9zM4 12c0-.7.1-1.4.4-2h15.2c.3.6.4 1.3.4 2s-.1 1.4-.4 2H4.4c-.3-.6-.4-1.3-.4-2z" fill="currentColor"/>
+      </svg>
+    </button>
+    <button class="menu-btn" aria-haspopup="menu" aria-expanded="false">
+      <span class="menu-icon">≡</span>
+      <span class="avatar-circle"></span>
+    </button>
   </nav>
 </header>
-
 
   <section class="hero">
     <h1>Make your trip matter.</h1>
