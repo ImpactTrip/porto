@@ -371,3 +371,7 @@ footer {
   justify-content: center;    /* center the age fields horizontally */
 }
 .child-ages .age-field input{ width: 7ch; }  /* keep compact */
+
+@media (max-width: 900px){
+  .search-pill{ gap: 10px 14px; }
+}
