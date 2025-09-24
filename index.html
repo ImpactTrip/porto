@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ImpactTrip – Porto Pilot</title>
+  <meta name="description" content="ImpactTrip connects travelers with local volunteer opportunities in Porto. Make your trip matter." />
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
@@ -22,22 +23,21 @@
   <meta property="og:type" content="website">
 </head>
 <body>
-  
+
 <header class="site-header">
   <!-- Left: Brand -->
-  <a class="brand" href="/">
+  <a class="brand" href="./">
     <img class="brand-logo" src="assets/logoh.png" alt="ImpactTrip" />
   </a>
 
   <!-- Center: Search pill -->
-  <div class="search-pill" role="button" tabindex="0">
+  <div class="search-pill" role="button" tabindex="0" aria-label="Open search">
     <span class="pill-item pill-where">Where</span>
     <span class="pill-dot">•</span>
     <span class="pill-item">Any week</span>
     <span class="pill-dot">•</span>
     <span class="pill-item">Add guests</span>
-    <button class="pill-action" aria-label="Search">
-      <!-- magnifier icon -->
+    <button class="pill-action" type="button" aria-label="Search">
       <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
         <path d="M15.8 14.4l4.6 4.6-1.4 1.4-4.6-4.6a7 7 0 1 1 1.4-1.4zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="currentColor"/>
       </svg>
@@ -45,74 +45,49 @@
   </div>
 
   <!-- Right: Actions -->
-  <nav class="header-actions">
+  <nav class="header-actions" aria-label="Header actions">
     <a class="link-muted" href="#for-hotels">Partner with us</a>
-    <button class="icon-btn" aria-label="Language & currency">
-      <!-- globe icon -->
+    <button class="icon-btn" type="button" aria-label="Language & currency">
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
         <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 2c2.1 0 3.9 1.7 3.9 3.9H8.1C8.1 5.7 9.9 4 12 4zm0 16c-2.1 0-3.9-1.7-3.9-3.9h7.8c0 2.2-1.8 3.9-3.9 3.9zM4 12c0-.7.1-1.4.4-2h15.2c.3.6.4 1.3.4 2s-.1 1.4-.4 2H4.4c-.3-.6-.4-1.3-.4-2z" fill="currentColor"/>
       </svg>
     </button>
-    <button class="menu-btn" aria-haspopup="menu" aria-expanded="false">
+    <button class="menu-btn" type="button" aria-haspopup="menu" aria-expanded="false">
       <span class="menu-icon">≡</span>
       <span class="avatar-circle"></span>
     </button>
   </nav>
 </header>
 
-  <section class="hero">
-    <h1>Make your trip matter.</h1>
-    <p>ImpactTrip liga visitantes do Porto a projetos de voluntariado locais — ambiente, educação, cultura e apoio social.</p>
-    <p><a class="btn" href="#opportunities">Browse Volunteer Opportunities</a></p>
-    <p style="font-size:14px;color:#666">Pilot: Porto, Portugal</p>
-  </section>
+<section class="hero">
+  <h1>Make your trip matter.</h1>
+  <p>ImpactTrip connects visitors to local volunteer projects — environment, education, culture, and social aid.</p>
+  <p><a class="btn" href="#opportunities">Browse Volunteer Opportunities</a></p>
+  <p class="muted">Pilot: Porto, Portugal</p>
+</section>
 
-  <section id="opportunities" class="grid">
-    <!-- Render dinâmico de oportunidades (app.js) -->
-  </section>
+<section id="opportunities" class="grid">
+  <!-- Rendered dynamically by JS -->
+</section>
 
-  <section id="for-ngos" class="grid">
-    <div class="card">
-      <h3>For NGOs</h3>
-      <p>Receba voluntários verificados. Partilhe necessidades, horários e atividades.</p>
-      <p><a class="btn" href="#" title="Temporary: send us an email">Submit your project</a></p>
-    </div>
-    <div class="card" id="for-hotels">
-      <h3>For Hotels & Agencies</h3>
-      <p>Integre opções de voluntariado em pacotes e estadias. Melhore a experiência e o impacto.</p>
-      <p><a class="btn" href="#" title="Temporary: send us an email">Partner with us</a></p>
-    </div>
-  </section>
+<section id="for-ngos" class="grid">
+  <div class="card">
+    <h3>For NGOs</h3>
+    <p>Receive verified volunteers. Share needs, schedules, and activities.</p>
+    <p><a class="btn" href="#" title="Temporary: send us an email">Submit your project</a></p>
+  </div>
+  <div class="card" id="for-hotels">
+    <h3>For Hotels & Agencies</h3>
+    <p>Add volunteering options to stays and packages. Improve experience and impact.</p>
+    <p><a class="btn" href="#" title="Temporary: send us an email">Partner with us</a></p>
+  </div>
+</section>
 
-  <footer>
-    © ImpactTrip · Funding via ads, small participation fee, municipal partners, merchandising & crowdfunding.
-  </footer>
+<footer>
+  © ImpactTrip · Funding via ads, small participation fee, municipal partners, merchandising & crowdfunding.
+</footer>
 
-  <script>
-    const header = document.querySelector('.site-header');
-    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 4);
-     window.addEventListener('scroll', onScroll); onScroll();
-  </script>
-
-  <script>
-  // Demo: carrega oportunidades se existir data/opportunities.json
-  fetch('data/opportunities.json').then(r=>r.json()).then(list=>{
-    const wrap=document.querySelector('#opportunities');
-    if(!wrap) return;
-    for(const o of list){
-      const el=document.createElement('article');
-      el.className='card';
-      el.innerHTML = `
-        <h3>${o.title}</h3>
-        <p>${o.summary}</p>
-        <p><strong>Category:</strong> ${o.category} · <strong>When:</strong> ${o.when} · <strong>Time:</strong> ${o.duration}</p>
-        <p><a class="btn" href="#">I want to help</a></p>
-      `;
-      wrap.appendChild(el);
-    }
-  }).catch(()=>{/* silencioso se não houver ficheiro */});
-  </script>
-
-  <script src="js/main.js"></script>
+<!-- Site scripts -->
+<script src="js/main.js" defer></script>
 </body>
 </html>
