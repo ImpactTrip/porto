@@ -59,8 +59,7 @@ function initPilotForm(){
   form.addEventListener('submit', (e)=>{
     e.preventDefault();
     // if end is empty, treat as one-day = start
-    if(dateStart.value && !dateEnd.value) dateEnd.value = dateStart.value;
-    if(dateStart.value && dateEnd.value && dateEnd.value < dateStart.value){
+       if(dateStart.value && dateEnd.value && dateEnd.value < dateStart.value){
       alert('“To” must be the same day or after “From”.');
       return;
     }
