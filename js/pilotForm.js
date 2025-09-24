@@ -42,7 +42,7 @@ export class PilotFormController {
     ['location','dateStart','dateEnd','adults'].forEach(k=>{
       this.el[k].addEventListener('change', ()=>this.onField(k));
     });
-    this.el.children.addEventListener('input', ()=>this.onChildren());
+    this.el.children.addEventListener('change', ()=>this.onChildren());
     this.el.agesWrap.addEventListener('change', e=>{
       if(e.target.matches('input[data-age-index]')) this.onAge(e.target);
     });

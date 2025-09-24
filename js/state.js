@@ -1,34 +1,15 @@
-// js/state.js
 import { CONFIG } from './config.js';
 import { utils } from './utils.js';
 
 export class FormStateManager {
   constructor(){ this.state = this.load() || this.defaults(); }
-
-  defaults(){
-    return {
-      location: CONFIG.DEFAULT_LOCATION,
-      dateStart: '',
-      dateEnd: '',
-      adults: CONFIG.DEFAULT_ADULTS,
-      children: CONFIG.DEFAULT_CHILDREN,
-      childAges: []
-    };
-  }
-
+  defaults(){ return { location: CONFIG.DEFAULT_LOCATION, dateStart:'', dateEnd:'', adults:CONFIG.DEFAULT_ADULTS, children:CONFIG.DEFAULT_CHILDREN, childAges:[] }; }
   load(){
-    try {
-      const raw = localStorage.getItem(CONFIG.STORAGE_KEY);
-      if (!raw) return null;
-      return this.validate(JSON.parse(raw));
-    } catch (e) {
-      console.warn('Failed to load saved state:', e);
-      return null;
-    }
+    try { const raw = localStorage.getItem(CONFIG.STORAGE_KEY); if(!raw) return null; return this.validate(JSON.parse(raw)); }
+    catch { return null; }
   }
-
   validate(data){
-    if (!data || typeof data !== 'object') return null;
+    if(!data || typeof data!=='object') return null;
     return {
       location: data.location || CONFIG.DEFAULT_LOCATION,
       dateStart: data.dateStart || '',
@@ -38,13 +19,6 @@ export class FormStateManager {
       childAges: Array.isArray(data.childAges) ? data.childAges : []
     };
   }
-
-  save(updates = {}){
-    this.state = { ...this.state, ...updates };
-    try { localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(this.state)); }
-    catch (e) { console.error('Failed to save state:', e); }
-    return this.get();
-  }
-
+  save(updates = {}){ this.state = { ...this.state, ...updates }; localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(this.state)); return this.get(); }
   get(){ return { ...this.state }; }
 }
