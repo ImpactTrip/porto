@@ -25,26 +25,51 @@
 <body>
 
 <header class="site-header">
-  <!-- Left: Brand -->
-  <a class="brand" href="./">
+  <!-- Left: Brand (no link) -->
+  <div class="brand">
     <img class="brand-logo" src="assets/logoh.png" alt="ImpactTrip" />
-  </a>
+  </div>
 
-  <!-- Center: Search pill -->
-  <div class="search-pill" role="button" tabindex="0" aria-label="Open search">
-    <span class="pill-item pill-where">Where</span>
+  <!-- Center: Search / Filters (pilot mode, stored in localStorage) -->
+  <form class="search-pill" id="pilot-form" autocomplete="off">
+    <span class="pill-item pill-fixed" title="Pilot location is fixed">Porto, Portugal</span>
+
     <span class="pill-dot">•</span>
-    <span class="pill-item">Any week</span>
+    <label class="pill-item">
+      <span class="lbl">Date</span>
+      <input type="date" id="date-start" required>
+    </label>
+    <span class="date-sep">–</span>
+    <label class="pill-item" id="date-end-wrap">
+      <span class="lbl sr-only">End</span>
+      <input type="date" id="date-end">
+    </label>
+    <label class="pill-item pill-check">
+      <input type="checkbox" id="single-day" checked>
+      <span>One day</span>
+    </label>
+
     <span class="pill-dot">•</span>
-    <span class="pill-item">Add guests</span>
-    <button class="pill-action" type="button" aria-label="Search">
+    <label class="pill-item pill-num">
+      <span class="lbl">Adults</span>
+      <input type="number" id="adults" min="1" value="1" inputmode="numeric">
+    </label>
+    <label class="pill-item pill-num">
+      <span class="lbl">Children</span>
+      <input type="number" id="children" min="0" value="0" inputmode="numeric">
+    </label>
+
+    <!-- Children ages appear dynamically -->
+    <div class="child-ages" id="children-ages" aria-live="polite"></div>
+
+    <button class="pill-action" type="submit" id="btn-search" aria-label="Apply filters">
       <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
         <path d="M15.8 14.4l4.6 4.6-1.4 1.4-4.6-4.6a7 7 0 1 1 1.4-1.4zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="currentColor"/>
       </svg>
     </button>
-  </div>
+  </form>
 
-  <!-- Right: Actions -->
+  <!-- Right: Actions (unchanged) -->
   <nav class="header-actions" aria-label="Header actions">
     <a class="link-muted" href="#for-hotels">Partner with us</a>
     <button class="icon-btn" type="button" aria-label="Language & currency">
@@ -58,6 +83,7 @@
     </button>
   </nav>
 </header>
+
 
 <section class="hero">
   <h1>Make your trip matter.</h1>
