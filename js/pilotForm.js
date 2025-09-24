@@ -27,23 +27,28 @@ export class PilotFormController {
     this.el.children.value  = s.children;
     this.renderAges(s.children, s.childAges);
 
-    // dynamic min dates (yesterday) & end >= start
-    const y = new Date(); y.setDate(y.getDate()-1);
-    const minISO = utils.toISODate(y);
-    this.el.dateStart.min = minISO; this.el.dateEnd.min = minISO;
-    this.el.dateStart.addEventListener('change', ()=>{
-      const from = this.el.dateStart.value;
-      this.el.dateEnd.min = from || minISO;
-      if (from && this.el.dateEnd.value && this.el.dateEnd.value < from) this.el.dateEnd.value = from;
-      this.persist();
-    });
+    // dynamic min dates (today) & end >= start
+      const t = new Date();
+      const minISO = utils.toISODate(t);
+      this.el.dateStart.min = minISO;
+      this.el.dateEnd.min   = minISO;
+
+      this.el.dateStart.addEventListener('change', ()=>{
+        const from = this.el.dateStart.value;
+        this.el.dateEnd.min = from || minISO;
+        if (from && this.el.dateEnd.value && this.el.dateEnd.value < from) {
+          this.el.dateEnd.value = from;
+            }
+        this.persist();
+      });
+
 
     // listeners
     ['location','dateStart','dateEnd','adults'].forEach(k=>{
       this.el[k].addEventListener('change', ()=>this.onField(k));
     });
     this.el.children.addEventListener('input', ()=>this.onChildren());
-    this.el.agesWrap.addEventListener('change', e=>{
+    this.el.agesWrap.addEventListener('input', e=>{
       if(e.target.matches('input[data-age-index]')) this.onAge(e.target);
     });
     this.form.addEventListener('submit', e=>this.onSubmit(e));
@@ -62,14 +67,28 @@ export class PilotFormController {
     const age = utils.clamp(utils.parseIntSafe(input.value, CONFIG.MIN_CHILD_AGE), CONFIG.MIN_CHILD_AGE, CONFIG.MAX_CHILD_AGE);
     input.value = age; this.persist();
   }
-  onSubmit(e){
-    e.preventDefault();
-    const start = this.el.dateStart.value, end = this.el.dateEnd.value;
-    if(start && end && end < start){ alert('"To" date must be the same day or after "From" date.'); return; }
-    const final = this.persist();
-    console.log('Filters applied:', final);
-    this.form.dispatchEvent(new CustomEvent('filtersApplied', { detail: final }));
+onSubmit(e){
+  e.preventDefault();
+  const start = this.el.dateStart.value, end = this.el.dateEnd.value;
+  if (start && end && end < start) { alert('"To" date must be the same day or after "From" date.'); return; }
+
+  const kids = utils.parseIntSafe(this.el.children.value, 0);
+  if (kids > 0) {
+    const ageInputs = this.el.agesWrap.querySelectorAll('input[data-age-index]');
+    if (ageInputs.length !== kids) { alert('Please provide age for each child.'); return; }
+    for (const inp of ageInputs) {
+      const v = inp.value.trim(), n = Number(v);
+      if (v === '' || !Number.isFinite(n) || n < CONFIG.MIN_CHILD_AGE || n > CONFIG.MAX_CHILD_AGE) {
+        alert('Please enter a valid age for each child.'); inp.focus(); return;
+      }
+    }
   }
+
+  const final = this.persist();
+  console.log('Filters applied:', final);
+  this.form.dispatchEvent(new CustomEvent('filtersApplied', { detail: final }));
+}
+
   persist(){
     return this.state.save({
       location: this.el.location.value || CONFIG.DEFAULT_LOCATION,
@@ -80,17 +99,39 @@ export class PilotFormController {
       childAges: this.collectAges()
     });
   }
-  renderAges(count, existing=[]){
-    const frag = document.createDocumentFragment();
-    for(let i=0;i<count;i++){
-      const age = Number.isFinite(existing[i]) ? existing[i] : '';
-      const field = document.createElement('div'); field.className='age-field';
-      const label = document.createElement('label'); label.className='lbl'; label.textContent=`Age ${i+1}`;
-      const input = document.createElement('input'); input.type='number'; input.name = `child-age-${i+1}`; input.min=CONFIG.MIN_CHILD_AGE; input.max=CONFIG.MAX_CHILD_AGE; input.dataset.ageIndex=i; input.value=age;
-      field.append(label,input); frag.append(field);
-    }
-    this.el.agesWrap.innerHTML=''; this.el.agesWrap.append(frag);
+  renderAges(count, existing = []) {
+  const frag = document.createDocumentFragment();
+  for (let i = 0; i < count; i++) {
+    const age = Number.isFinite(existing[i]) ? existing[i] : '';
+    const inputId = `child-age-${i+1}`;
+
+    const field = document.createElement('div');
+    field.className = 'age-field';
+
+    const label = document.createElement('label');
+    label.className = 'lbl';
+    label.setAttribute('for', inputId);
+    label.textContent = `Age ${i+1}`;
+
+    const input = document.createElement('input');
+    input.type = 'number';
+    input.id = inputId;
+    input.name = inputId;              // helps a11y/autofill
+    input.min = CONFIG.MIN_CHILD_AGE;
+    input.max = CONFIG.MAX_CHILD_AGE;
+    input.step = '1';
+    input.autocomplete = 'off';
+    input.dataset.ageIndex = i;
+    input.required = true;             // mandatory when children > 0
+    input.value = age;
+
+    field.append(label, input);
+    frag.append(field);
   }
+  this.el.agesWrap.innerHTML = '';
+  this.el.agesWrap.append(frag);
+}
+
   collectAges(){
     return Array.from(this.el.agesWrap.querySelectorAll('input[data-age-index]')).map(inp=>{
       const v = utils.parseIntSafe(inp.value, ''); return v === '' ? '' : utils.clamp(v, CONFIG.MIN_CHILD_AGE, CONFIG.MAX_CHILD_AGE);
