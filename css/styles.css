@@ -1,0 +1,36 @@
+:root{
+  --brand-blue:  #24466F;
+  --brand-green: #83B341;
+  --brand-orange:#EF8725;
+
+  --text: #1b1b1b;
+  --bg: #ffffff;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+}
+
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.5}
+
+/* Header / Brand */
+header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.25rem;letter-spacing:.2px}
+.brand-logo{width:28px;height:28px;display:inline-block}
+.brand-name{display:inline-flex;gap:4px}
+.brand-name .impact{color:var(--brand-blue)}
+.brand-name .trip{color:var(--brand-green)}
+
+/* Buttons / Links */
+.btn{display:inline-block;padding:10px 14px;border:1px solid var(--text);border-radius:10px;text-decoration:none}
+.btn-primary{border-color:var(--brand-blue);color:var(--brand-blue)}
+.btn-primary:hover{background:var(--brand-blue);color:#fff}
+
+/* Cards / Grid */
+.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));max-width:960px;margin:24px auto;padding:0 20px}
+.card{border:1px solid var(--border);border-radius:12px;padding:16px;background:#fff}
+.card h3{margin-top:0;color:var(--brand-blue)}
+.tag{display:inline-block;font-size:.75rem;padding:2px 8px;border-radius:999px;border:1px solid var(--border);color:var(--muted)}
+.tag--env{border-color:var(--brand-green);color:var(--brand-green)}
+.tag--social{border-color:var(--brand-blue);color:var(--brand-blue)}
+
+/* Footer */
+footer{border-top:1px solid var(--border);padding:16px 20px;margin-top:24px;font-size:14px;color:var(--muted)}

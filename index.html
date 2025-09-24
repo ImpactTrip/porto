@@ -4,23 +4,37 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ImpactTrip – Porto Pilot</title>
-  <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;margin:0;line-height:1.5}
-    header{padding:16px 20px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
-    .brand{font-weight:700}
-    .hero{padding:40px 20px;max-width:960px;margin:0 auto}
-    .hero h1{margin:0 0 8px}
-    .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));max-width:960px;margin:24px auto;padding:0 20px}
-    .card{border:1px solid #eee;border-radius:12px;padding:16px}
-    footer{border-top:1px solid #eee;padding:16px 20px;margin-top:24px;font-size:14px;color:#666}
-    .btn{display:inline-block;padding:10px 14px;border:1px solid #222;border-radius:8px;text-decoration:none}
-  </style>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+  <meta name="theme-color" content="#24466F">
+
+  <!-- Social sharing -->
+  <meta property="og:title" content="ImpactTrip – Porto Pilot">
+  <meta property="og:description" content="Connecting travelers with volunteer opportunities in Porto. Make your trip matter.">
+  <meta property="og:image" content="assets/favicon-192.png">
+  <meta property="og:type" content="website">
 </head>
 <body>
   <header>
-    <div class="brand">ImpactTrip</div>
-    <nav><a class="btn" href="#for-ngos">For NGOs</a> <a class="btn" href="#for-hotels">For Hotels</a></nav>
+    <div class="brand">
+      <img class="brand-logo" src="assets/logo.png" alt="ImpactTrip logo" />
+      <div class="brand-name">
+        <span class="impact">Impact</span><span class="trip">Trip</span>
+      </div>
+    </div>
+    <nav>
+      <a class="btn" href="#for-ngos">For NGOs</a>
+      <a class="btn" href="#for-hotels">For Hotels</a>
+    </nav>
   </header>
+
 
   <section class="hero">
     <h1>Make your trip matter.</h1>
