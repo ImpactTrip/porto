@@ -79,7 +79,7 @@ a { color: inherit; }
   max-width: 920px;
   margin: 0 12px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;        /* top-align fields instead of center */
   justify-content: center;
   gap: 12px 18px;                 /* row gap, column gap */
   flex-wrap: wrap;
@@ -90,14 +90,11 @@ a { color: inherit; }
   box-shadow: var(--shadow-sm);
 }
 
-.pill-item{ font-size:.95rem; color:#111; }
-.pill-dot{ color:#a3a3a3; user-select:none; }
-
-/* Centered labels above inputs for symmetry */
+/* field blocks: label above input */
 .search-pill label{
   display:flex;
   flex-direction:column;
-  align-items:center;   /* centered */
+  align-items:center;
   gap:6px;
 }
 .search-pill .lbl{
@@ -107,10 +104,17 @@ a { color: inherit; }
   text-align:center;
 }
 
+/* dot and separator between fields */
+.pill-dot,
+.date-sep{
+  color:#a3a3a3;
+  user-select:none;
+  align-self:center;
+}
+
 /* Inputs / selects unified */
 .search-pill input[type="date"],
 .search-pill input[type="number"],
-.search-pill:hover { box-shadow: 0 6px 18px rgba(0,0,0,.07); }
 .search-pill select{
   border:1px solid var(--border);
   border-radius:10px;
@@ -119,16 +123,30 @@ a { color: inherit; }
   background:#fff;
   outline:none;
 }
+
+/* hover effect for whole pill */
+.search-pill:hover { box-shadow: 0 6px 18px rgba(0,0,0,.07); }
+
 .search-pill select{ width: 18ch; }
 #date-start, #date-end { width: 14ch; }
 #adults, #children   { width: 8ch; }
 
-/* Date range separator aligned with inputs */
-.date-sep{
-  color:#a3a3a3;
-  user-select:none;
-  transform: translateY(10px);  /* lines up with input row */
+/* Children ages container: full row below fields */
+.child-ages{
+  flex-basis: 100%;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 10px;
+  align-items:flex-end;
+  margin-top:6px;
 }
+.child-ages .age-field{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+.child-ages .age-field input{ width:7ch; }
 
 /* Action button */
 .pill-action{
@@ -137,14 +155,11 @@ a { color: inherit; }
   background: var(--brand-green);
   color:#fff;
   padding:10px 11px;
-  display:flex; align-items:center; justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 .pill-action:hover{ filter: brightness(0.95); }
-
-/* Children ages */
-.child-ages{ display:flex; flex-wrap:wrap; gap:8px 10px; align-items:end; }
-.child-ages .age-field{ display:flex; flex-direction:column; gap:4px; }
-.child-ages .age-field input{ width:7ch; }
 
 /* Responsive tweaks */
 @media (max-width: 900px){
@@ -153,8 +168,8 @@ a { color: inherit; }
 @media (max-width: 640px){
   .search-pill{ padding: 8px 10px; gap: 10px 12px; }
   #date-start, #date-end { width: 12ch; }
-  .date-sep{ transform: translateY(8px); }
 }
+
 
 /* ===========================
    Buttons & Links
