@@ -1,550 +1,304 @@
-/* ===========================
-   ImpactTrip – Beautiful Styles
-   =========================== */
+/* =========================================
+   ImpactTrip – Global Styles (Beautified)
+   ========================================= */
 
-/* --- Theme Variables --- */
+/* 1. Theme Variables */
 :root {
-  /* Brand Colors (unchanged) */
-  --brand-blue: #24466F;
-  --brand-green: #83B341;
+  /* Brand Colors */
+  --brand-blue:   #24466F;
+  --brand-green:  #83B341;
   --brand-orange: #EF8725;
 
-  /* Base Colors (unchanged) */
-  --text: #1b1b1b;
-  --bg: #ffffff;
-  --muted: #6b7280;
+  /* Base Colors */
+  --text:   #1b1b1b;
+  --bg:     #ffffff;
+  --muted:  #6b7280;
   --border: #e5e7eb;
 
-  /* Enhanced Design System */
+  /* Layout */
   --container: 960px;
-  --radius: 16px;
-  --radius-lg: 24px;
-  --radius-pill: 999px;
-  
-  /* Elevated Shadows */
-  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 8px 25px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.12);
-  --shadow-glow: 0 0 0 3px rgba(36, 70, 111, 0.1);
+  --radius:    12px;
 
-  /* Refined Spacing */
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, .06);
+
+  /* Spacing */
   --space-xs: 6px;
-  --space-sm: 12px;
-  --space-md: 20px;
-  --space-lg: 32px;
-  --space-xl: 48px;
-  --space-2xl: 64px;
-
-  /* Smooth Transitions */
-  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --space-sm: 10px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
 
   /* Header */
-  --pill-h: 64px;
+  --pill-h: 64px;  /* Logo height = pill height (desktop) */
 }
 
-/* --- Enhanced Base Reset --- */
-*,
-*::before,
-*::after {
+/* 2. Base Reset */
+* {
   box-sizing: border-box;
 }
-
-html,
-body {
-  height: 100%;
+html, body {
   margin: 0;
+  height: 100%;
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.6;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.5;
 }
-
 img {
   max-width: 100%;
-  height: auto;
   display: block;
 }
-
 a {
   color: inherit;
   text-decoration: none;
-  transition: all var(--transition-fast);
 }
 
-/* --- Elegant Utilities --- */
+/* 3. Utility Classes */
 .container {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0 var(--space-md);
+  padding: 0 20px;
 }
-
 .muted {
-  font-size: 0.875rem;
+  font-size: 14px;
   color: var(--muted);
-  font-weight: 500;
 }
-
 .hidden {
   display: none !important;
 }
 
-/* ===========================
-   Sophisticated Header
-   =========================== */
+/* 4. Header (Airbnb-style) */
 .site-header {
   position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
+  top: 0;           z-index: 50;
+  display: flex;    align-items: center;
   justify-content: space-between;
-  gap: var(--space-md);
-  padding: var(--space-sm) var(--space-md);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  gap: 16px;
+  padding: 10px 20px;
+  background: #fff;
   border-bottom: 1px solid var(--border);
-  transition: all var(--transition-smooth);
+  box-shadow: none;
+  transition: box-shadow .2s ease;
 }
-
 .site-header.is-scrolled {
   box-shadow: var(--shadow-md);
-  background: rgba(255, 255, 255, 0.98);
 }
 
-/* Refined Brand */
+/* 5. Brand Logo */
 .brand {
   display: inline-flex;
   align-items: center;
 }
-
 .brand img {
   height: var(--pill-h);
   width: auto;
-  display: block;
-  transition: transform var(--transition-fast);
 }
-
-.brand:hover img {
-  transform: scale(1.02);
-}
-
 @media (max-width: 900px) {
-  .brand img {
-    height: 52px;
-  }
+  .brand img { height: 52px; }
 }
-
 @media (max-width: 640px) {
-  .brand img {
-    height: 40px;
-  }
+  .brand img { height: 40px; }
 }
 
-/* ===========================
-   Elegant Search Interface
-   =========================== */
+/* 6. Search / Pilot Filters */
 .search-pill {
-  min-height: var(--pill-h);
   flex: 1 1 auto;
   max-width: 920px;
-  margin: 0 var(--space-sm);
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: var(--space-sm) var(--space-md);
   flex-wrap: wrap;
-  padding: var(--space-sm) var(--space-md);
+  align-items: flex-start;   /* Top-align fields */
+  justify-content: center;
+  gap: 12px 18px;            /* row-gap, column-gap */
+  margin: 0 12px;
+  padding: 10px 14px;
   border: 2px solid var(--brand-blue);
-  border-radius: var(--radius-pill);
-  background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
+  border-radius: 999px;
+  background: #fff;
   box-shadow: var(--shadow-sm);
-  transition: all var(--transition-smooth);
-  position: relative;
-  overflow: hidden;
+  transition: box-shadow .2s ease;
 }
-
-.search-pill::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: var(--radius-pill);
-  padding: 2px;
-  background: linear-gradient(135deg, var(--brand-blue), var(--brand-green));
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask-composite: xor;
-  opacity: 0;
-  transition: opacity var(--transition-smooth);
-}
-
-.search-pill:hover::before {
-  opacity: 0.3;
-}
-
 .search-pill:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 6px 18px rgba(0,0,0,.07);
 }
 
-.search-pill:focus-within {
-  box-shadow: var(--shadow-glow), var(--shadow-md);
-}
-
-/* Refined Field Labels */
+/* Labels & Inputs */
 .search-pill label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  position: relative;
+  gap: 6px;
 }
-
 .search-pill .lbl {
-  font-size: 0.75rem;
+  font-size: .78rem;
   color: var(--muted);
   line-height: 1;
   text-align: center;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+}
+.search-pill input[type="date"],
+.search-pill input[type="number"],
+.search-pill select {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  outline: none;
 }
 
-/* Elegant Separators */
+/* Field Sizing */
+.search-pill select { width: 18ch; }
+#date-start, #date-end { width: 14ch; }
+#adults, #children   { width: 8ch; }
+
+/* Dots & Separators */
 .pill-dot,
 .date-sep {
   color: #a3a3a3;
   user-select: none;
   align-self: center;
-  font-weight: 300;
-  opacity: 0.7;
 }
 
-/* Beautiful Form Controls */
-.search-pill input[type="date"],
-.search-pill input[type="number"],
-.search-pill select {
-  border: 1px solid rgba(229, 231, 235, 0.8);
-  border-radius: var(--space-sm);
-  padding: var(--space-sm) var(--space-sm);
-  font: inherit;
-  background: rgba(255, 255, 255, 0.9);
-  outline: none;
-  transition: all var(--transition-fast);
-  backdrop-filter: blur(8px);
-  font-weight: 500;
-}
-
-.search-pill input:focus,
-.search-pill select:focus {
-  border-color: var(--brand-blue);
-  box-shadow: 0 0 0 3px rgba(36, 70, 111, 0.1);
-  background: #ffffff;
-}
-
-.search-pill input:hover,
-.search-pill select:hover {
-  border-color: rgba(36, 70, 111, 0.3);
-  background: #ffffff;
-}
-
-.search-pill select {
-  width: 18ch;
-  cursor: pointer;
-}
-
-#date-start,
-#date-end {
-  width: 14ch;
-}
-
-#adults,
-#children {
-  width: 8ch;
-  text-align: center;
-}
-
-/* Enhanced Child Ages Section */
+/* Children Ages */
 .child-ages {
   flex-basis: 100%;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-xs) var(--space-sm);
+  gap: 8px 10px;
   align-items: flex-end;
-  margin-top: var(--space-xs);
-  padding-top: var(--space-xs);
-  border-top: 1px solid rgba(229, 231, 235, 0.5);
+  margin-top: 6px;
 }
-
 .child-ages .age-field {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 4px;
 }
-
 .child-ages .age-field input {
   width: 7ch;
-  text-align: center;
 }
 
-/* Stunning Action Button */
+/* Action Button */
 .pill-action {
   border: 0;
-  border-radius: var(--radius-pill);
-  background: linear-gradient(135deg, var(--brand-green) 0%, #9bc956 100%);
-  color: #ffffff;
-  padding: var(--space-sm) var(--space-sm);
+  border-radius: 999px;
+  padding: 10px 11px;
+  background: var(--brand-green);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-xs);
-  transition: all var(--transition-fast);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+  transition: filter .2s ease;
 }
-
-.pill-action::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left var(--transition-smooth);
-}
-
 .pill-action:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
-  background: linear-gradient(135deg, #9bc956 0%, var(--brand-green) 100%);
+  filter: brightness(0.95);
 }
 
-.pill-action:hover::before {
-  left: 100%;
-}
-
-.pill-action:active {
-  transform: translateY(0);
-}
-
-/* ===========================
-   Refined Responsive Design
-   =========================== */
+/* Responsive Tweaks */
 @media (max-width: 900px) {
   .search-pill {
     max-width: none;
-    margin: 0 var(--space-xs);
-  }
-  
-  .container {
-    padding: 0 var(--space-sm);
   }
 }
-
 @media (max-width: 640px) {
   .search-pill {
-    padding: var(--space-xs) var(--space-sm);
-    gap: var(--space-xs) var(--space-sm);
+    padding: 8px 10px;
+    gap: 10px 12px;
   }
-  
-  #date-start,
-  #date-end {
+  #date-start, #date-end {
     width: 12ch;
   }
-  
-  .site-header {
-    padding: var(--space-xs) var(--space-sm);
-  }
 }
 
-/* ===========================
-   Beautiful Buttons & Links
-   =========================== */
+/* 7. Buttons & Links */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-sm) var(--space-md);
+  display: inline-block;
+  padding: 10px 14px;
   border: 1px solid var(--text);
-  border-radius: var(--space-sm);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all var(--transition-fast);
-  position: relative;
-  overflow: hidden;
+  border-radius: 10px;
+  color: var(--text);
+  background: transparent;
+  transition: background .15s, color .15s, border-color .15s;
 }
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--text);
-  transform: translateY(100%);
-  transition: transform var(--transition-fast);
-  z-index: -1;
-}
-
-.btn:hover::before {
-  transform: translateY(0);
-}
-
 .btn:hover {
-  color: #ffffff;
-  border-color: var(--text);
+  background: #111;
+  color: #fff;
 }
-
 .btn-primary {
   border-color: var(--brand-green);
-  background: linear-gradient(135deg, var(--brand-green) 0%, #9bc956 100%);
-  color: #ffffff;
+  background: var(--brand-green);
+  color: #fff;
 }
-
-.btn-primary::before {
-  background: linear-gradient(135deg, #9bc956 0%, var(--brand-green) 100%);
-  transform: translateY(0);
-}
-
 .btn-primary:hover {
-  border-color: var(--brand-green);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
+  filter: brightness(0.95);
 }
 
-/* ===========================
-   Elegant Sections
-   =========================== */
+/* 8. Sections */
 .hero {
-  padding: var(--space-2xl) var(--space-md) var(--space-xl);
-  background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
+  padding: var(--space-xl) 20px var(--space-lg);
 }
-
 .hero h1 {
-  margin: 0 0 var(--space-xs);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  margin: 0 0 8px;
 }
-
 .hero p {
-  margin: var(--space-xs) 0;
-  font-weight: 400;
+  margin: 6px 0;
 }
 
-/* Beautiful Grid & Cards */
+/* Grid & Cards */
 .grid {
   display: grid;
-  gap: var(--space-lg);
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   max-width: var(--container);
-  margin: var(--space-xl) auto;
-  padding: 0 var(--space-md);
+  margin: 24px auto;
+  padding: 0 20px;
 }
-
 .card {
+  padding: 16px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: var(--space-lg);
-  background: linear-gradient(135deg, #ffffff 0%, #fafbff 100%);
-  box-shadow: var(--shadow-xs);
-  transition: all var(--transition-smooth);
-  position: relative;
-  overflow: hidden;
+  background: #fff;
 }
-
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(90deg, var(--brand-blue), var(--brand-green), var(--brand-orange));
-  transform: scaleX(0);
-  transition: transform var(--transition-smooth);
-}
-
-.card:hover::before {
-  transform: scaleX(1);
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(36, 70, 111, 0.1);
-}
-
 .card h3 {
   margin-top: 0;
   color: var(--brand-blue);
-  font-weight: 600;
 }
 
-/* Refined Badges */
+/* Badges / Tags */
 .tag {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.75rem;
-  font-weight: 600;
-  padding: 4px var(--space-sm);
-  border-radius: var(--radius-pill);
+  display: inline-block;
+  font-size: .75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
   border: 1px solid var(--border);
   color: var(--muted);
-  background: rgba(255, 255, 255, 0.8);
-  transition: all var(--transition-fast);
 }
-
 .tag--env {
   border-color: var(--brand-green);
   color: var(--brand-green);
-  background: rgba(131, 179, 65, 0.1);
 }
-
 .tag--social {
   border-color: var(--brand-blue);
   color: var(--brand-blue);
-  background: rgba(36, 70, 111, 0.1);
 }
 
-.tag:hover {
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-xs);
-}
-
-/* ===========================
-   Elegant Footer
-   =========================== */
+/* 9. Footer */
 footer {
+  margin-top: 24px;
+  padding: 16px 20px;
   border-top: 1px solid var(--border);
-  padding: var(--space-lg) var(--space-md);
-  margin-top: var(--space-xl);
-  font-size: 0.875rem;
+  font-size: 14px;
   color: var(--muted);
-  background: linear-gradient(135deg, #fafbff 0%, #ffffff 100%);
 }
 
-/* ===========================
-   Enhanced Spacing Helpers
-   =========================== */
-.mt-0 { margin-top: 0 !important; }
+/* 10. Spacing Helpers */
+.mt-0  { margin-top: 0 !important; }
 .mt-sm { margin-top: var(--space-sm) !important; }
 .mt-md { margin-top: var(--space-md) !important; }
 .mt-lg { margin-top: var(--space-lg) !important; }
 
-.mb-0 { margin-bottom: 0 !important; }
+.mb-0  { margin-bottom: 0 !important; }
 .mb-sm { margin-bottom: var(--space-sm) !important; }
 .mb-md { margin-bottom: var(--space-md) !important; }
 .mb-lg { margin-bottom: var(--space-lg) !important; }
