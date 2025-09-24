@@ -24,6 +24,7 @@
 </head>
 <body>
 
+<!-- Header -->
 <header class="site-header">
   <!-- Left: Brand (no link) -->
   <div class="brand">
@@ -55,14 +56,14 @@
 
     <label class="pill-item pill-num">
       <span class="lbl">Adults</span>
-      <input type="number" id="children" min="0" max="10" step="1" value="0" inputmode="numeric">
+      <input type="number" id="adults" min="1" step="1" value="1" inputmode="numeric">
     </label>
     <label class="pill-item pill-num">
       <span class="lbl">Children</span>
-      <input type="number" id="children" min="0" value="0" inputmode="numeric">
+      <input type="number" id="children" min="0" max="10" step="1" value="0" inputmode="numeric">
     </label>
 
-    <!-- Children ages appear dynamically -->
+    <!-- Ages render here -->
     <div class="child-ages" id="children-ages" aria-live="polite"></div>
 
     <button class="pill-action" type="submit" id="btn-search" aria-label="Apply filters">
@@ -86,6 +87,7 @@
     </button>
   </nav>
 </header>
+
 
 
 <section class="hero">
