@@ -182,3 +182,36 @@ footer{
 .mb-sm{ margin-bottom: var(--space-sm) !important; }
 .mb-md{ margin-bottom: var(--space-md) !important; }
 .mb-lg{ margin-bottom: var(--space-lg) !important; }
+
+/* Bigger brand logo */
+.brand img{ height:52px; width:auto; display:block; }
+@media (max-width:640px){ .brand img{ height:40px; } }
+
+/* Search pill form tweaks */
+.search-pill { flex-wrap: wrap; gap:10px; }
+.search-pill .lbl { font-size:.8rem; color:#6b7280; display:block; }
+.search-pill input[type="date"],
+.search-pill input[type="number"]{
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:6px 8px;
+  font: inherit;
+  width: 12ch;
+}
+.search-pill input[type="number"]{ width: 8ch; }
+.search-pill .pill-check{ display:flex; align-items:center; gap:6px; }
+.search-pill .date-sep{ color:#a3a3a3; user-select:none; }
+
+.pill-fixed{ color: var(--brand-blue); font-weight:700; }
+
+/* Children ages area */
+.child-ages { display:flex; flex-wrap:wrap; gap:8px; align-items:end; }
+.child-ages .age-field{
+  display:flex; flex-direction:column; gap:4px;
+}
+.child-ages .age-field input{
+  width: 7ch;
+}
+
+/* Keep the action button visible even when wrapping */
+.pill-action{ align-self:center; }
