@@ -183,10 +183,10 @@ a {
   transition:border-color .15s ease;
 }
 
-.search-pill select{ width:14ch; }
+.search-pill select{ width:12ch; }
 
 /* wider date fields so year fully visible */
-#date-start, #date-end{ width:15ch; }
+#date-start, #date-end{ width:14.5ch; }
 
 #adults, #children{ width:6ch; }
 
@@ -359,7 +359,7 @@ footer {
 
 /* ——— Tweaks: date width, button alignment, centered ages ——— */
 #date-start,
-#date-end { width: 16ch; }
+#date-end { width: 14.5ch; }
 @media (max-width: 640px){
   #date-start,
   #date-end { width: 12.5ch; }
@@ -390,7 +390,7 @@ footer {
 }
 
 .site-header.stacked .search-pill{ 
-  max-width: 980px; 
+  max-width: 1280px; 
 }
 
 /* Optional theme: borderless header */
