@@ -457,6 +457,12 @@ footer {
   padding: var(--space-xl) 20px var(--space-lg);
 }
 
+.hero .container {
+  max-width: 1280px;            /* match .container-two for rail alignment */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .hero-headline{
   margin: 0;
   font-weight: 800;
@@ -467,7 +473,7 @@ footer {
 
 .hero-underline{
   height: 3px;
-  width: 140px;
+  width: 100px;                 /* your chosen underline width */
   margin: 10px 0 18px;
   border-radius: 3px;
   background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-green) 100%);
@@ -476,13 +482,15 @@ footer {
 
 .hero-subhead{
   margin: 0;
-  max-width: 68ch;             /* optimal reading width */
   line-height: 1.6;
   font-size: clamp(16px, 1.5vw, 18px);
-  color: var(--muted);          /* softer, more elegant */
+  color: var(--muted);
+  white-space: nowrap;          /* always one line */
+  overflow: hidden;
+  text-overflow: ellipsis;      /* add … if it ever gets clipped */
 }
 
 /* tighten vertical gap between pill and hero on large screens */
 @media (min-width: 1000px){
-  .hero { padding-top: 28px; }  /* was var(--space-xl); slightly tighter */
+  .hero { padding-top: 28px; }  /* slightly tighter */
 }
