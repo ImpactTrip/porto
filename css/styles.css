@@ -353,7 +353,7 @@ footer {
 
 /* ——— Tweaks: date width, button alignment, centered ages ——— */
 #date-start,
-#date-end { width: 13.5ch; }
+#date-end { width: 16ch; }
 @media (max-width: 640px){
   #date-start,
   #date-end { width: 12.5ch; }
