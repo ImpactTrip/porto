@@ -214,3 +214,27 @@
 </script>
 </body>
 </html>
+
+/* ---- Pill: keep everything on one line (desktop) ---- */
+.site-header .search-pill{
+  max-width: 1200px;              /* was 980px */
+}
+
+/* Slightly tighter horizontal spacing */
+.search-pill{
+  gap: 8px 8px;                   /* was 8px 10px */
+}
+
+/* Trim just a touch of width from inputs/selects */
+#location{ width: 16.5ch; }       /* was 17ch */
+.search-pill select{ width: 13ch; }/* Language/Duration */
+#date-start, #date-end{ width: 14.5ch; }  /* was 15ch (or 13.5 earlier) */
+#adults, #children{ width: 6ch; } /* was 6–7ch */
+
+/* Keep button locked on the first row */
+.pill-action{ order: 10; flex: 0 0 auto; }
+
+/* Safety: on narrower screens, allow wrapping again gracefully */
+@media (max-width: 1000px){
+  .site-header .search-pill{ max-width: none; }
+}
