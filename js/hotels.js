@@ -29,7 +29,7 @@ function render(){
       .replace('{ADULTS}',   adults);
     return `
       <div class="hotel-card">
-        <img src="${h.thumb}" alt="">
+        <img src="${h.thumb}" alt="" loading="lazy">
         <div class="body">
           <div class="name">${h.name}</div>
           <div class="meta muted">${h.area}</div>
