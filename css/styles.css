@@ -445,3 +445,9 @@ footer {
 /* selects do pill */
 #language { width: 14ch; }
 #duration { width: 14ch; }
+
+/* Fix: avoid clipping label descenders (g, y, p) */
+.search-pill .lbl{
+  line-height: 1.25;                /* was 1 */
+  padding-bottom: 2px;              /* gives a touch more breathing room */
+}
