@@ -1,0 +1,20 @@
+[
+  {
+    "id": "hotel-ribeira",
+    "name": "Boutique Hotel Ribeira",
+    "area": "Ribeira",
+    "thumb": "assets/sample/hotel1.jpg",
+    "pricePerNight": 112,
+    "currency": "€",
+    "affiliateUrl": "https://example.com/book?checkin={CHECKIN}&checkout={CHECKOUT}&adults={ADULTS}"
+  },
+  {
+    "id": "hotel-aliados",
+    "name": "Aliados City Stay",
+    "area": "Aliados",
+    "thumb": "assets/sample/hotel2.jpg",
+    "pricePerNight": 89,
+    "currency": "€",
+    "affiliateUrl": "https://example.com/book?checkin={CHECKIN}&checkout={CHECKOUT}&adults={ADULTS}"
+  }
+]
