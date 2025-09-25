@@ -186,7 +186,7 @@ a {
 .search-pill select{ width:12ch; }
 
 /* wider date fields so year fully visible */
-#date-start, #date-end{ width:14.5ch; }
+#date-start, #date-end{ width:16ch; }
 
 #adults, #children{ width:6ch; }
 
@@ -523,7 +523,7 @@ footer {
 /* Trim just a touch of width from inputs/selects */
 #location{ width: 16ch; }       /* was 17ch */
 .search-pill select{ width: 12ch; }/* Language/Duration */
-#date-start, #date-end{ width: 14.5ch; }  /* was 15ch (or 13.5 earlier) */
+#date-start, #date-end{ width: 16ch; }  /* was 15ch (or 13.5 earlier) */
 #adults, #children{ width: 6ch; } /* was 6–7ch */
 
 /* Keep button locked on the first row */
