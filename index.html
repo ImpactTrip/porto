@@ -34,6 +34,11 @@
     <img class="brand-logo" src="assets/logoh.png" alt="ImpactTrip" />
   </div>
 
+  <!-- Tagline ABOVE the pill -->
+  <p class="pill-tagline">
+    ImpactTrip connects visitors to local volunteer projects — environment, education, culture, and social aid.
+  </p>
+
   <!-- Pilot filters -->
   <form class="search-pill" id="pilot-form" autocomplete="off">
 
@@ -60,32 +65,29 @@
 
     <span class="pill-dot">•</span>
 
-<div class="field">
-  <label for="language"><span class="lbl">Language</span></label>
-  <select id="language" name="language" aria-label="Language">
-    <option value="Any" selected>Any</option>
-    <option value="PT">PT</option>
-    <option value="EN">EN</option>
-    <option value="ES">ES</option>
-    <option value="FR">FR</option>
-  </select>
-</div>
+    <div class="field">
+      <label for="language"><span class="lbl">Language</span></label>
+      <select id="language" name="language" aria-label="Language">
+        <option value="Any" selected>Any</option>
+        <option value="PT">PT</option>
+        <option value="EN">EN</option>
+        <option value="ES">ES</option>
+        <option value="FR">FR</option>
+      </select>
+    </div>
 
-<div class="field">
-  <label for="duration"><span class="lbl">Duration</span></label>
-  <select id="duration" name="duration" aria-label="Duration">
-    <option value="any" selected>Any</option>
-    <option value="1h">1h</option>
-    <option value="2–3h">2–3h</option>
-    <option value="half">Half day</option>
-    <option value="full">Full day</option>
-  </select>
-</div>
+    <div class="field">
+      <label for="duration"><span class="lbl">Duration</span></label>
+      <select id="duration" name="duration" aria-label="Duration">
+        <option value="any" selected>Any</option>
+        <option value="1h">1h</option>
+        <option value="2–3h">2–3h</option>
+        <option value="half">Half day</option>
+        <option value="full">Full day</option>
+      </select>
+    </div>
 
-<span class="pill-dot">•</span>
-
-
-
+    <span class="pill-dot">•</span>
 
     <div class="field field-narrow">
       <label for="adults"><span class="lbl">Adults</span></label>
@@ -97,9 +99,6 @@
       <input type="number" id="children" name="children" min="0" max="10" step="1" value="0" inputmode="numeric" autocomplete="off">
     </div>
 
-   
-
-
     <!-- Children ages appear below -->
     <div class="child-ages" id="children-ages" aria-live="polite"></div>
 
@@ -110,12 +109,7 @@
     </button>
 
   </form>
-  <p class="pill-tagline">
-  ImpactTrip connects visitors to local volunteer projects — environment, education, culture, and social aid.
-</p>
 </header>
-
-
 
 
 <section class="hero">
@@ -215,26 +209,3 @@
 </body>
 </html>
 
-/* ---- Pill: keep everything on one line (desktop) ---- */
-.site-header .search-pill{
-  max-width: 1200px;              /* was 980px */
-}
-
-/* Slightly tighter horizontal spacing */
-.search-pill{
-  gap: 8px 8px;                   /* was 8px 10px */
-}
-
-/* Trim just a touch of width from inputs/selects */
-#location{ width: 16.5ch; }       /* was 17ch */
-.search-pill select{ width: 13ch; }/* Language/Duration */
-#date-start, #date-end{ width: 14.5ch; }  /* was 15ch (or 13.5 earlier) */
-#adults, #children{ width: 6ch; } /* was 6–7ch */
-
-/* Keep button locked on the first row */
-.pill-action{ order: 10; flex: 0 0 auto; }
-
-/* Safety: on narrower screens, allow wrapping again gracefully */
-@media (max-width: 1000px){
-  .site-header .search-pill{ max-width: none; }
-}
