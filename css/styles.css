@@ -129,7 +129,7 @@ a {
   display: flex;
   align-items: center;         /* alinhar tudo no centro da 1ª linha */
   justify-content: center;
-  gap: 10px 14px;
+  gap: 8px 10px;              /* mais compacto → cabe tudo */
   flex-wrap: wrap;
   padding: 12px 16px;
   border: none;               /* no border */
@@ -146,14 +146,15 @@ a {
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:8px;
-  flex: 0 0 auto;              /* não crescer/encolher → evita quebra */
+  gap:14px;                   /* mais espaço entre label e input */
+  flex: 0 0 auto;             /* não crescer/encolher → evita quebra */
 }
 .search-pill .lbl{
   font-size:.78rem;
   color:var(--muted);
   line-height:1;
   text-align:center;
+  letter-spacing: .2px;
 }
 
 .pill-dot, .date-sep{
@@ -179,15 +180,15 @@ a {
 .search-pill select{ width:14ch; }
 
 /* wider date fields so year fully visible */
-#date-start, #date-end{ width:14ch; }
+#date-start, #date-end{ width:13.5ch; }
 
-#adults, #children{ width:7ch; }
+#adults, #children{ width:6ch; }
 
 /* Location precisa de mais largura para não truncar "Porto, Portugal" */
- #location { width: 19ch; white-space: nowrap; }
- @media (max-width: 640px){
-   #location { width: 16ch; }               /* mobile um pouco mais compacto */
- }
+#location { width: 17ch; white-space: nowrap; }
+@media (max-width: 640px){
+  #location { width: 15ch; }
+}
 
 /* Children ages always below, children box stays inline */
 .child-ages{
@@ -221,6 +222,7 @@ a {
   align-self:center;
   flex:0 0 auto;
   order:10;                   /* antes do bloco das idades (que é 20) */
+  margin-left:4px;
 }
 .pill-action:hover{ filter:brightness(.95); }
 
@@ -230,7 +232,7 @@ a {
 }
 @media (max-width: 640px){
   .search-pill{ padding:8px 10px; gap:10px 12px; }
-  #date-start, #date-end{ width:14ch; }
+  #date-start, #date-end{ width:12.5ch; }
 }
 
 /* ===========================
@@ -350,54 +352,42 @@ footer {
 
 
 /* ——— Tweaks: date width, button alignment, centered ages ——— */
-
-/* Slightly shorter date inputs (still readable year) */
 #date-start,
-#date-end { width: 14ch; }
-
+#date-end { width: 13.5ch; }
 @media (max-width: 640px){
   #date-start,
   #date-end { width: 12.5ch; }
 }
 
-/* Keep the search button in the first row, vertically centered */
 .pill-action{
-  order: 10;            /* before the ages block */
-  align-self: center;   /* center on cross-axis */
-  flex: 0 0 auto;       /* don't shrink or wrap */
+  order: 10;
+  align-self: center;
+  flex: 0 0 auto;
 }
 
-/* Ages always on the second row and centered */
 .child-ages{
-  order: 20;                  /* always after the button */
-  flex-basis: 100%;           /* force new line */
-  justify-content: center;    /* center horizontally */
+  order: 20;
+  flex-basis: 100%;
+  justify-content: center;
 }
-.child-ages .age-field input{ width: 7ch; }  /* compact */
-
-/* Label → input spacing a touch larger + crisper label text */
-.search-pill label{ gap: 12px; }        /* was 6px */
-.search-pill .lbl{ letter-spacing: .2px; }
+.child-ages .age-field input{ width: 7ch; }
 
 @media (max-width: 900px){
   .search-pill{ gap: 10px 14px; }
 }
 
-/* Stack brand above the pill (centered). 
-   NOTE: we DO NOT override logo height here to avoid conflicts. */
+/* Stack brand above the pill (centered). */
 .site-header.stacked{
   flex-direction: column;
   align-items: center;
   gap: 12px;
 }
 
-/* Only widen the pill when header is stacked */
 .site-header.stacked .search-pill{ 
   max-width: 980px; 
 }
 
-/* Optional theme: if you add class 'header-borderless' on <header>,
-   soften the ring even further. Safe to keep; no effect unless used. */
+/* Optional theme: borderless header */
 .header-borderless .search-pill{
   border-color: transparent;
   box-shadow: 0 8px 24px rgba(0,0,0,.06);
@@ -452,32 +442,6 @@ footer {
 .hotel-card .price{ color:#111; }
 .hotel-card .book{ font-size:.85rem; color:#fff; background:var(--brand-green); border:0; border-radius:8px; padding:6px 10px; cursor:pointer; }
 
-
 /* selects do pill */
-#language { width: 14ch; }   /* cabe "Portuguese" no futuro se precisares */
+#language { width: 14ch; }
 #duration { width: 14ch; }
-
-/* Ajustes Pill — alinhamento e espaçamento */
-.search-pill {
-  gap: 8px 10px;           /* menos espaço horizontal → cabe tudo */
-}
-
-.search-pill label {
-  gap: 14px;               /* mais espaço entre label e input */
-}
-
-#location {
-  width: 17ch;             /* suficiente para "Porto, Portugal" sem quebrar */
-  white-space: nowrap;
-}
-
-#adults,
-#children {
-  width: 6ch;              /* um pouco mais curtos, libertam espaço */
-}
-
-.pill-action {
-  flex: 0 0 auto;
-  order: 10;
-  margin-left: 4px;        /* encosta melhor ao Children */
-}
