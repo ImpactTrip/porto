@@ -451,3 +451,38 @@ footer {
   line-height: 1.25;                /* was 1 */
   padding-bottom: 2px;              /* gives a touch more breathing room */
 }
+
+/* ===== Hero typography & underline ===== */
+.hero { 
+  padding: var(--space-xl) 20px var(--space-lg);
+}
+
+.hero-headline{
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-size: clamp(28px, 3.2vw, 42px); /* responsive without jumping */
+  color: var(--text);
+}
+
+.hero-underline{
+  height: 3px;
+  width: 140px;
+  margin: 10px 0 18px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-green) 100%);
+  opacity: .75;
+}
+
+.hero-subhead{
+  margin: 0;
+  max-width: 68ch;             /* optimal reading width */
+  line-height: 1.6;
+  font-size: clamp(16px, 1.5vw, 18px);
+  color: var(--muted);          /* softer, more elegant */
+}
+
+/* tighten vertical gap between pill and hero on large screens */
+@media (min-width: 1000px){
+  .hero { padding-top: 28px; }  /* was var(--space-xl); slightly tighter */
+}
