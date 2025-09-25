@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = {
     header: new HeaderController(),
     pilotForm: new PilotFormController(),
-    opportunities: new OpportunitiesRenderer()
   };
   app.opportunities.render();
   window.app = app; // optional for debugging
