@@ -183,6 +183,12 @@ a {
 
 #adults, #children{ width:7ch; }
 
+/* Location precisa de mais largura para não truncar "Porto, Portugal" */
+ #location { width: 19ch; white-space: nowrap; }
+ @media (max-width: 640px){
+   #location { width: 16ch; }               /* mobile um pouco mais compacto */
+ }
+
 /* Children ages always below, children box stays inline */
 .child-ages{
   flex-basis:100%;
@@ -370,7 +376,7 @@ footer {
 .child-ages .age-field input{ width: 7ch; }  /* compact */
 
 /* Label → input spacing a touch larger + crisper label text */
-.search-pill label{ gap: 8px; }        /* was 6px */
+.search-pill label{ gap: 12px; }        /* was 6px */
 .search-pill .lbl{ letter-spacing: .2px; }
 
 @media (max-width: 900px){
