@@ -342,7 +342,7 @@ footer {
 
 /* ——— Tweaks: date width, button alignment, centered ages ——— */
 
-/* Slightly shorter date inputs */
+/* Slightly shorter date inputs (still readable year) */
 #date-start,
 #date-end { width: 16ch; }
 
@@ -351,22 +351,22 @@ footer {
   #date-end { width: 13ch; }
 }
 
-/* Keep the search button in the first row, centered on the cross-axis */
+/* Keep the search button in the first row, vertically centered */
 .pill-action{
   order: 10;            /* before the ages block */
-  align-self: center;   /* vertically center relative to top row */
-  flex: 0 0 auto;       /* don't let it shrink or wrap */
+  align-self: center;   /* center on cross-axis */
+  flex: 0 0 auto;       /* don't shrink or wrap */
 }
 
 /* Ages always on the second row and centered */
 .child-ages{
   order: 20;                  /* always after the button */
   flex-basis: 100%;           /* force new line */
-  justify-content: center;    /* center the age fields horizontally */
+  justify-content: center;    /* center horizontally */
 }
-.child-ages .age-field input{ width: 7ch; }  /* keep compact */
+.child-ages .age-field input{ width: 7ch; }  /* compact */
 
-/* label → input spacing a touch larger + crisper label text */
+/* Label → input spacing a touch larger + crisper label text */
 .search-pill label{ gap: 8px; }        /* was 6px */
 .search-pill .lbl{ letter-spacing: .2px; }
 
@@ -374,16 +374,21 @@ footer {
   .search-pill{ gap: 10px 14px; }
 }
 
-/* stack brand above the pill */
+/* Stack brand above the pill (centered). 
+   NOTE: we DO NOT override logo height here to avoid conflicts. */
 .site-header.stacked{
   flex-direction: column;
   align-items: center;
   gap: 12px;
 }
-.site-header.stacked .brand img{ height: 56px; }  /* slightly smaller when stacked */
-.search-pill{ max-width: 980px; }                 /* a bit wider looks great here */
 
-/* soften/removes the blue ring so logo is the hero */
+/* Only widen the pill when header is stacked */
+.site-header.stacked .search-pill{ 
+  max-width: 980px; 
+}
+
+/* Optional theme: if you add class 'header-borderless' on <header>,
+   soften the ring even further. Safe to keep; no effect unless used. */
 .header-borderless .search-pill{
   border-color: transparent;
   box-shadow: 0 8px 24px rgba(0,0,0,.06);
