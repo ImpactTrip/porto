@@ -127,9 +127,9 @@ a {
   max-width: 980px;           /* a bit wider */
   margin: 0;
   display: flex;
-  align-items: center;
+  align-items: center;         /* alinhar tudo no centro da 1ª linha */
   justify-content: center;
-  gap: 12px 18px;
+  gap: 10px 14px;
   flex-wrap: wrap;
   padding: 12px 16px;
   border: none;               /* no border */
@@ -147,6 +147,7 @@ a {
   flex-direction:column;
   align-items:center;
   gap:8px;
+  flex: 0 0 auto;              /* não crescer/encolher → evita quebra */
 }
 .search-pill .lbl{
   font-size:.78rem;
@@ -159,6 +160,7 @@ a {
   color:#a3a3a3;
   user-select:none;
   align-self:center;
+  flex: 0 0 auto;  
 }
 
 /* Inputs / selects */
@@ -179,7 +181,7 @@ a {
 /* wider date fields so year fully visible */
 #date-start, #date-end{ width:14ch; }
 
-#adults, #children{ width:8ch; }
+#adults, #children{ width:7ch; }
 
 /* Children ages always below, children box stays inline */
 .child-ages{
@@ -212,6 +214,7 @@ a {
   transition:filter .15s ease;
   align-self:center;
   flex:0 0 auto;
+  order:10;                   /* antes do bloco das idades (que é 20) */
 }
 .pill-action:hover{ filter:brightness(.95); }
 
@@ -344,11 +347,11 @@ footer {
 
 /* Slightly shorter date inputs (still readable year) */
 #date-start,
-#date-end { width: 16ch; }
+#date-end { width: 14ch; }
 
 @media (max-width: 640px){
   #date-start,
-  #date-end { width: 13ch; }
+  #date-end { width: 12.5ch; }
 }
 
 /* Keep the search button in the first row, vertically centered */
