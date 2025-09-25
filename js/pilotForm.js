@@ -88,8 +88,8 @@ onSubmit(e){
   console.log('Filters applied:', final);
   this.form.dispatchEvent(new CustomEvent('filtersApplied', { detail: final }));
   document.dispatchEvent(new CustomEvent('filtersChanged', { detail: {} }));
-
 }
+
 
   persist(){
     return this.state.save({
