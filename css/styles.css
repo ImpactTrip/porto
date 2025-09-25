@@ -146,7 +146,7 @@ a {
   display:flex;
   flex-direction:column;
   align-items:center;
-  gap:6px;
+  gap:8px;
 }
 .search-pill .lbl{
   font-size:.78rem;
@@ -442,3 +442,8 @@ footer {
 .hotel-card .name{ font-weight:600; }
 .hotel-card .price{ color:#111; }
 .hotel-card .book{ font-size:.85rem; color:#fff; background:var(--brand-green); border:0; border-radius:8px; padding:6px 10px; cursor:pointer; }
+
+
+/* selects do pill */
+#language { width: 14ch; }   /* cabe "Portuguese" no futuro se precisares */
+#duration { width: 14ch; }
