@@ -180,7 +180,7 @@ a {
 .search-pill select{ width:14ch; }
 
 /* wider date fields so year fully visible */
-#date-start, #date-end{ width:14ch; }
+#date-start, #date-end{ width:14.5ch; }
 
 #adults, #children{ width:6ch; }
 
