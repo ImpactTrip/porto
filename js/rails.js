@@ -5,12 +5,13 @@ import { utils } from './utils.js';
 let DATA = [];
 
 function passFilters(op){
-  // language
-  if (!FILTERS.languages.has('Any')){
-    const ok = op.languages?.some(l => FILTERS.languages.has(l));
-    if (!ok) return false;
+  // language (string)
+  if (FILTERS.language !== 'Any') {
+    const langs = op.languages || [];
+    if (!langs.includes(FILTERS.language)) return false;
   }
-  // duration
+
+  // duration (igual ao que já tinhas)
   if (FILTERS.duration !== 'any'){
     const d = String(op.duration||'').toLowerCase();
     const want = FILTERS.duration;
