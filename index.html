@@ -24,74 +24,63 @@
 </head>
 <body>
 
-<!-- Header -->
+<!-- ===========================
+     Header
+     =========================== -->
 <header class="site-header stacked">
-  <!-- Left: Brand (no link) -->
+  <!-- Brand -->
   <div class="brand">
     <img class="brand-logo" src="assets/logoh.png" alt="ImpactTrip" />
   </div>
 
-  <!-- Center: Pilot filters -->
+  <!-- Pilot filters -->
   <form class="search-pill" id="pilot-form" autocomplete="off">
-  <div class="field">
-    <label for="location"><span class="lbl">Location</span></label>
-    <select id="location" name="location" aria-label="Location">
-      <option value="Porto, Portugal">Porto, Portugal</option>
-    </select>
-  </div>
 
-  <span class="pill-dot">•</span>
+    <div class="field">
+      <label for="location"><span class="lbl">Location</span></label>
+      <select id="location" name="location" aria-label="Location">
+        <option value="Porto, Portugal">Porto, Portugal</option>
+      </select>
+    </div>
 
-  <div class="field">
-    <label for="date-start"><span class="lbl">From</span></label>
-    <input type="date" id="date-start" name="date-start" required autocomplete="off">
-  </div>
+    <span class="pill-dot">•</span>
 
-  <span class="date-sep">–</span>
+    <div class="field">
+      <label for="date-start"><span class="lbl">From</span></label>
+      <input type="date" id="date-start" name="date-start" required autocomplete="off">
+    </div>
 
-  <div class="field">
-    <label for="date-end"><span class="lbl">To</span></label>
-    <input type="date" id="date-end" name="date-end" required autocomplete="off">
-  </div>
+    <span class="date-sep">–</span>
 
-  <span class="pill-dot">•</span>
+    <div class="field">
+      <label for="date-end"><span class="lbl">To</span></label>
+      <input type="date" id="date-end" name="date-end" required autocomplete="off">
+    </div>
 
-  <div class="field field-narrow">
-    <label for="adults"><span class="lbl">Adults</span></label>
-    <input type="number" id="adults" name="adults" min="1" step="1" value="1" inputmode="numeric" autocomplete="off">
-  </div>
+    <span class="pill-dot">•</span>
 
-  <div class="field field-narrow">
-    <label for="children"><span class="lbl">Children</span></label>
-    <input type="number" id="children" name="children" min="0" max="10" step="1" value="0" inputmode="numeric" autocomplete="off">
-  </div>
+    <div class="field field-narrow">
+      <label for="adults"><span class="lbl">Adults</span></label>
+      <input type="number" id="adults" name="adults" min="1" step="1" value="1" inputmode="numeric" autocomplete="off">
+    </div>
 
-  <!-- Children ages occupy a new row under the fields -->
-  <div class="child-ages" id="children-ages" aria-live="polite"></div>
+    <div class="field field-narrow">
+      <label for="children"><span class="lbl">Children</span></label>
+      <input type="number" id="children" name="children" min="0" max="10" step="1" value="0" inputmode="numeric" autocomplete="off">
+    </div>
 
-  <button class="pill-action" type="submit" id="btn-search" aria-label="Apply filters">
-    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-      <path d="M15.8 14.4l4.6 4.6-1.4 1.4-4.6-4.6a7 7 0 1 1 1.4-1.4zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="currentColor"/>
-    </svg>
-  </button>
-</form>
+    <!-- Children ages appear below -->
+    <div class="child-ages" id="children-ages" aria-live="polite"></div>
 
-
-
-  <!-- Right: Actions -->
-  <nav class="header-actions" aria-label="Header actions">
-    <a class="link-muted" href="#for-hotels">Partner with us</a>
-    <button class="icon-btn" type="button" aria-label="Language & currency">
-      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-        <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm0 2c2.1 0 3.9 1.7 3.9 3.9H8.1C8.1 5.7 9.9 4 12 4zm0 16c-2.1 0-3.9-1.7-3.9-3.9h7.8c0 2.2-1.8 3.9-3.9 3.9zM4 12c0-.7.1-1.4.4-2h15.2c.3.6.4 1.3.4 2s-.1 1.4-.4 2H4.4c-.3-.6-.4-1.3-.4-2z" fill="currentColor"/>
+    <button class="pill-action" type="submit" id="btn-search" aria-label="Apply filters">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+        <path d="M15.8 14.4l4.6 4.6-1.4 1.4-4.6-4.6a7 7 0 1 1 1.4-1.4zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="currentColor"/>
       </svg>
     </button>
-    <button class="menu-btn" type="button" aria-haspopup="menu" aria-expanded="false">
-      <span class="menu-icon">≡</span>
-      <span class="avatar-circle"></span>
-    </button>
-  </nav>
+
+  </form>
 </header>
+
 
 
 
