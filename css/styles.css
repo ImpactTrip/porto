@@ -456,3 +456,28 @@ footer {
 /* selects do pill */
 #language { width: 14ch; }   /* cabe "Portuguese" no futuro se precisares */
 #duration { width: 14ch; }
+
+/* Ajustes Pill — alinhamento e espaçamento */
+.search-pill {
+  gap: 8px 10px;           /* menos espaço horizontal → cabe tudo */
+}
+
+.search-pill label {
+  gap: 14px;               /* mais espaço entre label e input */
+}
+
+#location {
+  width: 17ch;             /* suficiente para "Porto, Portugal" sem quebrar */
+  white-space: nowrap;
+}
+
+#adults,
+#children {
+  width: 6ch;              /* um pouco mais curtos, libertam espaço */
+}
+
+.pill-action {
+  flex: 0 0 auto;
+  order: 10;
+  margin-left: 4px;        /* encosta melhor ao Children */
+}
