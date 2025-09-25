@@ -494,3 +494,13 @@ footer {
 @media (min-width: 1000px){
   .hero { padding-top: 28px; }  /* slightly tighter */
 }
+
+/* ===== Pill tagline under the search bar ===== */
+.pill-tagline {
+  margin: 6px 0 0;             /* pequeno espaço do pill */
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--muted);         /* cor suave */
+  text-align: center;          /* alinhado ao centro do pill */
+  max-width: 820px;            /* não ficar demasiado largo */
+}
