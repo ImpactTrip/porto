@@ -69,6 +69,32 @@
       <input type="number" id="children" name="children" min="0" max="10" step="1" value="0" inputmode="numeric" autocomplete="off">
     </div>
 
+    <!-- Filters: Language (multi) & Duration (single) -->
+<div class="pill-filters" id="extra-filters">
+  <div class="chips-group" aria-label="Language">
+    <span class="chips-label">Language</span>
+    <div class="chips" id="chips-lang" role="group" aria-label="Language chips">
+      <button type="button" data-lang="Any" class="chip is-active">Any</button>
+      <button type="button" data-lang="PT"  class="chip">PT</button>
+      <button type="button" data-lang="EN"  class="chip">EN</button>
+      <button type="button" data-lang="ES"  class="chip">ES</button>
+      <button type="button" data-lang="FR"  class="chip">FR</button>
+    </div>
+  </div>
+
+  <div class="chips-group" aria-label="Duration">
+    <span class="chips-label">Duration</span>
+    <div class="chips chips-single" id="chips-duration" role="radiogroup" aria-label="Duration">
+      <button type="button" data-duration="any"  class="chip is-active" aria-checked="true">Any</button>
+      <button type="button" data-duration="1h"   class="chip">1h</button>
+      <button type="button" data-duration="2–3h" class="chip">2–3h</button>
+      <button type="button" data-duration="half" class="chip">Half day</button>
+      <button type="button" data-duration="full" class="chip">Full day</button>
+    </div>
+  </div>
+</div>
+
+
     <!-- Children ages appear below -->
     <div class="child-ages" id="children-ages" aria-live="polite"></div>
 
@@ -87,6 +113,66 @@
 <section class="hero">
   <h1>Make your trip matter.</h1>
   <p>ImpactTrip connects visitors to local volunteer projects — environment, education, culture, and social aid.</p>
+  <main class="home">
+  <div class="home-wrap container-two">
+    <!-- Left: Section rails -->
+    <div class="home-main">
+      <section class="section" id="sec-nature">
+        <div class="section-head">
+          <h2>Nature &amp; Environment</h2>
+          <button class="rail-next" data-target="rail-nature" aria-label="Next">➜</button>
+        </div>
+        <div class="rail" id="rail-nature"></div>
+        <div class="section-sep"></div>
+      </section>
+
+      <section class="section" id="sec-social">
+        <div class="section-head">
+          <h2>Social Causes &amp; Community Support</h2>
+          <button class="rail-next" data-target="rail-social" aria-label="Next">➜</button>
+        </div>
+        <div class="rail" id="rail-social"></div>
+        <div class="section-sep"></div>
+      </section>
+
+      <section class="section" id="sec-culture">
+        <div class="section-head">
+          <h2>Culture &amp; Education</h2>
+          <button class="rail-next" data-target="rail-culture" aria-label="Next">➜</button>
+        </div>
+        <div class="rail" id="rail-culture"></div>
+        <div class="section-sep"></div>
+      </section>
+
+      <section class="section" id="sec-events">
+        <div class="section-head">
+          <h2>Events &amp; Experiences</h2>
+          <button class="rail-next" data-target="rail-events" aria-label="Next">➜</button>
+        </div>
+        <div class="rail" id="rail-events"></div>
+        <div class="section-sep"></div>
+      </section>
+
+      <section class="section" id="sec-crowd">
+        <div class="section-head">
+          <h2>Crowdfunding &amp; Campaigns</h2>
+          <button class="rail-next" data-target="rail-crowd" aria-label="Next">➜</button>
+        </div>
+        <div class="rail" id="rail-crowd"></div>
+      </section>
+    </div>
+
+    <!-- Right: Hotels monetization -->
+    <aside class="home-aside" id="hotels-aside">
+      <div class="aside-head">
+        <h3>Where to stay</h3>
+        <div class="aside-dates" id="hotels-dates">Select dates</div>
+      </div>
+      <div class="hotels-rail" id="rail-hotels"></div>
+    </aside>
+  </div>
+</main>
+
   <p><a class="btn" href="#opportunities">Browse Volunteer Opportunities</a></p>
   <p class="muted">Pilot: Porto, Portugal</p>
 </section>
@@ -113,6 +199,11 @@
 </footer>
 
 <!-- Site scripts -->
-<script type="module" src="js/main.js"></script>
+<script type="module">
+  import './js/main.js';
+  import './js/filters.js';
+  import './js/rails.js';
+  import './js/hotels.js';
+</script>
 </body>
 </html>
