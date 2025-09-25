@@ -133,7 +133,7 @@ a{ color: inherit; }
 #adults, #children{ width:6ch; }
 
 /* Ages (second row only when visible) */
-.child-ages{ flex-basis:100%; display:flex; flex-wrap:wrap; gap:8px 10px; align-items:flex-end; margin-top:6px; order:20; }
+.child-ages{ flex-basis:100%; display:flex; flex-wrap:wrap; gap:8px 10px; align-items:center; margin-top:6px; order:20; }
 .child-ages .age-field{ display:flex; flex-direction:column; align-items:center; gap:4px; }
 .child-ages .age-field input{ width:7ch; }
 
