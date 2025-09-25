@@ -28,7 +28,7 @@ function cardHTML(op){
   const tags = (op.tags||[]).map(t=>`<span class="tag">${utils.escapeHtml(t)}</span>`).join('');
   return `
     <article class="card-op">
-      <img src="${img}" alt="">
+      <img src="${img}" alt="" loading="lazy">
       <div class="body">
         <h3>${utils.escapeHtml(op.title)}</h3>
         <div class="meta">${utils.escapeHtml(op.org || '')} · ${utils.escapeHtml(op.duration || '')}</div>
