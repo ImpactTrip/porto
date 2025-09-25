@@ -1,6 +1,5 @@
 import { HeaderController } from './header.js';
 import { PilotFormController } from './pilotForm.js';
-import { OpportunitiesRenderer } from './opportunities.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = {
