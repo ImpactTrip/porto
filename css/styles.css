@@ -533,3 +533,23 @@ footer {
 @media (max-width: 1000px){
   .site-header .search-pill{ max-width: none; }
 }
+
+/* ——— Pill final tweaks ——— */
+
+/* Make Language & Duration narrower */
+#language,
+#duration { width: 12ch; }     /* was ~13–14ch */
+
+/* Make date inputs a bit wider so the last year digit fits */
+#date-start,
+#date-end { width: 15.5ch; }   /* +1ch vs previous */
+
+/* Keep Adults / Children compact */
+#adults,
+#children { width: 6ch; }
+
+/* Ensure the pill keeps one line at desktop */
+.site-header .search-pill { max-width: 1280px; }
+
+/* Tagline sits under the pill (you already moved it); give it some air */
+.pill-tagline { margin: 8px 0 0; font-size: 15px; line-height: 1.5; color: var(--muted); text-align: center; }
