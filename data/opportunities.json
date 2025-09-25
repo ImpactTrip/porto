@@ -1,16 +1,68 @@
 [
   {
-    "title": "Beach Clean-up – Foz do Douro",
-    "summary": "Help collect waste along the coastline and raise awareness among visitors.",
-    "category": "Environment",
-    "when": "Saturdays",
-    "duration": "2–3h"
+    "id": "beach-foz",
+    "section": "nature",
+    "title": "Beach & coastal litter – Foz do Douro",
+    "org": "Surfrider Porto",
+    "summary": "2–3h cleanups, sorting and mini litter audits that feed NGO datasets.",
+    "duration": "2–3h",
+    "languages": ["PT","EN"],
+    "image": "assets/sample/beach.jpg",
+    "tags": ["outdoor","family-friendly"]
   },
   {
-    "title": "English Conversations – Local Association",
-    "summary": "Join informal sessions to practice English with local youth.",
-    "category": "Education",
-    "when": "Weekdays (afternoons)",
-    "duration": "1–2h"
+    "id": "river-douro",
+    "section": "nature",
+    "title": "River Douro debris & riparian stress",
+    "org": "Visit Porto (with NGOs)",
+    "summary": "Microplastic tallies and photo-mapping problem spots.",
+    "duration": "2–3h",
+    "languages": ["PT","EN","ES"],
+    "image": "assets/sample/river.jpg",
+    "tags": ["outdoor"]
+  },
+  {
+    "id": "seniors-circles",
+    "section": "social",
+    "title": "Senior social sessions",
+    "org": "Community Center",
+    "summary": "60–90 min bingo, chair-yoga, tech help, music/story circles.",
+    "duration": "1h",
+    "languages": ["PT","EN"],
+    "image": "assets/sample/seniors.jpg",
+    "tags": ["indoor","low-intensity"]
+  },
+  {
+    "id": "azulejo-photo",
+    "section": "culture",
+    "title": "Azulejo heritage photo-surveys",
+    "org": "SOS Azulejo",
+    "summary": "1–2h self-guided routes to geo-tag and note condition.",
+    "duration": "2–3h",
+    "languages": ["Any"],
+    "image": "assets/sample/tiles.jpg",
+    "tags": ["self-guided","rainy-day"]
+  },
+  {
+    "id": "sao-joao-helpers",
+    "section": "events",
+    "title": "São João festival helpers",
+    "org": "Parish / NGO",
+    "summary": "Decor workshops, signage translation, cleanup; multilingual FOH.",
+    "duration": "half",
+    "languages": ["PT","EN","ES","FR"],
+    "image": "assets/sample/festival.jpg",
+    "tags": ["seasonal"]
+  },
+  {
+    "id": "urban-greening-microfund",
+    "section": "crowd",
+    "title": "Micro-donations for urban greening & benches",
+    "org": "Municipal Gardens",
+    "summary": "€5 add-on for trees/benches; visitors help care and share proof posts.",
+    "duration": "any",
+    "languages": ["Any"],
+    "image": "assets/sample/green.jpg",
+    "tags": ["crowdfunding"]
   }
 ]
