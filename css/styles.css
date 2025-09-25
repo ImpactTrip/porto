@@ -127,7 +127,7 @@ a {
   max-width: 980px;           /* a bit wider */
   margin: 0;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   gap: 12px 18px;
   flex-wrap: wrap;
@@ -174,10 +174,10 @@ a {
   transition:border-color .15s ease;
 }
 
-.search-pill select{ width:18ch; }
+.search-pill select{ width:14ch; }
 
 /* wider date fields so year fully visible */
-#date-start, #date-end{ width:18ch; }
+#date-start, #date-end{ width:14ch; }
 
 #adults, #children{ width:8ch; }
 
