@@ -46,4 +46,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const el = document.getElementById(id);
     el && el.addEventListener('change', render);
   });
+
+  document.addEventListener('filtersChanged', () => render());
 });
