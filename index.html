@@ -33,84 +33,78 @@
     <div class="brand">
       <img src="assets/logoh.png" alt="ImpactTrip">
     </div>
-    <form id="pilot-form" class="search-pill">…</form>
+
+    <!-- Pill form -->
+    <form id="pilot-form" class="search-pill" novalidate>
+      <div class="field">
+        <label for="location"><span class="lbl">Location</span></label>
+        <select id="location" name="location" aria-label="Location">
+          <option value="Porto, Portugal">Porto, Portugal</option>
+        </select>
+      </div>
+
+      <span class="pill-dot">•</span>
+
+      <div class="field">
+        <label for="date-start"><span class="lbl">From</span></label>
+        <input type="date" id="date-start" name="date-start" required autocomplete="off">
+      </div>
+
+      <span class="date-sep">–</span>
+
+      <div class="field">
+        <label for="date-end"><span class="lbl">To</span></label>
+        <input type="date" id="date-end" name="date-end" required autocomplete="off">
+      </div>
+
+      <span class="pill-dot">•</span>
+
+      <div class="field">
+        <label for="language"><span class="lbl">Language</span></label>
+        <select id="language" name="language" aria-label="Language">
+          <option value="Any" selected>Any</option>
+          <option value="PT">PT</option>
+          <option value="EN">EN</option>
+          <option value="ES">ES</option>
+          <option value="FR">FR</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="duration"><span class="lbl">Duration</span></label>
+        <select id="duration" name="duration" aria-label="Duration">
+          <option value="any" selected>Any</option>
+          <option value="1h">1h</option>
+          <option value="2–3h">2–3h</option>
+          <option value="half">Half day</option>
+          <option value="full">Full day</option>
+        </select>
+      </div>
+
+      <div class="field field-narrow">
+        <label for="adults"><span class="lbl">Adults</span></label>
+        <input type="number" id="adults" name="adults" min="1" step="1" value="1" inputmode="numeric" autocomplete="off">
+      </div>
+
+      <div class="field field-narrow">
+        <label for="children"><span class="lbl">Children</span></label>
+        <input type="number" id="children" name="children" min="0" max="10" step="1" value="0" inputmode="numeric" autocomplete="off">
+      </div>
+
+      <!-- Children ages -->
+      <div class="child-ages" id="children-ages" aria-live="polite"></div>
+
+      <button class="pill-action" type="submit" id="btn-search" aria-label="Apply filters">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+          <path d="M15.8 14.4l4.6 4.6-1.4 1.4-4.6-4.6a7 7 0 1 1 1.4-1.4zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="currentColor"/>
+        </svg>
+      </button>
+    </form>
   </div>
+
   <p class="pill-tagline">
     ImpactTrip connects visitors to local volunteer projects – environment, education, culture, and social aid.
   </p>
-</header>
-    <div class="field">
-      <label for="location"><span class="lbl">Location</span></label>
-      <select id="location" name="location" aria-label="Location">
-        <option value="Porto, Portugal">Porto, Portugal</option>
-      </select>
-    </div>
-
-    <span class="pill-dot">•</span>
-
-    <div class="field">
-      <label for="date-start"><span class="lbl">From</span></label>
-      <input type="date" id="date-start" name="date-start" required autocomplete="off">
-    </div>
-
-    <span class="date-sep">–</span>
-
-    <div class="field">
-      <label for="date-end"><span class="lbl">To</span></label>
-      <input type="date" id="date-end" name="date-end" required autocomplete="off">
-    </div>
-
-    <span class="pill-dot">•</span>
-
-<div class="field">
-  <label for="language"><span class="lbl">Language</span></label>
-  <select id="language" name="language" aria-label="Language">
-    <option value="Any" selected>Any</option>
-    <option value="PT">PT</option>
-    <option value="EN">EN</option>
-    <option value="ES">ES</option>
-    <option value="FR">FR</option>
-  </select>
-</div>
-
-<div class="field">
-  <label for="duration"><span class="lbl">Duration</span></label>
-  <select id="duration" name="duration" aria-label="Duration">
-    <option value="any" selected>Any</option>
-    <option value="1h">1h</option>
-    <option value="2–3h">2–3h</option>
-    <option value="half">Half day</option>
-    <option value="full">Full day</option>
-  </select>
-</div>
-
-
-    <div class="field field-narrow">
-      <label for="adults"><span class="lbl">Adults</span></label>
-      <input type="number" id="adults" name="adults" min="1" step="1" value="1" inputmode="numeric" autocomplete="off">
-    </div>
-
-    <div class="field field-narrow">
-      <label for="children"><span class="lbl">Children</span></label>
-      <input type="number" id="children" name="children" min="0" max="10" step="1" value="0" inputmode="numeric" autocomplete="off">
-    </div>
-
-   
-
-
-    <!-- Children ages appear below -->
-    <div class="child-ages" id="children-ages" aria-live="polite"></div>
-
-    <button class="pill-action" type="submit" id="btn-search" aria-label="Apply filters">
-      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-        <path d="M15.8 14.4l4.6 4.6-1.4 1.4-4.6-4.6a7 7 0 1 1 1.4-1.4zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="currentColor"/>
-      </svg>
-    </button>
-
-  </form>
-  <p class="pill-tagline">
-  ImpactTrip connects visitors to local volunteer projects - environment, education, culture, and social aid.
-</p>
 </header>
 
 
