@@ -319,18 +319,3 @@ footer{
   border-color: transparent;
 }
 .btn-primary:hover{ filter:brightness(.95); }
-
-/* Top gradient line only for the first section (Nature & Environment) */
-#sec-nature .section-head{
-  position: relative;
-  padding-top: 16px;   /* room for the line */
-}
-#sec-nature .section-head::before{
-  content:"";
-  position:absolute;
-  left:0; right:0; top:0;
-  height:2px;
-  background: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-green) 100%);
-  opacity:.6;
-  border-radius: 2px;
-}
