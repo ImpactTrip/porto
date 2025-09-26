@@ -130,6 +130,8 @@ a{ color: inherit; }
 .nav-list .spacer{ flex:1; }          /* pushes CTAs/auth to the right */
 .nav-list .auth{ display:flex; align-items:center; gap:6px; }
 
+.nav-list a:hover{ border-bottom:2px solid var(--brand-green); }
+
 /* Buttons in nav */
 .btn-outline{ background:#fff; color:var(--brand-blue); border-color:var(--brand-blue); }
 .btn-outline:hover{ filter:brightness(.97); }
