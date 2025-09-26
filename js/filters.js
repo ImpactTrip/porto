@@ -5,7 +5,9 @@ export const FILTERS = {
 };
 
 function emit() {
-  document.dispatchEvent(new CustomEvent('filtersChanged', { detail: { ...FILTERS } }));
+  document.dispatchEvent(
+    new CustomEvent('filtersChanged', { detail: { ...FILTERS } })
+  );
 }
 
 document.addEventListener('DOMContentLoaded', () => {
