@@ -194,44 +194,43 @@ a{ color: inherit; }
   right: 0;
   width: var(--aside-w);
 
-  /* Em vez de height fixa, usamos bottom para “parar” antes do footer */
-  bottom: var(--footer-gap);
+  /* vai SEMPRE até ao fundo da janela */
+  bottom: 0;
   overflow: auto;
 
-  /* Bordas: sem linha no topo e encostado à direita (sem borda direita) */
+  /* bordas: sem topo (não duplicar com header) e sem fundo (vai até bottom) */
   border-left: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);  /* a “linha de bottom” do aside */;
   border-top: 0;
   border-right: 0;
+  border-bottom: 0;
 
-  /* Cantos: sem arredondado no lado direito que encosta à janela */
+  /* cantos: encostado à direita = sem raio direito */
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
-  /* Se quiseres topo totalmente recto também à esquerda, deixa 0; senão, 12px: */
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 
   padding: 12px;
-  /* respiro para a scrollbar não tapar conteúdo */
-  padding-right: 14px;
+  padding-right: 14px;  /* respiro para a scrollbar */
 
   background:#fff;
   box-shadow: var(--shadow-sm);
-  z-index: 10; /* abaixo do header fixo */
+  z-index: 10; /* ficará por baixo do footer */
 }
+
 
 @media (max-width: 1100px){
   .home-aside{
     position: static;
     right: auto;
     width: auto;
-    height: auto;
+    bottom: auto;
     overflow: visible;
     border-right: 1px solid var(--border);
     border-radius: 12px;
   }
   .container-two{ padding-right: 20px; }
-  footer{ padding-right: 20px; }
+  footer{ padding-right: 20px; } /* opcional no mobile */
 }
 
 .aside-head{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:8px; }
@@ -259,13 +258,17 @@ a{ color: inherit; }
    Footer
    =========================== */
 footer{
+  position: relative;       /* cria contexto de empilhamento */
+  z-index: 30;              /* maior que o aside (10) */
+  background: #fff;         /* tapa o aside por baixo */
   border-top:1px solid var(--border);
   padding:16px 20px;
   margin-top:24px;
   font-size:14px;
   color:var(--muted);
-  /* evita que o texto do footer fique por baixo do aside fixo */
-  padding-right: calc(var(--aside-w) + var(--aside-gap));
+
+  /* já NÃO precisamos de afastar o footer do aside */
+  /* (se tinhas padding-right calc(...), remove) */
 }
 
 /* Generic buttons */
