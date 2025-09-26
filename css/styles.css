@@ -237,3 +237,62 @@ a{ color: inherit; }
    Footer
    =========================== */
 footer{ border-top:1px solid var(--border); padding:16px 20px; margin-top:24px; font-size:14px; color:var(--muted); }
+
+/* ——— Hotels aside: head in column + dates under title ——— */
+.home-aside .aside-head{
+  display: flex;
+  flex-direction: column;         /* empilha */
+  align-items: flex-start;        /* datas por baixo do título */
+  gap: 4px;
+  margin-bottom: 10px;
+}
+.home-aside .aside-head h3{
+  margin: 0;
+  font-size: 1rem;
+}
+.home-aside .aside-dates{
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+/* ——— Hotels list: crescer até ao footer ——— */
+.hotels-rail{
+  display: grid;
+  gap: 10px;
+  max-height: none;               /* <— deixa crescer */
+  overflow: visible;              /* <— sem “caixa de scroll” interna */
+  padding-right: 0;
+}
+
+/* “Advertising / Partner slot” card */
+.hotel-ad{
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  background: #fffdf8;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+.hotel-ad .ad-badge{
+  font-size: .75rem;
+  color: #fff;
+  background: var(--brand-orange);
+  border-radius: 999px;
+  padding: 2px 8px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.hotel-ad img{ width:88px; height:88px; object-fit:cover; border-radius: 8px; }
+.hotel-ad .body{ display:grid; gap:4px; }
+.hotel-ad .title{ font-weight:600; }
+.hotel-ad .cta a{
+  background: var(--brand-green);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  text-decoration: none;
+  font-size: .85rem;
+  display: inline-block;
+}
