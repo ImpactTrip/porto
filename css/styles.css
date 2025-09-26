@@ -93,11 +93,11 @@ a{ color: inherit; }
   width: 100%;
 }
 
-.brand img{ height: 72px; width: auto; display: block; }
+.brand img{ height: 100px; width: auto; display: block; }
 
 @media (max-width: 900px){
   .header-row{ flex-direction: column; gap: 14px; }
-  .brand img{ height: 100px; }
+  .brand img{ height: 60px; }
 }
 
 /* ===========================
