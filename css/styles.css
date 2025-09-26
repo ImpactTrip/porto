@@ -115,23 +115,36 @@ a{ color: inherit; }
 
 .search-pill:hover{ box-shadow: 0 10px 28px rgba(0,0,0,.08); }
 
-.search-pill label{ display:flex; flex-direction:column; align-items:center; gap:14px; flex:0 0 auto; }
+.search-pill label{
+  display:flex; flex-direction:column; align-items:center;
+  gap:14px; flex:0 0 auto;
+}
 .search-pill .lbl{ font-size:.78rem; color:var(--muted); line-height:1.25; text-align:center; letter-spacing:.2px; }
 
-/* Center separators + search button with inputs */
+/* Dots & dash separators */
 .pill-dot, .date-sep{
-  display:inline-flex; align-items:center; justify-content:center;
-  height:38px; line-height:1; margin:0 6px; color:#a3a3a3; user-select:none; flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:auto;
+  height:38px;          /* equal height */
+  margin:0 6px;
+  color:#a3a3a3;
+  user-select:none;
+  flex:0 0 auto;
 }
 
-/* Inputs / selects */
+/* Inputs / selects (equal height) */
 .search-pill input[type="date"],
 .search-pill input[type="number"],
 .search-pill select{
   border:1px solid var(--border);
   border-radius:10px;
-  padding:8px 10px;
-  font:inherit; background:#fff; outline:none;
+  padding:0 10px;       /* horizontal only */
+  height:38px;          /* unified height */
+  font:inherit;
+  background:#fff;
+  outline:none;
   transition:border-color .15s ease;
 }
 
@@ -141,32 +154,38 @@ a{ color: inherit; }
 #date-start, #date-end{ width:16ch; }
 #adults, #children{ width:6ch; }
 
-/* Children ages line (2nd row when present) */
-.child-ages{ flex-basis:100%; display:flex; flex-wrap:wrap; gap:8px 10px; align-items:flex-end; justify-content:center; margin-top:6px; order:20; }
+/* Children ages line */
+.child-ages{
+  flex-basis:100%;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 10px;
+  align-items:flex-end;
+  justify-content:center;
+  margin-top:6px;
+  order:20;
+}
 .child-ages .age-field{ display:flex; flex-direction:column; align-items:center; gap:4px; }
 .child-ages .age-field input{ width:7ch; }
 
 /* Search button */
 .pill-action{
-  border:0; border-radius:999px; background:var(--brand-green); color:#fff;
-  padding:10px 11px; height:38px;
-  display:inline-flex; align-items:center; justify-content:center;
-  cursor:pointer; transition:filter .15s ease;
-  align-self:center; flex:0 0 auto; order:10; margin-left:4px;
+  border:0;
+  border-radius:999px;
+  background:var(--brand-green);
+  color:#fff;
+  padding:0 16px;       /* only horizontal padding */
+  height:38px;          /* same height */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:filter .15s ease;
+  flex:0 0 auto;
+  order:10;
+  margin-left:4px;
 }
 .pill-action:hover{ filter:brightness(.95); }
-
-/* Tagline below pill */
-.pill-tagline{
-  margin:8px 0 0;
-  font-size:15px;
-  line-height:1.5;
-  color: var(--text);
-  text-align:center;        /* ensure centered */
-  max-width:820px;
-  margin-left:auto;         /* center horizontally */
-  margin-right:auto;        /* center horizontally */
-}
 
 
 /* ===========================
