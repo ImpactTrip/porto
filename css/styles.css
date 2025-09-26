@@ -274,7 +274,7 @@ a{ color: inherit; }
 @media (max-width: 1100px){
   .home-aside{
     position: static;
-    right: auto;
+    right: calc(var(--vw-scrollbar, 0px) + 6px); /* ← creates separation from the window scrollbar */
     width: auto;
     bottom: auto;
     overflow: visible;
