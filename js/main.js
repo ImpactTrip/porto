@@ -36,6 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
     root.style.setProperty('--vw-scrollbar', `${Math.max(0, w)}px`);
   };
 
+    // --- Mobile nav toggle ---
+  const btn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => menu.classList.toggle('is-open'));
+    // close on navigation click (optional)
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      menu.classList.remove('is-open');
+    }));
+  }
+
+  
   setScrollbarGap();
   window.addEventListener('resize', setScrollbarGap);
   window.addEventListener('orientationchange', setScrollbarGap);
