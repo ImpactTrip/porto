@@ -153,11 +153,13 @@ a{ color: inherit; }
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 20px;
-  display: grid;
-  grid-template-columns: minmax(0,1fr) 360px;
-  gap: 32px;
-  align-items: start;  /* important for sticky bounds */
+  display: block; /* antes era grid */
 }
+
+.container-two .main-content{ 
+  margin-right: 360px; /* 320 + 40px de espaçamento */
+}
+
 @media (max-width: 1100px){
   .container-two{ grid-template-columns: 1fr; gap: 28px; }
 }
@@ -184,14 +186,21 @@ a{ color: inherit; }
 /* ===========================
    Hotels Aside (sticky, flows with page)
    =========================== */
+
 .home-aside{
-  position: sticky;
-  top: var(--header-offset);
-  align-self: start;
-  border:1px solid var(--border); border-radius:12px;
-  padding:12px; background:#fff; box-shadow: var(--shadow-sm);
-  height: auto; overflow: visible;   /* no inner scroll */
+  position: fixed;
+  top: var(--header-offset);   /* já tens a variável, respeita header + pill */
+  right: 20px;                 /* distância da borda direita */
+  width: 320px;                /* largura fixa para caber ao lado do conteúdo */
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  background:#fff;
+  box-shadow: var(--shadow-sm);
+  height: auto;
+  overflow: visible;
 }
+
 .aside-head{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:8px; }
 .aside-head h3{ margin:0; font-size:1rem; }
 .aside-dates{ font-size:.9rem; color:var(--muted); }
