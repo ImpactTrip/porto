@@ -124,7 +124,7 @@ a{ color: inherit; }
   width:100%;
 }
 
-.nav-list li a.link{ text-decoration:none; color:var(--text); font-size:.95rem; }
+.nav-list li a{ text-decoration:none; color:var(--text); font-size:.95rem; }
 .nav-list li .sep{ color:var(--muted); margin:0 4px; }
 
 .nav-list .spacer{ flex:1; }          /* pushes CTAs/auth to the right */
@@ -297,7 +297,7 @@ a{ color: inherit; }
 .home-aside{
   position: fixed;
   top: var(--header-offset);
-  right: 0;
+  right: calc(var(--vw-scrollbar, 0px) + 6px); /* separation from window scrollbar */
   width: var(--aside-w);
 
   /* vai SEMPRE até ao fundo da janela */
@@ -328,7 +328,7 @@ a{ color: inherit; }
 @media (max-width: 1100px){
   .home-aside{
     position: static;
-    right: calc(var(--vw-scrollbar, 0px) + 6px); /* ← creates separation from the window scrollbar */
+    right: auto;
     width: auto;
     bottom: auto;
     overflow: visible;
