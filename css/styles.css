@@ -217,3 +217,19 @@ a{ color: inherit; }
    Footer
    =========================== */
 footer{ border-top:1px solid var(--border); padding:16px 20px; margin-top:24px; font-size:14px; color:var(--muted); }
+
+/* Generic buttons */
+.btn{
+  display:inline-block;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:8px 12px;
+  text-decoration:none;
+  font-size:.9rem;
+}
+.btn-primary{
+  background: var(--brand-green);
+  color:#fff;
+  border-color: transparent;
+}
+.btn-primary:hover{ filter:brightness(.95); }
