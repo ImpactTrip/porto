@@ -600,3 +600,14 @@ footer {
   align-items: center;
   justify-content: center;
 }
+
+/* Ensure the grid rows don't stretch in ways that limit sticky */
+.container-two{
+  align-items: start;     /* each column sizes to its content */
+}
+
+/* Sticky aside offset tuned to your header */
+.home-aside{
+  position: sticky;
+  top: 64px;              /* was 88px — gives more runway while scrolling */
+}
