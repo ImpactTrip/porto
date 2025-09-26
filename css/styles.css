@@ -611,3 +611,73 @@ footer {
   position: sticky;
   top: 64px;              /* was 88px — gives more runway while scrolling */
 }
+
+/* ===== Fixed-right Hotels aside (split view) ===== */
+:root{
+  --aside-w: 380px;           /* width of the fixed hotels column */
+  --gutter: 32px;             /* gap between content and aside */
+  --header-offset: 120px;     /* distance from top (match your header+pill) */
+}
+
+/* Turn the page into a split layout */
+.container-two{
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: block;             /* stop using grid; we'll overlay the aside */
+}
+
+/* Content column gets right margin so it never sits under the aside */
+.home-main{
+  margin-right: calc(var(--aside-w) + var(--gutter));
+}
+
+/* Lock the hotels aside to the right; give it its own scroll */
+.home-aside{
+  position: fixed;
+  z-index: 40;
+  right: 20px;
+  top: var(--header-offset);
+  width: var(--aside-w);
+  height: calc(100vh - var(--header-offset) - 20px);
+  overflow: auto;             /* its own scroll */
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  padding: 12px;
+}
+
+/* Head: title on one line, dates below (you already have this) */
+.home-aside .aside-head{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+/* Hotels list (no internal caps; the aside itself scrolls) */
+.hotels-rail{
+  display: grid;
+  gap: 10px;
+  max-height: none !important;
+  overflow: visible !important;
+  padding-right: 0;
+}
+
+/* Keep rail cards a touch wider since we freed room on the left */
+.rail{
+  grid-auto-columns: 300px;
+}
+
+/* Mobile / narrow: fall back to normal stacked layout */
+@media (max-width: 1100px){
+  .container-two{ display: grid; grid-template-columns: 1fr; gap: 28px; }
+  .home-main{ margin-right: 0; }
+  .home-aside{
+    position: static;
+    width: auto; height: auto; right: auto; top: auto;
+    overflow: visible;
+  }
+}
