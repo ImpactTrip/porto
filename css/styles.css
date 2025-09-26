@@ -100,6 +100,60 @@ a{ color: inherit; }
   .brand img{ height: 60px; }
 }
 
+/* -------- Top navigation (inside fixed header) -------- */
+.top-nav{
+  display:flex; align-items:center; justify-content:center;
+  width:100%;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+
+.nav-toggle{
+  display:none;
+  margin-right:auto;
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:8px;
+  padding:6px 10px;
+  cursor:pointer;
+}
+
+.nav-list{
+  display:flex; align-items:center; gap:16px;
+  list-style:none; margin:0; padding:0;
+  width:100%;
+}
+
+.nav-list li a.link{ text-decoration:none; color:var(--text); font-size:.95rem; }
+.nav-list li .sep{ color:var(--muted); margin:0 4px; }
+
+.nav-list .spacer{ flex:1; }          /* pushes CTAs/auth to the right */
+.nav-list .auth{ display:flex; align-items:center; gap:6px; }
+
+/* Buttons in nav */
+.btn-outline{ background:#fff; color:var(--brand-blue); border-color:var(--brand-blue); }
+.btn-outline:hover{ filter:brightness(.97); }
+
+/* Compact nav on small screens */
+@media (max-width: 1000px){
+  .nav-toggle{ display:inline-block; }
+  .nav-list{
+    position: absolute; left:0; right:0;
+    top: calc(100% + 6px);
+    margin:0 20px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    box-shadow: var(--shadow-md);
+    padding:10px;
+    display:none;                 /* hidden by default */
+    flex-direction:column; gap:10px;
+    z-index: 120;                 /* above header row */
+  }
+  .nav-list.is-open{ display:flex; }
+  .nav-list .spacer{ display:none; }
+}
+
 /* ===========================
    Search Pill (borderless)
    =========================== */
