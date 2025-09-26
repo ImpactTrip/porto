@@ -37,9 +37,9 @@
   --pill-h: 64px;
   --header-offset: 136px;   /* sticky offset for hotels aside (header + pill) */
 
+    --footer-gap: 96px;  /* espaço para o aside terminar antes do footer */
+
   /* Espaço no topo igual à altura real do header (calculada em header.js) */
-body{ padding-top: var(--header-offset); }
-}
 
 @media (min-width: 1400px){
   :root{ --container: 1400px; }
@@ -58,6 +58,9 @@ html, body{
   font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
   line-height: 1.5;
 }
+
+/* Espaço no topo igual à altura real do header (definida via header.js) */
+body{ padding-top: var(--header-offset); }
 
 img{ max-width:100%; display:block; }
 a{ color: inherit; }
@@ -189,28 +192,34 @@ a{ color: inherit; }
 
 .home-aside{
   position: fixed;
-  top: var(--header-offset);          /* logo por baixo do header */
-  right: 0;                           /* encosta à margem direita da janela */
-  width: var(--aside-w);              /* 380px por default */
-  height: calc(100vh - var(--header-offset)); /* ocupa a janela abaixo do header */
-  overflow: auto;                     /* scrollbar própria */
-  border:1px solid var(--border);
-  border-top: 0;
-  border-left: 1px solid var(--border);
-  border-right: 0;                    /* como está encostado, retiramos a borda direita */
-  border-top-right-radius: 0;         /* sem canto arredondado na junção com a margem */
-  border-bottom-right-radius: 0;      /* idem em baixo */
-  bottom: 80px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  top: var(--header-offset);
+  right: 0;
+  width: var(--aside-w);
 
-  padding:12px;
-  /* dar respiro para a scrollbar não “comer” conteúdo (imgs/botões) */
+  /* Em vez de height fixa, usamos bottom para “parar” antes do footer */
+  bottom: var(--footer-gap);
+  overflow: auto;
+
+  /* Bordas: sem linha no topo e encostado à direita (sem borda direita) */
+  border-left: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  border-top: 0;
+  border-right: 0;
+
+  /* Cantos: sem arredondado no lado direito que encosta à janela */
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  /* Se quiseres topo totalmente recto também à esquerda, deixa 0; senão, 12px: */
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+
+  padding: 12px;
+  /* respiro para a scrollbar não tapar conteúdo */
   padding-right: 14px;
 
   background:#fff;
   box-shadow: var(--shadow-sm);
-  z-index: 10;                        /* abaixo do header (que tem z>10) */
+  z-index: 10; /* abaixo do header fixo */
 }
 
 @media (max-width: 1100px){
