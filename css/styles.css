@@ -119,7 +119,7 @@ a{ color: inherit; }
 }
 
 .nav-list{
-  display:flex; align-items:center; gap:16px;
+  display:flex; align-items:center; gap:12px;
   list-style:none; margin:0; padding:0;
   width:100%;
 }
@@ -138,18 +138,18 @@ a{ color: inherit; }
 
 /* Compact nav on small screens */
 @media (max-width: 1000px){
-  .nav-toggle{ display:inline-block; }
+  .nav-toggle{ display:none; }
   .nav-list{
-    position: absolute; left:0; right:0;
+    position: static; left:0; right:0;
     top: calc(100% + 6px);
     margin:0 20px;
     background:#fff;
-    border:1px solid var(--border);
+    border:0;
     border-radius:12px;
-    box-shadow: var(--shadow-md);
-    padding:10px;
-    display:none;                 /* hidden by default */
-    flex-direction:column; gap:10px;
+    box-shadow: none;
+    padding:0;
+    display:flex;                 /* hidden by default */
+    flex-direction:row; gap:10px;
     z-index: 120;                 /* above header row */
   }
   .nav-list.is-open{ display:flex; }
@@ -378,6 +378,34 @@ footer{
   /* já NÃO precisamos de afastar o footer do aside */
   /* (se tinhas padding-right calc(...), remove) */
 }
+
+.footer-nav{
+  max-width: var(--container);
+  margin: 0 auto 8px;
+  padding: 0 20px 6px;
+  border-bottom: 1px solid var(--border);
+}
+.footer-nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.footer-nav a{
+  text-decoration: none;
+  color: var(--text);
+  font-size: .95rem;
+}
+.footer-nav a:hover{
+  border-bottom: 2px solid var(--brand-green);
+}
+@media (max-width: 700px){
+  .footer-nav ul{ gap: 12px; }
+  .footer-nav a{ font-size: .9rem; }
+}
+
 
 /* Generic buttons */
 .btn{
