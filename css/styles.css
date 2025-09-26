@@ -542,7 +542,7 @@ footer {
 
 /* Make date inputs a bit wider so the last year digit fits */
 #date-start,
-#date-end { width: 15.5ch; }   /* +1ch vs previous */
+#date-end { width: 16ch; }   /* +1ch vs previous */
 
 /* Keep Adults / Children compact */
 #adults,
