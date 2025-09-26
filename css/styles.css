@@ -37,9 +37,8 @@
   --pill-h: 64px;
   --header-offset: 136px;   /* sticky offset for hotels aside (header + pill) */
 
-    --footer-gap: 96px;  /* espaço para o aside terminar antes do footer */
-
-  /* Espaço no topo igual à altura real do header (calculada em header.js) */
+  --footer-gap: 96px;  /* espaço para o aside terminar antes do footer */
+}
 
 @media (min-width: 1400px){
   :root{ --container: 1400px; }
@@ -59,8 +58,7 @@ html, body{
   line-height: 1.5;
 }
 
-/* Espaço no topo igual à altura real do header (definida via header.js) */
-body{ padding-top: var(--header-offset); }
+body{ padding-top: var(--header-offset); } /* Espaço no topo igual à altura real do header (definida via header.js) */
 
 img{ max-width:100%; display:block; }
 a{ color: inherit; }
@@ -221,6 +219,7 @@ a{ color: inherit; }
   box-shadow: var(--shadow-sm);
   z-index: 10; /* abaixo do header fixo */
 }
+
 
 @media (max-width: 1100px){
   .home-aside{
