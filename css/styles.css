@@ -296,3 +296,35 @@ footer{ border-top:1px solid var(--border); padding:16px 20px; margin-top:24px; 
   font-size: .85rem;
   display: inline-block;
 }
+
+.hotel-ad{
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  background: #fffdf8;
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 10px;
+  align-items: center;
+}
+.hotel-ad .ad-badge{
+  font-size: .75rem;
+  color: #fff;
+  background: var(--brand-orange);
+  border-radius: 999px;
+  padding: 2px 8px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.hotel-ad img{ width:88px; height:88px; object-fit:cover; border-radius: 8px; }
+.hotel-ad .body{ display:grid; gap:4px; }
+.hotel-ad .title{ font-weight:600; }
+.hotel-ad .cta a{
+  background: var(--brand-green);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  text-decoration: none;
+  font-size: .85rem;
+  display: inline-block;
+}
