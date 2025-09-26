@@ -159,19 +159,9 @@ a{ color: inherit; }
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 20px;
-  display: block; 
-  padding-right: calc(var(--aside-w) + var(--aside-gap)); /* controla a proximidade */
-}
-
-@media (max-width: 1100px){
-  .home-aside{
-    position: static;
-    right: auto;
-    width: auto;
-    bottom: auto;
-    overflow: visible;
-  }
-  .container-two{ padding-right: 20px; }
+  display: block;
+  /* espaço p/ aside na direita; controla “quão perto” com --aside-gap */
+  padding-right: calc(var(--aside-w) + var(--aside-gap));
 }
 
 /* Sections / rails */
@@ -199,22 +189,44 @@ a{ color: inherit; }
 
 .home-aside{
   position: fixed;
-  top: var(--header-offset);
-  right: 24px;
-  width: var(--aside-w);
-  bottom: 24px;              /* ocupa até perto do rodapé */
-  overflow: auto;            /* ativa scroll vertical */
+  top: var(--header-offset);          /* logo por baixo do header */
+  right: 0;                           /* encosta à margem direita da janela */
+  width: var(--aside-w);              /* 380px por default */
+  height: calc(100vh - var(--header-offset)); /* ocupa a janela abaixo do header */
+  overflow: auto;                     /* scrollbar própria */
   border:1px solid var(--border);
-  border-radius:12px;
+  border-right: 0;                    /* como está encostado, retiramos a borda direita */
+  border-top-right-radius: 0;         /* sem canto arredondado na junção com a margem */
+  border-bottom-right-radius: 0;      /* idem em baixo */
+  /* canto de cima à esquerda: podes manter arredondado ou deixar recto: */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
   padding:12px;
+  /* dar respiro para a scrollbar não “comer” conteúdo (imgs/botões) */
+  padding-right: 14px;
+
   background:#fff;
   box-shadow: var(--shadow-sm);
-  z-index: 10;               /* abaixo do header fixo */
+  z-index: 10;                        /* abaixo do header (que tem z>10) */
 }
 
+@media (max-width: 1100px){
+  .home-aside{
+    position: static;
+    right: auto;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    border-right: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  .container-two{ padding-right: 20px; }
+  footer{ padding-right: 20px; }
+}
 
 .aside-head{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:8px; }
-.aside-head h3{ margin:0; font-size:1.2rem; }
+.aside-head h3{ margin:0; font-size:1.3rem; }
 .aside-dates{ font-size:.9rem; color:var(--muted); }
 
 .hotels-rail{ display:grid; gap:10px; }
@@ -237,7 +249,15 @@ a{ color: inherit; }
 /* ===========================
    Footer
    =========================== */
-footer{ border-top:1px solid var(--border); padding:16px 20px; margin-top:24px; font-size:14px; color:var(--muted); }
+footer{
+  border-top:1px solid var(--border);
+  padding:16px 20px;
+  margin-top:24px;
+  font-size:14px;
+  color:var(--muted);
+  /* evita que o texto do footer fique por baixo do aside fixo */
+  padding-right: calc(var(--aside-w) + var(--aside-gap));
+}
 
 /* Generic buttons */
 .btn{
