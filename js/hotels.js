@@ -4,32 +4,24 @@ import { utils } from './utils.js';
 let HOTELS = [];
 
 const DEMO_IMAGES = [
-  'assets/sample/hotel_1.jpg',
-  'assets/sample/hotel_2.jpg',
-  'assets/sample/hotel_3.jpg',
-  'assets/sample/hotel_4.jpg',
-  'assets/sample/hotel_5.jpg'
+  'assets/sample/hotels/ribeira.jpg',
+  'assets/sample/hotels/aliados.jpg',
+  'assets/sample/hotels/foz.jpg',
+  'assets/sample/hotels/boavista.jpg',
+  'assets/sample/hotels/cedofeita.jpg',
+  'assets/sample/hotels/bonfim.jpg'
 ];
-
-const REPEAT_TIMES = 3; // <— demo: repete lista para “encher” até ao footer
 
 async function loadHotels(){
   try{
     const res = await fetch('data/hotels.json', { cache:'no-store' });
     const base = await res.json();
 
-    // seed thumbs quando faltam + repete para demo
-    const expanded = [];
-    for (let r = 0; r < REPEAT_TIMES; r++){
-      base.forEach((h, idx) => {
-        const copy = { ...h };
-        if (!copy.thumb) {
-          copy.thumb = DEMO_IMAGES[(idx + r) % DEMO_IMAGES.length] || 'assets/sample/placeholder.jpg';
-        }
-        expanded.push(copy);
-      });
-    }
-    HOTELS = expanded;
+    // guarantee thumbnails exist in demo
+    HOTELS = base.map((h, i) => ({
+      ...h,
+      thumb: h.thumb || DEMO_IMAGES[i % DEMO_IMAGES.length] || 'assets/sample/placeholder.jpg'
+    }));
 
     render();
   }catch(e){
@@ -38,7 +30,6 @@ async function loadHotels(){
 }
 
 function adCardHTML(i){
-  // Slot de parceria (podes trocar o texto / link)
   const img = DEMO_IMAGES[i % DEMO_IMAGES.length] || 'assets/sample/placeholder.jpg';
   return `
     <div class="hotel-ad">
@@ -83,14 +74,14 @@ function render(){
   const end    = document.getElementById('date-end')?.value   || '';
   const adults = document.getElementById('adults')?.value      || '1';
 
-  // Datas por baixo do título (CSS já faz o layout)
+  // Dates text
   if (dates) dates.textContent = (start && end) ? `${start} → ${end}` : 'Select dates';
 
-  // Intercalar Advertising: a cada 2 hotéis
+  // Interleave an ad after every 2 hotels
   const parts = [];
   HOTELS.forEach((h, i) => {
     parts.push(hotelCardHTML(h, start, end, adults));
-    if ((i + 1) % 2 === 0) parts.push(adCardHTML(i));
+    if ((i + 1) % 2 === 0 && i < HOTELS.length - 1) parts.push(adCardHTML(i));
   });
 
   wrap.innerHTML = parts.join('');
@@ -98,11 +89,9 @@ function render(){
 
 document.addEventListener('DOMContentLoaded', ()=>{
   loadHotels();
-
   ['date-start','date-end','adults'].forEach(id=>{
     const el = document.getElementById(id);
     el && el.addEventListener('change', render);
   });
-
   document.addEventListener('filtersChanged', render);
 });
