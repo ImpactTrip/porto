@@ -582,3 +582,21 @@ footer {
   .hero .container{ max-width: 1400px; }
   .site-header .search-pill{ max-width: 1400px; }
 }
+
+/* Center separators + search button vertically with inputs */
+.pill-dot,
+.date-sep{
+  display: inline-flex;     /* become flex containers */
+  align-items: center;      /* center the glyph inside */
+  height: 38px;             /* match input visual height */
+  line-height: 1;           /* no extra vertical space */
+  margin: 0 6px;
+}
+
+.pill-action{
+  height: 38px;             /* match input height */
+  align-self: center;       /* lock to the middle of the row */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
