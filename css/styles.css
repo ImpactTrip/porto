@@ -200,7 +200,7 @@ a{ color: inherit; }
 
   /* Bordas: sem linha no topo e encostado à direita (sem borda direita) */
   border-left: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 0;
   border-top: 0;
   border-right: 0;
 
@@ -208,8 +208,8 @@ a{ color: inherit; }
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   /* Se quiseres topo totalmente recto também à esquerda, deixa 0; senão, 12px: */
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 
   padding: 12px;
   /* respiro para a scrollbar não tapar conteúdo */
@@ -220,6 +220,16 @@ a{ color: inherit; }
   z-index: 10; /* abaixo do header fixo */
 }
 
+.home-aside::after{
+  content: "";
+  position: fixed;
+  right: 0;
+  top: var(--header-offset);
+  bottom: 0;  /* vai até ao fundo da janela */
+  width: 1px;
+  background: var(--border);
+  z-index: 5; /* abaixo do aside mas acima do fundo */
+}
 
 @media (max-width: 1100px){
   .home-aside{
