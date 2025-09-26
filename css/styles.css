@@ -153,7 +153,8 @@ a{ color: inherit; }
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 20px;
-  display: block; /* antes era grid */
+  display: block;             /* deixa de reservar a coluna do aside */
+  padding-right: 420px;       /* 380 + ~40px de respiro */
 }
 
 .container-two .main-content{ 
@@ -161,7 +162,12 @@ a{ color: inherit; }
 }
 
 @media (max-width: 1100px){
-  .container-two{ grid-template-columns: 1fr; gap: 28px; }
+  .home-aside{
+    position: static;
+    right: auto;
+    width: auto;
+  }
+  .container-two{ padding-right: 20px; }
 }
 
 /* Sections / rails */
@@ -189,9 +195,9 @@ a{ color: inherit; }
 
 .home-aside{
   position: fixed;
-  top: var(--header-offset);   /* já tens a variável, respeita header + pill */
-  right: 20px;                 /* distância da borda direita */
-  width: 320px;                /* largura fixa para caber ao lado do conteúdo */
+  top: var(--header-offset);   /* fica logo abaixo do header+pill */
+  right: 24px;
+  width: 380px;                /* alargado */
   border:1px solid var(--border);
   border-radius:12px;
   padding:12px;
@@ -199,6 +205,7 @@ a{ color: inherit; }
   box-shadow: var(--shadow-sm);
   height: auto;
   overflow: visible;
+  z-index: 10;                 /* fica sob o header (que tem z-index maior) */
 }
 
 .aside-head{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:8px; }
