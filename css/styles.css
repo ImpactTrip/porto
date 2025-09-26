@@ -195,10 +195,12 @@ a{ color: inherit; }
   height: calc(100vh - var(--header-offset)); /* ocupa a janela abaixo do header */
   overflow: auto;                     /* scrollbar própria */
   border:1px solid var(--border);
+  border-top: 0;
+  border-left: 1px solid var(--border);
   border-right: 0;                    /* como está encostado, retiramos a borda direita */
   border-top-right-radius: 0;         /* sem canto arredondado na junção com a margem */
   border-bottom-right-radius: 0;      /* idem em baixo */
-  /* canto de cima à esquerda: podes manter arredondado ou deixar recto: */
+  bottom: 80px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 
