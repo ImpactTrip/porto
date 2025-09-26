@@ -73,17 +73,32 @@ a{ color: inherit; }
    =========================== */
 .site-header{
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; flex-direction: column; align-items: center; gap: 14px;
+  display: flex; flex-direction: column; gap: 10px;
   padding: 14px 20px;
-  background: #fff; border-bottom: 1px solid var(--border);
-  box-shadow: 0 0 0 rgba(0,0,0,0); transition: box-shadow .2s ease;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 0 0 rgba(0,0,0,0);
+  transition: box-shadow .2s ease;
 }
+
 .site-header.is-scrolled{ box-shadow: var(--shadow-md); }
 
-.brand{ display:flex; justify-content:center; }
-.brand img{ height: 100px; width:auto; display:block; }
-@media (max-width: 900px){ .brand img{ height:84px; } }
-@media (max-width: 640px){ .brand img{ height:72px; } }
+.header-row{
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center row within page */
+  gap: 24px;
+  max-width: var(--container);
+  margin: 0 auto;
+  width: 100%;
+}
+
+.brand img{ height: 72px; width: auto; display: block; }
+
+@media (max-width: 900px){
+  .header-row{ flex-direction: column; gap: 14px; }
+  .brand img{ height: 60px; }
+}
 
 /* ===========================
    Search Pill (borderless)
