@@ -506,7 +506,7 @@ footer {
   margin: 6px 0 0;             /* pequeno espaço do pill */
   font-size: 15px;
   line-height: 1.5;
-  color: var(--muted);         /* cor suave */
+  color: #333;         
   text-align: center;          /* alinhado ao centro do pill */
   max-width: 820px;            /* não ficar demasiado largo */
 }
