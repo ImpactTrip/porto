@@ -11,6 +11,9 @@
   --brand-green: #83B341;
   --brand-orange: #EF8725;
 
+  --aside-w: 380px;   /* largura do Where to stay */
+  --aside-gap: 16px;  /* espaço entre conteúdo e aside (controla “quão perto” fica) */
+
   /* Base */
   --text: #1b1b1b;
   --bg: #ffffff;
@@ -33,6 +36,9 @@
   /* Components */
   --pill-h: 64px;
   --header-offset: 136px;   /* sticky offset for hotels aside (header + pill) */
+
+  /* Espaço no topo igual à altura real do header (calculada em header.js) */
+body{ padding-top: var(--header-offset); }
 }
 
 @media (min-width: 1400px){
@@ -65,7 +71,7 @@ a{ color: inherit; }
    Header & Brand
    =========================== */
 .site-header{
-  position: sticky; top: 0; z-index: 50;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; flex-direction: column; align-items: center; gap: 14px;
   padding: 14px 20px;
   background: #fff; border-bottom: 1px solid var(--border);
@@ -153,12 +159,8 @@ a{ color: inherit; }
   max-width: var(--container);
   margin: 0 auto;
   padding: 0 20px;
-  display: block;             /* deixa de reservar a coluna do aside */
-  padding-right: 420px;       /* 380 + ~40px de respiro */
-}
-
-.container-two .main-content{ 
-  margin-right: 360px; /* 320 + 40px de espaçamento */
+  display: block; 
+  padding-right: calc(var(--aside-w) + var(--aside-gap)); /* controla a proximidade */
 }
 
 @media (max-width: 1100px){
@@ -166,6 +168,8 @@ a{ color: inherit; }
     position: static;
     right: auto;
     width: auto;
+    bottom: auto;
+    overflow: visible;
   }
   .container-two{ padding-right: 20px; }
 }
@@ -195,21 +199,22 @@ a{ color: inherit; }
 
 .home-aside{
   position: fixed;
-  top: var(--header-offset);   /* fica logo abaixo do header+pill */
+  top: var(--header-offset);
   right: 24px;
-  width: 380px;                /* alargado */
+  width: var(--aside-w);
+  bottom: 24px;              /* ocupa até perto do rodapé */
+  overflow: auto;            /* ativa scroll vertical */
   border:1px solid var(--border);
   border-radius:12px;
   padding:12px;
   background:#fff;
   box-shadow: var(--shadow-sm);
-  height: auto;
-  overflow: visible;
-  z-index: 10;                 /* fica sob o header (que tem z-index maior) */
+  z-index: 10;               /* abaixo do header fixo */
 }
 
+
 .aside-head{ display:flex; flex-direction:column; align-items:flex-start; gap:4px; margin-bottom:8px; }
-.aside-head h3{ margin:0; font-size:1rem; }
+.aside-head h3{ margin:0; font-size:1.2rem; }
 .aside-dates{ font-size:.9rem; color:var(--muted); }
 
 .hotels-rail{ display:grid; gap:10px; }
