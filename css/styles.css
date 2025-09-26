@@ -97,7 +97,7 @@ a{ color: inherit; }
 
 @media (max-width: 900px){
   .header-row{ flex-direction: column; gap: 14px; }
-  .brand img{ height: 60px; }
+  .brand img{ height: 100px; }
 }
 
 /* ===========================
