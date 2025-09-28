@@ -63,13 +63,16 @@ function hotelCardHTML(h, start, end, adults) {
       <img src="${utils.escapeHtml(img)}" alt="" loading="lazy">
       <div class="body">
         <div class="name">${utils.escapeHtml(h.name)}</div>
-        <div class="meta muted">${utils.escapeHtml(h.area)}</div>
-        <div class="price"><strong>${utils.escapeHtml(h.currency)}${utils.escapeHtml(String(h.pricePerNight))}</strong> / night</div>
-        <div><a class="book btn btn-primary" href="${utils.escapeHtml(url)}" target="_blank" rel="noopener">Book</a></div>
+        <div class="muted">${utils.escapeHtml(h.area)}</div>
+        <div class="meta">
+  <div class="price"><strong>${utils.escapeHtml(h.currency)}${utils.escapeHtml(String(h.pricePerNight))}</strong> / night</div>
+  <a class="book btn btn-primary" href="${utils.escapeHtml(url)}" target="_blank" rel="noopener">Book</a>
+</div>
       </div>
     </div>
   `;
 }
+
 
 // Render list
 function render() {

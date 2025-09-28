@@ -2,9 +2,41 @@
 import { FILTERS } from './filters.js';
 import { utils } from './utils.js';
 
-let DATA = [];
-let BY_ID = new Map();
+/* ===========================
+   Sources per section
+   =========================== */
+const SECTION_SOURCES = {
+  nature:    'data/opportunities/nature.json',
+  social:    'data/opportunities/social.json',
+  culture:   'data/opportunities/culture.json',
+  events:    'data/opportunities/events.json',
+  crowd:     'data/opportunities/crowd.json',
+  animals:   'data/opportunities/animals.json',
+  homeless:  'data/opportunities/homeless.json',
+  seniors:   'data/opportunities/seniors.json',
+  education: 'data/opportunities/education.json',
+};
 
+/* Rails (containers in the DOM) */
+const RAILS = {
+  nature:    document.getElementById('rail-nature'),
+  social:    document.getElementById('rail-social'),
+  culture:   document.getElementById('rail-culture'),
+  events:    document.getElementById('rail-events'),
+  crowd:     document.getElementById('rail-crowd'),
+  animals:   document.getElementById('rail-animals'),
+  homeless:  document.getElementById('rail-homeless'),
+  seniors:   document.getElementById('rail-seniors'),
+  education: document.getElementById('rail-education'),
+};
+
+/* Caches */
+const CACHE = {};         // section -> array of ops
+let BY_ID = new Map();    // all ops by id (for modal lookup)
+
+/* ===========================
+   Filters
+   =========================== */
 function passFilters(op){
   // language
   if (FILTERS.language !== 'Any') {
@@ -23,6 +55,9 @@ function passFilters(op){
   return true;
 }
 
+/* ===========================
+   Rendering helpers
+   =========================== */
 function safeImg(src){
   return src && typeof src === 'string' ? src : 'assets/sample/placeholder.jpg';
 }
@@ -48,36 +83,75 @@ function cardHTML(op){
     </article>`;
 }
 
-function renderRails(list){
-  const rails = {
-    nature:    document.getElementById('rail-nature'),
-    social:    document.getElementById('rail-social'),
-    culture:   document.getElementById('rail-culture'),
-    events:    document.getElementById('rail-events'),
-    crowd:     document.getElementById('rail-crowd'),
-    animals:   document.getElementById('rail-animals'),
-    homeless:  document.getElementById('rail-homeless'),
-    seniors:   document.getElementById('rail-seniors'),
-    education: document.getElementById('rail-education'),
-  };
-  Object.values(rails).forEach(el=>{ if(el) el.innerHTML=''; });
-  list.forEach(op=>{
-    const el = rails[op.section];
-    if (el) el.insertAdjacentHTML('beforeend', cardHTML(op));
+/* Submit-your-project CTA card (the whole card feels like a button; no link yet) */
+function submitCardHTML(section){
+  return `
+    <article class="card-submit" tabindex="0" aria-label="Submit your project for ${utils.escapeHtml(section)}">
+      <div class="body">
+        <div class="label">Are you an NGO or community group?</div>
+        <h3>Submit your project</h3>
+      </div>
+    </article>`;
+}
+
+/* Render a single section into its rail */
+function renderSection(section){
+  const rail = RAILS[section];
+  if (!rail) return;
+
+  rail.innerHTML = '';
+  const list = (CACHE[section] || []).filter(passFilters);
+
+  list.forEach(op => {
+    rail.insertAdjacentHTML('beforeend', cardHTML(op));
   });
+
+  // Append CTA at the end of non-empty rails
+  if (list.length){
+    rail.insertAdjacentHTML('beforeend', submitCardHTML(section));
+  }
 }
 
-async function loadData(){
+/* Rebuild BY_ID map (for modal lookups) */
+function rebuildIndex(){
+  const all = Object.values(CACHE).flat();
+  BY_ID = new Map(all.map(o => [o.id, o]));
+}
+
+/* ===========================
+   Loading
+   =========================== */
+async function loadSection(section){
+  if (CACHE[section]) {         // already loaded once
+    renderSection(section);
+    rebuildIndex();
+    return;
+  }
+  const url = SECTION_SOURCES[section];
+  if (!url) return;
+
   try{
-    const res = await fetch('data/opportunities.json', { cache:'no-store' });
-    DATA = await res.json();
-    BY_ID = new Map(DATA.map(o=>[o.id, o]));
-    renderRails(DATA.filter(passFilters));
-  }catch(e){ console.error('rails load failed', e); }
+    const res = await fetch(url, { cache:'no-store' });
+    const arr = await res.json();
+    CACHE[section] = Array.isArray(arr) ? arr : [];
+    renderSection(section);
+    rebuildIndex();
+  }catch(e){
+    console.error('rails: failed loading', section, e);
+  }
 }
 
-function refresh(){ renderRails(DATA.filter(passFilters)); }
+function loadAllSections(){
+  Object.keys(SECTION_SOURCES).forEach(loadSection);
+}
 
+function refreshAll(){
+  Object.keys(SECTION_SOURCES).forEach(renderSection);
+}
+
+/* ===========================
+   Rail arrows
+   =========================== */
 function initArrows(){
   document.querySelectorAll('.rail-next').forEach(btn=>{
     btn.addEventListener('click', ()=>{
@@ -89,13 +163,12 @@ function initArrows(){
 }
 
 /* ===========================
-   Modal logic
+   Modal
    =========================== */
 function openModal(op){
   const modal = document.getElementById('op-modal');
   if (!modal || !op) return;
 
-  // Elements
   const imgEl  = modal.querySelector('#opm-image');
   const tEl    = modal.querySelector('#opm-title');
   const orgEl  = modal.querySelector('#opm-org');
@@ -118,13 +191,12 @@ function openModal(op){
   ageEl.textContent  = Number.isFinite(op.minAge) ? `${op.minAge}+` : '—';
   tagsEl.textContent = (op.tags||[]).join(', ');
 
-  // CTA — if in future we add deep link, set here
+  // (future) registration deep link can be placed here
   cta.href = '#';
 
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden','false');
 
-  // focus trap (basic)
   setTimeout(()=> modal.querySelector('[data-opm-close]')?.focus(), 0);
 }
 
@@ -135,7 +207,7 @@ function closeModal(){
   modal.setAttribute('aria-hidden','true');
 }
 
-// Delegated events for buttons + modal close
+/* Delegated events for Learn more / I want to help / modal close */
 function initActions(){
   document.addEventListener('click', (e)=>{
     const learnBtn = e.target.closest('[data-op-learn]');
@@ -149,7 +221,6 @@ function initActions(){
     if (joinBtn){
       const id = joinBtn.getAttribute('data-op-join');
       const op = BY_ID.get(id);
-      // For now just open modal as well; later can open a registration flow
       if (op) openModal(op);
     }
 
@@ -162,9 +233,12 @@ function initActions(){
   });
 }
 
+/* ===========================
+   Boot
+   =========================== */
 document.addEventListener('DOMContentLoaded', ()=>{
   initArrows();
-  loadData();
+  loadAllSections();
   initActions();
-  document.addEventListener('filtersChanged', refresh);
+  document.addEventListener('filtersChanged', refreshAll);
 });

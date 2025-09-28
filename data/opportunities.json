@@ -240,9 +240,9 @@
     ]
   },
   {
-    "id": "adoption-photo",
+    "id": "adoption",
     "section": "animals",
-    "title": "Adoption Photography Sprint",
+    "title": "Animal adoption",
     "org": "ImpactTrip partner",
     "summary": "Take simple portraits to improve adoption profiles.",
     "description": "We supply a quick shot-list; smartphones are fine. Optional light editing guidance.",
@@ -457,26 +457,6 @@
     ]
   },
   {
-    "id": "impacthelp-app",
-    "section": "crowd",
-    "title": "ImpactHelp – Social Support App",
-    "org": "ImpactTrip",
-    "summary": "Build/help maintain an app for residents to request food or support.",
-    "description": "Micro-contributions: UX copy, translations, data-privacy reviews, outreach to NGOs, or small donations for hosting. Full transparency.",
-    "duration": "flex",
-    "languages": [
-      "PT",
-      "EN"
-    ],
-    "minAge": 18,
-    "fee": "€0–5",
-    "image": "assets/sample/app.jpg",
-    "tags": [
-      "digital",
-      "crowdfunding"
-    ]
-  },
-  {
     "id": "fundraising-workshop",
     "section": "crowd",
     "title": "Fundraising Workshops",
@@ -497,11 +477,32 @@
     ]
   },
   {
-    "id": "kayak-bike",
+    "id": "bike",
     "section": "crowd",
-    "title": "Kayak or Bike for a Cause",
+    "title": "Bike for a Cause",
     "org": "Local Guides",
-    "summary": "Half-day kayak or cycle tour, guided, with proceeds donated.",
+    "summary": "Half-day cycle tour, guided, with proceeds donated.",
+    "description": "Explore Porto cycling with a local guide. Margin after costs goes directly to a chosen social or environmental project.",
+    "duration": "half",
+    "languages": [
+      "PT",
+      "EN",
+      "ES"
+    ],
+    "minAge": 14,
+    "fee": "€25–30",
+    "image": "assets/sample/bike.jpg",
+    "tags": [
+      "outdoor",
+      "fundraising"
+    ]
+  },
+    {
+    "id": "kayak",
+    "section": "crowd",
+    "title": "Kayak for a Cause",
+    "org": "Local Guides",
+    "summary": "Half-day kayak tour, guided, with proceeds donated.",
     "description": "Explore Porto’s river or green belt with a local guide. Margin after costs goes directly to a chosen social or environmental project.",
     "duration": "half",
     "languages": [
@@ -535,64 +536,6 @@
     "tags": [
       "fundraising",
       "outdoor"
-    ]
-  },
-  {
-    "id": "senior-kits",
-    "section": "crowd",
-    "title": "Senior Centers: Activity Kits",
-    "org": "ImpactTrip partner",
-    "summary": "Fund/assemble kits for arts, music, and memory games.",
-    "description": "Transparent list of items per kit; quick session to pack, label, and hand over.",
-    "duration": "1–2h",
-    "languages": [
-      "Any"
-    ],
-    "minAge": 10,
-    "fee": "€3",
-    "image": "assets/sample/kits2.jpg",
-    "tags": [
-      "fundraising"
-    ]
-  },
-  {
-    "id": "heritage-micro",
-    "section": "crowd",
-    "title": "Heritage Micro-restorations",
-    "org": "ImpactTrip partner",
-    "summary": "Photo-document needs and co-fund minor fixes.",
-    "description": "Basic condition notes template; we route findings to the right stewards.",
-    "duration": "1–3h",
-    "languages": [
-      "PT",
-      "EN"
-    ],
-    "minAge": 16,
-    "fee": "€3",
-    "image": "assets/sample/heritage.jpg",
-    "tags": [
-      "culture",
-      "fundraising"
-    ]
-  },
-  {
-    "id": "community-mural",
-    "section": "crowd",
-    "title": "Community Murals & Pocket-Parks",
-    "org": "ImpactTrip partner",
-    "summary": "Paint days and materials drives with local artists/residents.",
-    "description": "Family-friendly; roles from painting to materials sorting.",
-    "duration": "half",
-    "languages": [
-      "PT",
-      "EN"
-    ],
-    "minAge": 14,
-    "fee": "€5",
-    "image": "assets/sample/mural.jpg",
-    "tags": [
-      "creative",
-      "fundraising"
     ]
   }
 ]
