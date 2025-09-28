@@ -58,21 +58,14 @@
         </select>
       </div>
 
-      <span class="pill-dot">•</span>
+<div class="field field-daterange">
+  <label><span class="lbl">Date</span></label>
+  <input id="date-range-display" class="daterange-display" type="text" placeholder="Select dates" readonly aria-haspopup="dialog" aria-expanded="false">
+</div>
 
-      <div class="field">
-        <label for="date-start"><span class="lbl">From</span></label>
-        <input type="date" id="date-start" name="date-start" required autocomplete="off">
-      </div>
-
-      <span class="date-sep">–</span>
-
-      <div class="field">
-        <label for="date-end"><span class="lbl">To</span></label>
-        <input type="date" id="date-end" name="date-end" required autocomplete="off">
-      </div>
-
-      <span class="pill-dot">•</span>
+<!-- Keep the original hidden fields not break code -->
+<input type="date" id="date-start" name="date-start" hidden>
+<input type="date" id="date-end"   name="date-end"   hidden>
 
       <div class="field">
         <label for="language"><span class="lbl">Language</span></label>
@@ -211,6 +204,7 @@
   import './js/filters.js';
   import './js/rails.js';
   import './js/hotels.js';
+  import './js/dateRangePicker.js'
 </script>
 </body>
 </html>

@@ -44,33 +44,67 @@ export class PilotFormController {
 
 
     // listeners
-    ['location','dateStart','dateEnd','adults'].forEach(k=>{
+     ['location','dateStart','dateEnd','adults'].forEach(k=>{
       this.el[k].addEventListener('change', ()=>this.onField(k));
-    });
-    this.el.children.addEventListener('input', ()=>this.onChildren());
-    this.el.agesWrap.addEventListener('input', e=>{
-      if(e.target.matches('input[data-age-index]')) this.onAge(e.target);
-    });
-    this.form.addEventListener('submit', e=>this.onSubmit(e));
+     });
+
+  // After picking the start date, jump to end date if empty (nice UX for the new range control)
+  this.el.dateStart.addEventListener('change', ()=>{
+    // keep your existing min-sync logic from init()
+    if (!this.el.dateEnd.value) this.el.dateEnd.focus();
+  });
+
+  this.el.children.addEventListener('input', ()=>this.onChildren());
+  this.el.agesWrap.addEventListener('input', e=>{
+    if(e.target.matches('input[data-age-index]')) this.onAge(e.target);
+  });
+
+  // allow Enter key to submit from any input inside the pill
+  this.form.addEventListener('submit', e=>this.onSubmit(e));
+
+  // (optional) submit on Enter from number/date/select while preventing accidental submit when ages are incomplete
+  this.form.addEventListener('keydown', (e)=>{
+    if (e.key === 'Enter') {
+      // let the form submit handler validate ages/dates
+    }
+  });
+}
+
+onField(field){
+  const el = this.el[field];
+  let value = el.value;
+  if(field === 'adults'){
+    value = utils.clamp(utils.parseIntSafe(value, CONFIG.DEFAULT_ADULTS), CONFIG.MIN_ADULTS, 99);
+    el.value = value;
   }
-  onField(field){
-    const el = this.el[field];
-    let value = el.value;
-    if(field==='adults'){ value = utils.clamp(utils.parseIntSafe(value, CONFIG.DEFAULT_ADULTS), CONFIG.MIN_ADULTS, 99); el.value = value; }
-    this.state.save({ [field]: value });
-  }
-  onChildren(){
-    const n = utils.clamp(utils.parseIntSafe(this.el.children.value, CONFIG.DEFAULT_CHILDREN), CONFIG.MIN_CHILDREN, 10);
-    this.el.children.value = n; this.renderAges(n); this.persist();
-  }
-  onAge(input){
-    const age = utils.clamp(utils.parseIntSafe(input.value, CONFIG.MIN_CHILD_AGE), CONFIG.MIN_CHILD_AGE, CONFIG.MAX_CHILD_AGE);
-    input.value = age; this.persist();
-  }
+  this.state.save({ [field]: value });
+}
+
+onChildren(){
+  const n = utils.clamp(utils.parseIntSafe(this.el.children.value, CONFIG.DEFAULT_CHILDREN), CONFIG.MIN_CHILDREN, 10);
+  this.el.children.value = n;
+  this.renderAges(n);
+  this.persist();
+}
+
+onAge(input){
+  const age = utils.clamp(utils.parseIntSafe(input.value, CONFIG.MIN_CHILD_AGE), CONFIG.MIN_CHILD_AGE, CONFIG.MAX_CHILD_AGE);
+  input.value = age;
+  this.persist();
+}
+
 onSubmit(e){
   e.preventDefault();
-  const start = this.el.dateStart.value, end = this.el.dateEnd.value;
-  if (start && end && end < start) { alert('"To" date must be the same day or after "From" date.'); return; }
+
+  const start = this.el.dateStart.value;
+  const end   = this.el.dateEnd.value;
+
+  // Dates validation for the single date-range control
+  if (start && end && end < start) {
+    alert('End date must be the same day or after the start date.');
+    this.el.dateEnd.focus();
+    return;
+  }
 
   const kids = utils.parseIntSafe(this.el.children.value, 0);
   if (kids > 0) {
@@ -79,7 +113,9 @@ onSubmit(e){
     for (const inp of ageInputs) {
       const v = inp.value.trim(), n = Number(v);
       if (v === '' || !Number.isFinite(n) || n < CONFIG.MIN_CHILD_AGE || n > CONFIG.MAX_CHILD_AGE) {
-        alert('Please enter a valid age for each child.'); inp.focus(); return;
+        alert('Please enter a valid age for each child.');
+        inp.focus();
+        return;
       }
     }
   }
