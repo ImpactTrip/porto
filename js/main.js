@@ -73,6 +73,73 @@ document.querySelectorAll('.dropdown .dropdown-toggle').forEach(btn => {
   });
 });
 
+// ============ Mobile drawer logic ============
+document.addEventListener('DOMContentLoaded', ()=>{
+  const drawer = document.getElementById('mobile-drawer');
+  const toggle = document.getElementById('nav-toggle');
+  if (!drawer || !toggle) return;
+
+  const open = () => {
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden','false');
+    toggle.setAttribute('aria-expanded','true');
+  };
+  const close = () => {
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden','true');
+    toggle.setAttribute('aria-expanded','false');
+  };
+
+  toggle.addEventListener('click', open);
+  drawer.addEventListener('click', (e)=>{
+    if (e.target.matches('[data-close]') || e.target.classList.contains('drawer-backdrop')) {
+      close();
+    }
+  });
+
+  // Date button: trigger the existing date picker
+  const btnDate = document.getElementById('m-date');
+  if (btnDate){
+    btnDate.addEventListener('click', ()=>{
+      const display = document.getElementById('date-range-display'); // existing desktop field
+      if (display){ display.focus(); display.click(); } // opens your current date picker
+      close();
+    });
+  }
+
+  // Apply mobile filters -> mirror into desktop form + trigger refresh
+  const form = document.getElementById('m-filters');
+  if (form){
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      // Mirror values
+      const map = [
+        ['m-language','language'],
+        ['m-duration','duration'],
+        ['m-adults','adults'],
+        ['m-children','children']
+      ];
+      map.forEach(([m, d])=>{
+        const src = document.getElementById(m);
+        const dst = document.getElementById(d);
+        if (src && dst) dst.value = src.value;
+      });
+
+      // Trigger your existing filtering flow
+      const evt = new Event('change', { bubbles:true }); // in case filters.js listens to changes
+      document.getElementById('language')?.dispatchEvent(evt);
+      document.getElementById('duration')?.dispatchEvent(evt);
+      document.getElementById('adults')?.dispatchEvent(evt);
+      document.getElementById('children')?.dispatchEvent(evt);
+
+      // Also emit a custom event some modules listen to
+      document.dispatchEvent(new CustomEvent('filtersChanged'));
+
+      close();
+    });
+  }
+});
+
   
   setScrollbarGap();
   window.addEventListener('resize', setScrollbarGap);

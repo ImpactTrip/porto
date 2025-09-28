@@ -9,6 +9,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/mobile.css" media="only screen and (max-width: 768px)">
 
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -41,6 +42,12 @@
 
   <div class="header-row">
     <a class="brand" href="/"><img src="assets/logoh.png" alt="ImpactTrip" /></a>
+
+    <button id="nav-toggle" class="hamburger" aria-label="Open menu" aria-controls="mobile-drawer" aria-expanded="false">
+  <!-- simple icon -->
+  <span></span><span></span><span></span>
+</button>
+
 
     <form id="pilot-form" class="search-pill" autocomplete="off">
       <label class="field">
@@ -97,6 +104,67 @@
     </form>
   </div>
 </header>
+
+<nav id="mobile-drawer" class="drawer" aria-hidden="true">
+  <div class="drawer-backdrop" data-close></div>
+  <div class="drawer-panel" role="dialog" aria-labelledby="drawer-title">
+    <div class="drawer-head">
+      <h3 id="drawer-title">Menu</h3>
+      <button class="drawer-close" type="button" aria-label="Close" data-close>✕</button>
+    </div>
+
+    <ul class="drawer-links">
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Sign up</a></li>
+      <li><a href="#">Donate</a></li>
+    </ul>
+
+    <div class="drawer-sep"></div>
+
+    <!-- Quick filters (mobile controls use "m-" ids) -->
+    <form id="m-filters" class="drawer-filters">
+      <button type="button" id="m-date" class="btn btn-outline">Pick dates</button>
+
+      <label>
+        <span>Language</span>
+        <select id="m-language">
+          <option value="Any">Any</option>
+          <option value="PT">PT</option>
+          <option value="EN">EN</option>
+          <option value="ES">ES</option>
+          <option value="FR">FR</option>
+        </select>
+      </label>
+
+      <label>
+        <span>Duration</span>
+        <select id="m-duration">
+          <option value="any">Any</option>
+          <option value="1h">1h</option>
+          <option value="2–3h">2–3h</option>
+          <option value="half">Half day</option>
+          <option value="full">Full day</option>
+        </select>
+      </label>
+
+      <div class="two">
+        <label>
+          <span>Adults</span>
+          <input id="m-adults" type="number" min="1" value="1">
+        </label>
+        <label>
+          <span>Children</span>
+          <input id="m-children" type="number" min="0" value="0">
+        </label>
+      </div>
+
+      <div class="drawer-actions">
+        <button type="button" class="btn btn-outline" data-close>Close</button>
+        <button type="submit" class="btn btn-primary">Apply</button>
+      </div>
+    </form>
+  </div>
+</nav>
 
 <section class="hero">
   <div class="container">
@@ -200,8 +268,6 @@
   <div class="aside-scroll">
     <div class="hotels-rail" id="rail-hotels"></div>
   </div>
-</aside>
-
 </aside>
 
 </div> <!-- closes .home-wrap.container-two -->
