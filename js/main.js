@@ -47,6 +47,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
   }
 
+  // --- Dropdown "Partner with us" ---
+document.querySelectorAll('.dropdown .dropdown-toggle').forEach(btn => {
+  const dd = btn.closest('.dropdown');
+  const menu = dd.querySelector('.dropdown-menu');
+
+  const open = () => { dd.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); };
+  const close = () => { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); };
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    dd.classList.toggle('open');
+    btn.setAttribute('aria-expanded', dd.classList.contains('open') ? 'true' : 'false');
+  });
+
+  // fechar ao clicar fora / Esc
+  document.addEventListener('click', (e) => {
+    if (!dd.contains(e.target)) close();
+  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+  // acessibilidade: fechar ao sair por Tab
+  menu.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') close();
+  });
+});
+
   
   setScrollbarGap();
   window.addEventListener('resize', setScrollbarGap);
