@@ -17,6 +17,13 @@ body{ overflow-x: hidden; }
 .header-row{ padding:12px var(--mobile-padding); min-height:var(--touch-target); display:flex; align-items:center; }
 .brand img{ height:44px; width:auto; }
 
+/* Ensure the calendar floats above drawer actions and is clickable */
+.drp-popover{ z-index: 1000; pointer-events: auto; }
+.drawer .drp-popover.drp--mobile{ z-index: 1000; pointer-events: auto; }
+
+/* Keep drawer actions under it just in case */
+.drawer-actions{ z-index: 200; }
+
 /* Hamburger (mobile only) */
 .hamburger{
   display:flex;
@@ -167,7 +174,7 @@ button:focus, input:focus, select:focus, a:focus{ outline:2px solid var(--primar
 
 /* Date picker touch-ups inside the drawer */
 .drp-display{ text-align: center; }
-.drp-popup{ z-index: 120; } /* make sure calendar floats above the drawer */
+
 
 /* Prevent body scroll when drawer is open (you already toggle this class in JS) */
 body.is-drawer-open{ overflow: hidden; }
@@ -229,3 +236,21 @@ body.is-drawer-open{ overflow: hidden; }
   width: 100%; height: 44px; border-radius: 12px; font-weight:600;
   justify-content: center;
 }
+
+/* O painel da gaveta cria um contexto de posicionamento */
+.drawer-panel { position: relative; }
+
+/* O calendário montado dentro da gaveta (mobile) */
+.drawer .drp-popover.drp--mobile{
+  position: absolute;
+  left: 12px; right: 12px;
+  top: calc(56px + 6px);               /* abaixo do cabeçalho da gaveta */
+  width: auto;
+  max-height: calc(100vh - 56px - 24px);
+  overflow: hidden;
+  border-radius: 12px;
+  display: block;
+  z-index: 500;                         /* acima das ações da gaveta */
+  pointer-events: auto;
+}
+
