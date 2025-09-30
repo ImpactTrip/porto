@@ -301,3 +301,12 @@ body{ padding-top: var(--m-header-h) !important; }  /* mantém o espaçamento gl
 .home-wrap,
 .container-two{ padding-top: 0 !important; }        /* NÃO somar offset aqui */
 
+/* === Logo: rácio intacto e nitidez no mobile (override total) === */
+.site-header .brand img{
+  max-width: none !important;  /* ignora max-width:100% global */
+  width: auto !important;      /* largura pela proporção natural */
+  height: auto !important;     /* altura pela proporção natural */
+  max-height: 70px !important; /* limite de altura sem distorcer */
+  object-fit: contain !important; /* só por segurança, não recorta */
+  image-rendering: auto;       /* nitidez normal */
+}
