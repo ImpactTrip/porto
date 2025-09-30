@@ -577,3 +577,11 @@ footer{
 .card-submit:active{
   transform: translateY(0);
 }
+
+/* Hide mobile-only controls on desktop */
+@media (min-width: 901px){
+  #hamburger,
+  #form-min,
+  #pill-close,
+  #mobile-drawer { display: none; }
+}

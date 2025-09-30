@@ -5,6 +5,8 @@ import { FormStateManager } from './state.js';
 export class PilotFormController {
   constructor(){
     this.form = document.getElementById('pilot-form'); if(!this.form) return;
+    this.summaryBtn = document.getElementById('form-min');
+    this.closeBtn   = document.getElementById('pill-close');
     this.el = {
       location:  document.getElementById('location'),
       dateStart: document.getElementById('date-start'),
@@ -13,6 +15,26 @@ export class PilotFormController {
       children:  document.getElementById('children'),
       agesWrap:  document.getElementById('children-ages')
     };
+    // --- Mobile: abrir/fechar formulário pelo resumo
+    if (this.summaryBtn){
+      this.summaryBtn.addEventListener('click', () => {
+    const expanded = this.summaryBtn.getAttribute('aria-expanded') === 'true';
+    this.setCollapsed(expanded);           // se estava expandido, colapsa; se estava colapsado, expande
+  });
+    }
+
+if (this.closeBtn){
+  this.closeBtn.addEventListener('click', () => this.setCollapsed(true));
+}
+
+// Atualiza o resumo sempre que algo muda
+this.form.addEventListener('input', () => this.updateSummary());
+document.addEventListener('filtersChanged', () => this.updateSummary());
+
+// Inicializa o resumo com o estado persistido, e mantém o form aberto por defeito
+this.updateSummary();
+this.setCollapsed(false);
+
     if(!Object.values(this.el).every(Boolean)) return console.error('Missing form elements');
     this.state = new FormStateManager();
     this.init();
@@ -70,6 +92,35 @@ export class PilotFormController {
   });
 }
 
+setCollapsed(collapsed){
+  // Só estiliza; CSS mobile controla a visibilidade
+  this.form.classList.toggle('is-collapsed', collapsed);
+  if (this.summaryBtn) this.summaryBtn.setAttribute('aria-expanded', String(!collapsed));
+}
+
+formatParty(){
+  const a = utils.parseIntSafe(this.el.adults.value, 1);
+  const c = utils.parseIntSafe(this.el.children.value, 0);
+  return c > 0 ? `${a}A · ${c}C` : `${a}A`;
+}
+
+formatDates(){
+  const ds = (document.getElementById('date-range-display')?.value || '').trim();
+  if (ds) return ds;
+  const s = (this.el.dateStart.value || '').trim();
+  const e = (this.el.dateEnd.value || '').trim();
+  if (s && e) return `${s} – ${e}`;
+  return 'Select dates';
+}
+
+updateSummary(){
+  if (!this.summaryBtn) return;
+  const txt = `${this.formatDates()} · ${this.formatParty()}`;
+  const el  = this.summaryBtn.querySelector('.txt');
+  if (el) el.textContent = txt;
+}
+
+
 onField(field){
   const el = this.el[field];
   let value = el.value;
@@ -123,7 +174,9 @@ onSubmit(e){
   const final = this.persist();
   console.log('Filters applied:', final);
   this.form.dispatchEvent(new CustomEvent('filtersApplied', { detail: final }));
+  this.setCollapsed(true);   // no mobile, reduz ao resumo depois de aplicar
   document.dispatchEvent(new CustomEvent('filtersChanged', { detail: {} }));
+    this.setCollapsed(true);  // reduz ao resumo no mobile depois de aplicar
 }
 
 

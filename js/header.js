@@ -27,7 +27,37 @@ export class HeaderController {
     }
     window.addEventListener('load', this.setHeaderOffset);
     window.addEventListener('resize', this.setHeaderOffset);
+    // ——— Mobile: Hamburger / Drawer (overlay) ———
+this.hamburger = document.getElementById('hamburger');
+this.drawer    = document.getElementById('mobile-drawer');
+
+const setMenu = (open) => {
+  if (!this.hamburger || !this.drawer) return;
+  this.hamburger.setAttribute('aria-expanded', String(open));
+  this.drawer.classList.toggle('open', open);
+  this.drawer.setAttribute('aria-hidden', String(!open));
+  document.documentElement.style.overflow = open ? 'hidden' : '';
+};
+
+if (this.hamburger && this.drawer){
+  // abre/fecha pelo botão
+  this.hamburger.addEventListener('click', () => {
+    const open = this.hamburger.getAttribute('aria-expanded') !== 'true';
+    setMenu(open);
+  });
+
+  // fecha ao tocar fora do painel
+  this.drawer.addEventListener('click', (e) => {
+    if (e.target === this.drawer) setMenu(false);
+  });
+
+  // tecla ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMenu(false);
+  });
+}
   }
+
 
   destroy(){
     window.removeEventListener('scroll', this.onScroll);

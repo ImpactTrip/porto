@@ -74,6 +74,12 @@ document.querySelectorAll('.dropdown .dropdown-toggle').forEach(btn => {
 });
 
   
+  // Garantir que o resumo reflete qualquer mudança global
+  document.addEventListener('filtersChanged', () => {
+  window.app?.pilotForm?.updateSummary?.();
+  });
+
+
   setScrollbarGap();
   window.addEventListener('resize', setScrollbarGap);
   window.addEventListener('orientationchange', setScrollbarGap);
