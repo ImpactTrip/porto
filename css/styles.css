@@ -120,11 +120,18 @@ body::before{
 .header-actions{
   justify-self:end;
 }
-@media (max-width:900px){
+
+/* was 900px */
+@media (max-width:860px){
   .utility-bar{ position:static; width:100%; }
   .utility-inner{ width:100%; padding:6px 0 0; justify-content:center; gap:12px; }
   .header-row{ display:flex; flex-direction:column; gap:12px; }
   .brand img{ height:56px; }
+}
+
+/* optional tighter padding on small screens */
+@media (max-width: 860px){
+  .site-header{ padding-top: 8px; }
 }
 
 /* distance between top of page and the pill+logo block */
@@ -148,7 +155,7 @@ body::before{
 }
 
 /* mobile: a little tighter is usually nicer */
-@media (max-width: 900px){
+@media (max-width: 860px){
   .site-header{ padding-top: 8px; }  /* optional */
 }
 
@@ -408,7 +415,8 @@ body::before{
 
 
 /* ===== Responsive ===== */
-@media (max-width:1100px){
+/* was 1100px */
+@media (max-width:880px){
   .home-aside{
     position: static;
     width: auto;
@@ -419,6 +427,7 @@ body::before{
     max-height:70vh; overflow:auto;
   }
 }
+
 
 
 /* ===========================
@@ -584,4 +593,14 @@ footer{
   #form-min,
   #pill-close,
   #mobile-drawer { display: none; }
+}
+
+/* current is 900px; align with 860px change above */
+@media (max-width: 860px) {
+  .brand img { height: 56px; }
+}
+/* you already have desktop size at 90px above this breakpoint */
+
+@media (min-width: 880px){
+  .search-pill{ gap: 12px 20px; padding: 12px 18px; }
 }
