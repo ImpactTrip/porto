@@ -605,8 +605,26 @@ footer{
   .search-pill{ gap: 12px 20px; padding: 12px 18px; }
 }
 
-@media (max-width: 600px) {
-  .container-two { grid-template-columns: 1fr; }
-  .home-aside { order: 2; }
-  .brand img { height: 56px; }
+/* =============== Samsung Fold inner screen (708–740 px) =============== */
+/* Show desktop layout but disable fixed/scrolling sidebar */
+@media (min-width: 680px) and (max-width: 740px) {
+
+  .container-two {
+    display: grid;
+    grid-template-columns: 1fr 0.5fr; /* main content + half-width aside */
+    gap: 16px;
+  }
+
+  .home-aside {
+    position: static !important;   /* remove fixed */
+    width: auto !important;        /* let grid control the width */
+    height: auto !important;
+    overflow: visible !important;  /* remove inner scrolling */
+    margin-top: 20px;
+  }
+
+  .home-aside .aside-scroll {
+    max-height: none !important;   /* prevent scroll inside */
+    overflow: visible !important;
+  }
 }
