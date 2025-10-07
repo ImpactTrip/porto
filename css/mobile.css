@@ -314,6 +314,16 @@ body{ padding-top: var(--m-header-h) !important; }  /* mantém o espaçamento gl
 }
 
 
+/* ─────────────────────────────
+   Samsung Fold inner screen tweak
+   Make sidebar half the width only on inner screen
+   (roughly 700–740 px wide)
+   ───────────────────────────── */
+@media (min-width: 680px) and (max-width: 740px) {
+  .container-two {
+    grid-template-columns: 1fr 1fr; /* 50/50 split */
+  }
+}
 
 
 
