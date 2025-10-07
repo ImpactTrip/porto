@@ -1,11 +1,9 @@
 /* ===========================
    ImpactTrip — Mobile Overrides
-   Breakpoint: max-width: 600px
+   Breakpoint: max-width: 900px
    =========================== */
 
 /* ===== Base / Layout ===== */
-
-@media (max-width: 600px){
 
 /* Remove o spacer do desktop em mobile */
 body::before{ display:none; height:0 !important; }
@@ -311,21 +309,4 @@ body{ padding-top: var(--m-header-h) !important; }  /* mantém o espaçamento gl
   max-height: 70px !important; /* limite de altura sem distorcer */
   object-fit: contain !important; /* só por segurança, não recorta */
   image-rendering: auto;       /* nitidez normal */
-}
-
-
-/* ─────────────────────────────
-   Samsung Fold inner screen tweak
-   Make sidebar half the width only on inner screen
-   (roughly 700–740 px wide)
-   ───────────────────────────── */
-@media (min-width: 680px) and (max-width: 740px) {
-  .container-two {
-    grid-template-columns: 1fr 1fr; /* 50/50 split */
-  }
-}
-
-
-
-
 }

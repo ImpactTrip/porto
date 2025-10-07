@@ -9,7 +9,7 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 600px) and (max-device-width: 600px)">
+  <link rel="stylesheet" href="css/mobile.css" media="(max-width: 900px)">
 
   <!-- Favicons -->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -41,31 +41,32 @@
   </div>
 
   <div class="header-row">
-    <div class="brand"><img src="assets/logoh.png" alt="ImpactTrip" /></div>
+    <a class="brand" href="/"><img src="assets/logoh.png" alt="ImpactTrip" /></a>
 
     <button id="hamburger" class="hamburger" aria-controls="mobile-drawer" aria-expanded="false" aria-label="Open menu">☰</button>
 
     <button id="form-min" class="form-min" type="button" aria-expanded="false">
-      <span class="dot" aria-hidden="true"></span>
-      <span class="txt">Select dates · 1A</span>
+    <span class="dot" aria-hidden="true"></span>
+    <span class="txt">Select dates · 1A</span>
     </button>
+
 
     <form id="pilot-form" class="search-pill" autocomplete="off">
       <label class="field">
         <span class="lbl">Location</span>
-        <select id="location" name="location"><option>Porto, Portugal</option></select>
+        <select id="location"><option>Porto, Portugal</option></select>
       </label>
 
       <label class="field field-daterange">
         <span class="lbl">Date</span>
-        <input id="date-range-display" name="date_range_display" class="daterange-display" type="text" readonly placeholder="Select dates" />
-        <input id="date-start" name="date_start" type="hidden" />
-        <input id="date-end"   name="date_end"   type="hidden" />
+        <input id="date-range-display" class="daterange-display" type="text" readonly placeholder="Select dates" />
+        <input id="date-start" type="hidden" />
+        <input id="date-end" type="hidden" />
       </label>
 
       <label class="field">
         <span class="lbl">Language</span>
-        <select id="language" name="language">
+        <select id="language">
           <option value="Any">Any</option>
           <option value="PT">PT</option>
           <option value="EN">EN</option>
@@ -76,7 +77,7 @@
 
       <label class="field">
         <span class="lbl">Duration</span>
-        <select id="duration" name="duration">
+        <select id="duration">
           <option value="any">Any</option>
           <option value="1h">1h</option>
           <option value="2–3h">2–3h</option>
@@ -87,12 +88,12 @@
 
       <label class="field">
         <span class="lbl">Adults</span>
-        <input id="adults" name="adults" type="number" min="1" value="1" />
+        <input id="adults" type="number" min="1" value="1" />
       </label>
 
       <label class="field">
         <span class="lbl">Children</span>
-        <input id="children" name="children" type="number" min="0" value="0" />
+        <input id="children" type="number" min="0" value="0" />
       </label>
 
       <button class="pill-action" type="submit" id="btn-search" aria-label="Apply filters">
@@ -104,21 +105,23 @@
       <div id="children-ages" class="child-ages"></div>
 
       <button type="button" class="pill-close" id="pill-close" aria-label="Close filters">✕</button>
+
     </form>
   </div>
 
   <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
-    <div class="panel" role="dialog" aria-modal="true" aria-label="Menu">
-      <div class="title">Menu</div>
-      <nav class="mobile-nav" aria-label="Mobile">
-        <a href="#" class="link link-ghost">Login</a>
-        <a href="#" class="btn btn-outline btn-xs">Sign up</a>
-        <a href="#" class="btn btn-primary btn-xs">Donate</a>
-      </nav>
-    </div>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="title">Menu</div>
+    <nav class="mobile-nav" aria-label="Mobile">
+      <!-- Utiliza as mesmas ações da utility-bar -->
+      <a href="#" class="link link-ghost">Login</a>
+      <a href="#" class="btn btn-outline btn-xs">Sign up</a>
+      <a href="#" class="btn btn-primary btn-xs">Donate</a>
+    </nav>
   </div>
-</header>
+</div>
 
+</header>
 
 <section class="hero">
   <div class="container">

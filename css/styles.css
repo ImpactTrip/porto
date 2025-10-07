@@ -120,18 +120,11 @@ body::before{
 .header-actions{
   justify-self:end;
 }
-
-/* was 900px */
-@media (max-width:600px){
+@media (max-width:900px){
   .utility-bar{ position:static; width:100%; }
   .utility-inner{ width:100%; padding:6px 0 0; justify-content:center; gap:12px; }
   .header-row{ display:flex; flex-direction:column; gap:12px; }
   .brand img{ height:56px; }
-}
-
-/* optional tighter padding on small screens */
-@media (max-width: 600px){
-  .site-header{ padding-top: 8px; }
 }
 
 /* distance between top of page and the pill+logo block */
@@ -155,7 +148,7 @@ body::before{
 }
 
 /* mobile: a little tighter is usually nicer */
-@media (max-width: 600px){
+@media (max-width: 900px){
   .site-header{ padding-top: 8px; }  /* optional */
 }
 
@@ -286,7 +279,7 @@ body::before{
 .section-head h2{ margin:0; font-size:1.25rem; }
 .rail-next{ border:1px solid var(--border); background:#fff; border-radius:999px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer; }
 .section-sep{ height:2px; background:linear-gradient(90deg,#24466F 0%,#83B341 100%); opacity:.6; margin:24px 0; }
-.rail{ display:grid; grid-auto-flow:column; grid-auto-columns:300px; gap:16px; overflow-x:auto; padding:6px 0 2px; scroll-snap-type:x proximity; }
+.rail{ display:grid; grid-auto-flow:column; grid-auto-columns:300px; gap:16px; overflow-x:auto; padding:6px 0p 2px; scroll-snap-type:x proximity; }
 .rail > *{ scroll-snap-align:start; }
 
 /* Cards */
@@ -415,8 +408,7 @@ body::before{
 
 
 /* ===== Responsive ===== */
-/* was 1100px */
-@media (max-width:600px){
+@media (max-width:1100px){
   .home-aside{
     position: static;
     width: auto;
@@ -427,7 +419,6 @@ body::before{
     max-height:70vh; overflow:auto;
   }
 }
-
 
 
 /* ===========================
@@ -588,43 +579,9 @@ footer{
 }
 
 /* Hide mobile-only controls on desktop */
-@media (min-width: 601px){
+@media (min-width: 901px){
   #hamburger,
   #form-min,
   #pill-close,
   #mobile-drawer { display: none; }
-}
-
-/* current is 900px; align with 860px change above */
-@media (max-width: 600px) {
-  .brand img { height: 56px; }
-}
-/* you already have desktop size at 90px above this breakpoint */
-
-@media (min-width: 880px){
-  .search-pill{ gap: 12px 20px; padding: 12px 18px; }
-}
-
-/* =============== Samsung Fold inner screen (708–740 px) =============== */
-/* Show desktop layout but disable fixed/scrolling sidebar */
-@media (min-width: 680px) and (max-width: 740px) {
-
-  .container-two {
-    display: grid;
-    grid-template-columns: 1fr 0.5fr; /* main content + half-width aside */
-    gap: 16px;
-  }
-
-  .home-aside {
-    position: static !important;   /* remove fixed */
-    width: auto !important;        /* let grid control the width */
-    height: auto !important;
-    overflow: visible !important;  /* remove inner scrolling */
-    margin-top: 20px;
-  }
-
-  .home-aside .aside-scroll {
-    max-height: none !important;   /* prevent scroll inside */
-    overflow: visible !important;
-  }
 }
