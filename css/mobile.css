@@ -1,11 +1,11 @@
 /* ===========================
    ImpactTrip — Mobile Overrides
-   Breakpoint: max-width: 860px
+   Breakpoint: max-width: 600px
    =========================== */
 
 /* ===== Base / Layout ===== */
 
-@media (max-width: 860px){
+@media (max-width: 600px){
 
 /* Remove o spacer do desktop em mobile */
 body::before{ display:none; height:0 !important; }
